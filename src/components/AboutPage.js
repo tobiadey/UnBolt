@@ -1,7 +1,7 @@
 import logo from '../logo.svg';
 import Button from './Button'
 import '../App.css';
-
+import {Link} from 'react-router-dom'
 
 
 function onAdd (){
@@ -17,6 +17,7 @@ const AboutPage = () => {
         </div>
 
         <div className='container'>
+            <Link to= '/'> Go Back </Link>
 
             <h2 className='desc'> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h2>
             <small className='desc'> 

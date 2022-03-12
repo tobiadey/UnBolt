@@ -1,7 +1,7 @@
 import logo from '../logo.svg';
 import Button from './Button'
 import '../App.css';
-
+import {Link} from 'react-router-dom'
 
 
 function onAdd (){
@@ -28,7 +28,7 @@ const HomePage = ({}) => {
         <div className='container'>
             <div className='row'>
             <Button color='black' text={'Connect Wallet'} onClick ={ onAdd}/>
-            <Button color='black' text={'Read More'} onClick ={ onAdd}/>
+            <Link to= 'about'> <Button color='black' text={'Read More'} onClick ={ onAdd} /> </Link>
             </div>
 
         </div>
