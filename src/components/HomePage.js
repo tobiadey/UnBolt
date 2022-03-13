@@ -2,13 +2,17 @@ import logo from '../logo.svg';
 import Button from './Button'
 import '../App.css';
 import {Link} from 'react-router-dom'
-
+import { useMoralis } from "react-moralis";
 
 function onAdd (){
     console.log("Hii");
   }
 
+
 const HomePage = ({}) => {
+  const { enableWeb3, isWeb3Enabled } = useMoralis();
+
+  
   return (
     <div className="App App-home-body">
         <div>
@@ -27,13 +31,20 @@ const HomePage = ({}) => {
 
         <div className='container'>
             <div className='row'>
-            <Button color='black' text={'Connect Wallet'} onClick ={ onAdd}/>
-            <Link to= 'about'> <Button color='black' text={'Read More'} onClick ={ onAdd} /> </Link>
+
+            {isWeb3Enabled ? (
+              <>
+                <Button color='black' text={'Go to App'} onClick ={() => onAdd()}/>
+              </>
+
+            ) : (
+            <Button color='black' text={'Connect Wallet'} onClick ={() => enableWeb3()}/>
+
+            )}
+            <Link to= 'about'> <Button color='black' text={'Read More'} /> </Link>
             </div>
 
         </div>
-
-
 
     </div>
   );

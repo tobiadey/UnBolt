@@ -3,10 +3,17 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { MoralisProvider } from "react-moralis";
 
 ReactDOM.render(
+  
   <React.StrictMode>
-    <App />
+    <MoralisProvider 
+      //i dont want moraleis to provide me with a server
+      initializeOnMount= {false}
+    >
+     <App />
+    </MoralisProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
