@@ -12,41 +12,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.container {
-  max-width: 1060px;
-}
-
-.desc{
-  width: 1060px;
-  /* height: 181px; */
-}
-
-.row {
-  height: 66;
-  width: 510px;
-  padding: 30px;
-}
-
-.display-inline{
-  display: flex;
-  flex-direction: row;
-}
-
-a{
-  text-decoration: none;
-}
-
-.test{
-  color: red;
-}
-
-
-
-
-
-
-
-
 .container-home{
   border: 1px solid steelblue;
 

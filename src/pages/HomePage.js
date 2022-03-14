@@ -1,6 +1,6 @@
 import logo from '../logo.svg';
-import Button from './Button'
-import '../App.css';
+import Button from '../components/Button'
+import './HomePage.css';
 import {Link} from 'react-router-dom'
 import { useMoralis } from "react-moralis";
 

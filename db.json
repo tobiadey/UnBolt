@@ -1,19 +1,43 @@
 {
-  "posts": [
+  "Assets":[
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "title": "berkin bag",
+      "status": "in progress",
+      "quantity": 100,
+      "signator": "0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE"
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "id": 2,
+      "title": "ps5",
+      "status": "cancelled",
+      "quantity": 100,
+      "signator": "0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE"
+    },
+    {
+      "id": 3,
+      "title": "iphone 13",
+      "status": "completed",
+      "quantity": 100,
+      "signator": "0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE"
+    },
+    {
+      "id": 4,
+      "title": "samsung tv",
+      "status": "completed",
+      "quantity": 100,
+      "signator": "0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE"
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "profile":[
+    {
+      "address": "0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE",
+      "name": "james"
+    },
+    {
+      "address": "0x5E7b2Bbb14B8a9097A26A93982624067A1dB11eF",
+      "name": "tony"
+    }
+   
+  ]
 }
