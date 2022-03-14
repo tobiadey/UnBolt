@@ -2,6 +2,8 @@ import logo from '../logo.svg';
 import Button from '../components/Button'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
+import Widgets from '../components/Widgets'
+import Table from '../components/Table'
 import './Dashboard.css';
 
 
@@ -15,7 +17,16 @@ const Dashboard = () => {
        <Sidebar/>
       <div className='dashboard-container'> 
         <Navbar/>
-        homecontent
+        <div className='widgets'>
+          <Widgets/>
+          <Widgets/>
+          <Widgets/>
+          <Widgets/>
+        </div>
+        <div className='list-container'>
+          <div className='list-title'> Latest Transactions</div>  
+          <Table/>
+        </div>
       </div>
     </div>
 

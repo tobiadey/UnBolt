@@ -1,0 +1,20 @@
+.widget{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
+    border-radius: 10px;
+    height: 100px;
+    
+}
+
+
+.widget:hover{
+    background-color: pink;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    
+}
