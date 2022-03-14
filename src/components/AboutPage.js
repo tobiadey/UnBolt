@@ -2,6 +2,7 @@ import logo from '../logo.svg';
 import Button from './Button'
 import '../App.css';
 import {Link} from 'react-router-dom'
+import { useMoralis } from "react-moralis";
 
 
 function onAdd (){
@@ -9,14 +10,23 @@ function onAdd (){
   }
 
 const AboutPage = () => {
+  const { authenticate, isAuthenticated, logout, user } = useMoralis();
+
+  
   return (
     <div className="">
         <div className='display-inline'>
         <img src={logo} className="App-logo-sma" alt="logo" />
         {/* {check if user is already connected} */}
-        <Button color='black' text={'Connect Wallet'} onClick ={ onAdd}/>
+        {isAuthenticated ?
+        <>
+          <small>{user.get("ethAddress")}</small>
+          <Button color='black' text={'Logout'} onClick ={ logout}/> 
+        </>
+          :
+          <Button color='black' text={'Connect Wallet'} onClick ={() => authenticate({ provider: "metamask" })}/> 
+         }
         </div>
-
         <div className='container'>
             {/* how to add className to a component declration */}
             {/* use className as a prop to butoon */}

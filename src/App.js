@@ -1,37 +1,21 @@
 // import logo from './logo.svg';
-// import './App.css';
+import './App.css';
 import HomePage from './components/HomePage';
 import AboutPage from './components/AboutPage';
+import Dashboard from './components/Dashboard';
+import CreateAsset from './components/CreateAsset';
 import { BrowserRouter as Router, Route,Routes  } from 'react-router-dom'
-import { useMoralis } from "react-moralis";
+
 
 function App() {
-  const { enableWeb3, isWeb3Enabled } = useMoralis();
-
-
-  // return (
-  //   <div>
-  //     {isWeb3Enabled ? (
-  //       <>
-  //         "Connected!" 
-  //         {/* <button onClick={() => enableWeb3()}>Connect</button> */}
-        
-  //       </>
-  //       ) : (
-  //         <button onClick={() => enableWeb3()}>Connect</button>
-  //       )}
-  //   </div>
-  // );
-
-
-
-
   return (
     <Router>
       <>
         <Routes>
           <Route path= '/' element = {<HomePage/>}/>
           <Route path= '/about' element={<AboutPage />} />
+          <Route path= '/dashboard' element={<Dashboard />} />
+          <Route path= '/createAsset' element={<CreateAsset />} />
         </Routes>
       </>
     </Router>

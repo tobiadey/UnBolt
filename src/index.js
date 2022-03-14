@@ -10,7 +10,9 @@ ReactDOM.render(
   <React.StrictMode>
     <MoralisProvider 
       //i dont want moraleis to provide me with a server
-      initializeOnMount= {false}
+      appId="6ri2MWBM7LvNkPja6x2x2oRKenffyBVExmk6lEoP"
+      serverUrl="https://uzik23hcxxpm.usemoralis.com:2053/server"
+
     >
      <App />
     </MoralisProvider>

@@ -10,7 +10,8 @@ function onAdd (){
 
 
 const HomePage = ({}) => {
-  const { enableWeb3, isWeb3Enabled } = useMoralis();
+  const { authenticate, isAuthenticated, logout, user } = useMoralis();
+
 
   
   return (
@@ -32,18 +33,28 @@ const HomePage = ({}) => {
         <div className='container'>
             <div className='row'>
 
-            {isWeb3Enabled ? (
+            {isAuthenticated ? (
               <>
-                <Button color='black' text={'Go to App'} onClick ={() => onAdd()}/>
+                <Button color='black' text={'Logout'} onClick ={logout}/>
+                {console.log(user.get("username"))}
+                {console.log(user.get("ethAddress"))}  
               </>
-
             ) : (
-            <Button color='black' text={'Connect Wallet'} onClick ={() => enableWeb3()}/>
+            <Button color='black' text={'Connect Wallet'} onClick ={() => authenticate({ provider: "metamask" })}/>
 
             )}
             <Link to= 'about'> <Button color='black' text={'Read More'} /> </Link>
             </div>
 
+        </div>
+
+        <div>
+        
+        
+        { isAuthenticated && 
+        <Link to= 'dashboard'> <Button color='black' text={'Go to App'}/> </Link> 
+        }
+        
         </div>
 
     </div>
