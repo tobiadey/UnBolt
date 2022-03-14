@@ -1,6 +1,6 @@
 import logo from '../logo.svg';
 import Button from '../components/Button'
-import '../App.css';
+import './AboutPage.css';
 import {Link} from 'react-router-dom'
 import { useMoralis } from "react-moralis";
 
@@ -14,32 +14,36 @@ const AboutPage = () => {
 
   
   return (
-    <div className="">
-        <div className='display-inline'>
-        <img src={logo} className="App-logo-sma" alt="logo" />
-        {/* {check if user is already connected} */}
-        {isAuthenticated ?
-        <>
-          <small>{user.get("ethAddress")}</small>
-          <Button color='black' text={'Logout'} onClick ={ logout}/> 
-        </>
-          :
-          <Button color='black' text={'Connect Wallet'} onClick ={() => authenticate({ provider: "metamask" })}/> 
-         }
-        </div>
-        <div className='container'>
-            {/* how to add className to a component declration */}
-            {/* use className as a prop to butoon */}
-            <Link className = "test" to= '/'> <Button className = "test" color='black' text={'Go Back'} onClick ={ onAdd}/> </Link>
+    <div className="about-page-container">
+        <div className='header display-inline'>
+            <div>
+            <img src={logo} className="App-logo-sma" alt="logo" />
+            </div>
+            {/* {check if user is already connected} */}
+            {isAuthenticated ?
+            <>
+              <small>{user.get("ethAddress")}</small>
+              <Button text={'Logout'} onClick ={ logout}/> 
+            </>
+              :
+              <Button  text={'Connect Wallet'} onClick ={() => authenticate({ provider: "metamask" })}/> 
+            }
+          </div>
+          <div className='about-body-container'>
+              <div className='back-btn'>
+                <Link to= '/'> back </Link>
+              </div>
+              <div className='about-text-container'>
+                <h2 className=''> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h2>
+                <small className='desc'> 
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Risus tellus scelerisque nunc odio viverra senectus. 
+                    Dui sollicitudin ornare a ornare morbi posuere maecenas sagittis, nisi.
+                </small>
+              </div>
 
-            <h2 className='desc'> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </h2>
-            <small className='desc'> 
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Risus tellus scelerisque nunc odio viverra senectus. 
-                Dui sollicitudin ornare a ornare morbi posuere maecenas sagittis, nisi.
-            </small>
-        </div>
-    </div>
+           </div>
+      </div>
   );
 }
 

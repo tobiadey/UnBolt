@@ -1,6 +1,6 @@
-.App {
-    text-align: center;
-  }
+  .App {
+      text-align: center;
+    }
   
   .App-logo-lar {
     padding-bottom: 10px;
@@ -29,15 +29,19 @@
     color: #61dafb;
   }
 
-.container {
-    max-width: 1060px;
+  .container {
+      max-width: 1060px;
+    }
+  .container .row{
+    display: flex;
+    justify-content: center;
   }
   
   .desc{
     width: 1060px;
     /* height: 181px; */
   }
-  
+
   .row {
     height: 66;
     width: 510px;
@@ -52,9 +56,4 @@
   a{
     text-decoration: none;
   }
-  
-  .test{
-    color: red;
-  }
-  
   

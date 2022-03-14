@@ -20,7 +20,6 @@ const HomePage = ({}) => {
         <img src={logo} className="App-logo-lar" alt="logo" />
         </div>
 
-
         <div className='container'>
             <h2 className='desc'> A decentralised supply chain tracker </h2>
             <small className='desc'> 
@@ -35,27 +34,25 @@ const HomePage = ({}) => {
 
             {isAuthenticated ? (
               <>
-                <Button color='black' text={'Logout'} onClick ={logout}/>
+                <Button classVar='dark' color='white' text={'Logout'} onClick ={logout}/>
                 {console.log(user.get("username"))}
                 {console.log(user.get("ethAddress"))}  
               </>
             ) : (
-            <Button color='black' text={'Connect Wallet'} onClick ={() => authenticate({ provider: "metamask" })}/>
+            <Button classVar='dark' text={'Connect Wallet'} onClick ={() => authenticate({ provider: "metamask" })}/>
 
             )}
-            <Link to= 'about'> <Button color='black' text={'Read More'} /> </Link>
+            <Link to= 'about'> <Button text={'Read More'} /> </Link>
             </div>
-
         </div>
 
-        <div>
-        
-        
-        { isAuthenticated && 
-        <Link to= 'dashboard'> <Button color='black' text={'Go to App'}/> </Link> 
-        }
-        
+
+        <div className='container'>
+          { isAuthenticated && 
+          <Link to= 'dashboard'> <Button classVar='dark' text={'Go to App'}/> </Link> 
+          }
         </div>
+
 
     </div>
   );

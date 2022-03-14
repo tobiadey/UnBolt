@@ -1,0 +1,41 @@
+.about-page-container{
+    /* display: flex; */
+    /* max-width: 1060px; */
+}
+.header{
+    padding: 10px;
+    width: 100%;
+    height: 75px;
+    background-color: grey;
+}
+
+.header small{
+    padding-top: 10px;
+    color: pink;
+
+  }
+
+.display-inline{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.back-btn{
+    width: 70px;
+}
+
+.about-text-container{
+    /* display: flex; */
+    flex-direction: column;
+    /* justify-content: center; */
+    width: 100%;
+}
+
+.about-text-container h2{
+    text-align: center;
+}
+
+.about-body-container{
+    /* width: 1060px; */
+    
+}

@@ -1,18 +1,28 @@
 
-const Button = ({color, text, onClick}) => {
+import './Button.css';
+
+
+const Button = ({classVar,bgColor,color, text, onClick}) => {
 
 
     return(
   
-      <button onClick = {onClick} style ={{backgroundColor: color}} className='btn'>
-      {text}
-      </button>
+      <div className='btn-cointainer'>
+        <button 
+          onClick = {onClick} 
+          style ={{backgroundColor: bgColor, color: color}} 
+          className={`btn ${ classVar }`}>
+            {text}
+        </button>
+      </div>
+
     )
+ 
   
   }
   
   Button.defaultProps = {
-    color: 'steelBlue',
+    // color: 'steelBlue',
   }
   
   export default Button

@@ -1,0 +1,49 @@
+
+.btn-cointainer{
+    /* display: flex; */
+}
+
+
+.btn {
+    display: flex;
+    /* border: none; */
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 15px;
+    font-family: inherit;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    
+  }
+
+.dark{
+    background: #000; 
+    color: #fff;
+}
+
+.btn:hover{
+    background-color: pink;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    
+}
+
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+/* .btn:focus {
+outline: none;
+color: aquamarine;
+}
+
+.btn:active {
+transform: scale(0.98);
+}
+
+.btn-block {
+display: block;
+width: 100%;
+} */

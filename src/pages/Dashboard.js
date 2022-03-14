@@ -1,6 +1,6 @@
 import logo from '../logo.svg';
 import Button from '../components/Button'
-import '../App.css';
+import './Dashboard.css';
 import {Link} from 'react-router-dom'
 import { useMoralis } from "react-moralis";
 import { useState } from 'react'
@@ -66,7 +66,7 @@ const Dashboard = () => {
 
   return(
     <div className='DashboardContainer'>
-    
+      HII
     </div>
   )
 }
