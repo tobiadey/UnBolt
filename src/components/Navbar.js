@@ -5,9 +5,13 @@ const Navbar = ({props}) => {
 
 
     return(
-        <>
-            ok ok ok 
-        </>
+        <div className='navbar'>
+            <div className='wrapper'>
+                <div className='search'>
+                    <input type='text' placeholder= 'search'></input>
+                </div>
+            </div>
+        </div>
     )
   
   }

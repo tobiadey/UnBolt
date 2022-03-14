@@ -1,0 +1,10 @@
+.dashboard{
+    display: flex;
+   
+}
+
+.dashboard-container{
+    flex: 5;
+    /* background-color: aqua; */
+}
+

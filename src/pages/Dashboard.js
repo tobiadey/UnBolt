@@ -1,30 +1,50 @@
 import logo from '../logo.svg';
 import Button from '../components/Button'
+import Navbar from '../components/Navbar'
+import Sidebar from '../components/Sidebar'
 import './Dashboard.css';
-import {Link} from 'react-router-dom'
-import { useMoralis } from "react-moralis";
-import { useState } from 'react'
 
-function onAdd (){
-    console.log("Hii");
-  }
+
 
 
 const Dashboard = () => {
-  const { authenticate, isAuthenticated, logout, user } = useMoralis();
-  const [asset, setAsset] = useState('')
 
-  const onSubmit = (e) => {
-    e.preventDefault()
 
-    if (!asset) {
-      alert('Please add asset name')
-      return
-    }
-    onAdd({asset})
+  return(
+    <div className='dashboard'>
+       <Sidebar/>
+      <div className='dashboard-container'> 
+        <Navbar/>
+        homecontent
+      </div>
+    </div>
 
-    setAsset('')
-  }
+  )
+}
+
+export default Dashboard
+
+
+
+// const { authenticate, isAuthenticated, logout, user } = useMoralis();
+// const [asset, setAsset] = useState('')
+
+// const onSubmit = (e) => {
+//   e.preventDefault()
+
+//   if (!asset) {
+//     alert('Please add asset name')
+//     return
+//   }
+//   onAdd({asset})
+
+//   setAsset('')
+// }
+
+
+// function onAdd (){
+//   console.log("Hii");
+// }
 
   
   // return (
@@ -63,12 +83,3 @@ const Dashboard = () => {
 
   //   </div>
   // );
-
-  return(
-    <div className='DashboardContainer'>
-      HII
-    </div>
-  )
-}
-
-export default Dashboard

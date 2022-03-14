@@ -12,6 +12,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.App-logo-lar {
+  /* padding-bottom: 10px; */
+  height: 113px;
+  width: 307px;
+}
+
+.App-logo-small {
+  /* padding-bottom: 10px; */
+  height: 60px;
+  width: 163px;
+}
 
 /* 
 
