@@ -5,6 +5,9 @@ import Sidebar from '../components/Sidebar'
 import Widgets from '../components/Widgets'
 import Table from '../components/Table'
 import './Dashboard.css';
+import SearchIcon from '@mui/icons-material/Search';
+import {Link} from 'react-router-dom'
+
 
 
 
@@ -12,7 +15,7 @@ import './Dashboard.css';
 const Dashboard = () => {
 
 
-  
+
   return(
     <div className='dashboard'>
        <Sidebar/>
@@ -25,7 +28,14 @@ const Dashboard = () => {
           <Widgets/>
         </div>
         <div className='list-container'>
-          <div className='list-title'> Latest Transactions</div>  
+          <div className='list-title'> 
+          {/* Latest Transactions */}
+            <div className='search'>
+              <input type='text' placeholder= 'Search...'></input>
+              <SearchIcon className='icon'/> 
+            </div>
+            <Link to= '/'> <Button classVar='dark' text={'Create Task'}/> </Link> 
+          </div>  
           <Table/>
         </div>
       </div>

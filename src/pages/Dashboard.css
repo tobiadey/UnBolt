@@ -19,11 +19,34 @@
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47);
     box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47);
     padding: 50px;
-    margin: 20px;
+    margin: 10px;
 }
 
 .dashboard .list-title{
     font-weight: 500;
     color: gray;
     margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
 }
+
+
+
+/* flex : 1
+flex : 5 */
+
+.dashboard .list-container .search{
+    display: flex;
+    align-items: center;
+    border: 0.5px solid lightgrey;
+    padding: 3px;
+  
+  }
+  .dashboard .list-container .search input{
+    border: none;
+    outline: none;
+    background-color: transparent;
+  
+  }
