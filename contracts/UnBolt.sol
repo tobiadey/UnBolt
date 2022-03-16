@@ -12,11 +12,13 @@ contract UnBolt {
     //definition of a data type of Task using structs
     // https://docs.soliditylang.org/en/v0.8.10/types.html  get data types you can use,
     //find out how to use Task as a nonprimitive dt for ASSET!
+
+    // enum States = ['pending','cancelled']
     struct Asset {
         //attributes of the struct
         uint256 id;
         string assetName;
-        // Task tasks;
+        uint256[] tasksIds;
         bool completed;
     }
 
