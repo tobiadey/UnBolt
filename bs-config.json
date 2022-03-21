@@ -1,0 +1,14 @@
+
+{
+    "server": {
+      "baseDir": [
+        "./src",
+        "./UnBolt/build/contracts"
+      ],
+      "routes": {
+        "/vendor": "./node_modules"
+      }
+    }
+  }
+
+
