@@ -1,4 +1,4 @@
-pragma solidity ^0.8.12;
+pragma solidity >=0.4.22 <0.9.0;
 
 contract UnBolt {
     // state variable to keep track of the number of assets and tasks.
@@ -14,6 +14,7 @@ contract UnBolt {
     //find out how to use Task as a nonprimitive dt for ASSET!
 
     // enum States = ['pending','cancelled']
+
     struct Asset {
         //attributes of the struct
         uint256 id;
