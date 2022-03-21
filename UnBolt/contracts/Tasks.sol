@@ -5,7 +5,7 @@ contract Tasks {
     // state variable to keep track of the number of tasks.
     uint256 public taskCount = 0;
 
-    //allows to use id as key to find tasks (basically search asset by id)
+    //allows to use id as key to find tasks (basically search task by id)
     mapping(uint256 => Task) public tasks;
 
     //constructor
@@ -31,6 +31,7 @@ contract Tasks {
         address signator;
     }
 
+    //create a task
     function createTask(string memory _taskcontent, uint256 assetId, address signator) public {
         taskCount++;
         tasks[taskCount] = Task(taskCount, _taskcontent, assetId, false, signator);
@@ -58,6 +59,15 @@ contract Tasks {
         return defaultChoice;  
     } 
 
-
-
 }
+
+//To access in truffle console 
+// truffle compile
+// truffle migrate --reset
+// truffle console
+
+// task = await Tasks.deployed()
+// taskOne = await task.tasks(1)
+// taskOne.id.toNumber()
+// taskOne.signator
+// taskOne.completed

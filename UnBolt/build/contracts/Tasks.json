@@ -1,0 +1,3060 @@
+{
+  "contractName": "Tasks",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "taskCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "tasks",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "content",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "assetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "completed",
+          "type": "bool"
+        },
+        {
+          "internalType": "address",
+          "name": "signator",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "test",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_taskcontent",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "assetId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "signator",
+          "type": "address"
+        }
+      ],
+      "name": "createTask",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "setStart",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "setComplete",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "setCancelled",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "get_choice",
+      "outputs": [
+        {
+          "internalType": "enum Tasks.States",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getdefaultvalue",
+      "outputs": [
+        {
+          "internalType": "enum Tasks.States",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_taskcontent\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"assetId\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"signator\",\"type\":\"address\"}],\"name\":\"createTask\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"get_choice\",\"outputs\":[{\"internalType\":\"enum Tasks.States\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getdefaultvalue\",\"outputs\":[{\"internalType\":\"enum Tasks.States\",\"name\":\"\",\"type\":\"uint8\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"setCancelled\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"setComplete\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"setStart\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"taskCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"tasks\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"content\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"assetId\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"completed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"signator\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"test\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Tasks.sol\":\"Tasks\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Tasks.sol\":{\"keccak256\":\"0xf729c50c7e5c78197be240c8c0b88fb83c8680a90bd1f05e5ce2166661ba9762\",\"urls\":[\"bzz-raw://1390634c82ba1bfc8e6ad1b75f4b9e474f35a9bd23bbbab0ba7792dd99ae7496\",\"dweb:/ipfs/QmRwaXPEdsRPG4xF7Z343Tbx657tg4LJddx2NK8hm4VSnm\"]}},\"version\":1}",
+  "bytecode": "0x60806040526000805534801561001457600080fd5b506100706040518060400160405280600e81526020017f536f75726365204c6561746865720000000000000000000000000000000000008152506001735e7b2bbb14b8a9097a26a93982624067a1db11de61007560201b60201c565b610279565b60008081548092919060010191905055506040518060c0016040528060005481526020018481526020018381526020016000151581526020018273ffffffffffffffffffffffffffffffffffffffff1681526020016040518060400160405280600481526020017f7465737400000000000000000000000000000000000000000000000000000000815250815250600160008054815260200190815260200160002060008201518160000155602082015181600101908051906020019061013d9291906101d4565b506040820151816002015560608201518160030160006101000a81548160ff02191690831515021790555060808201518160030160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060a08201518160040190805190602001906101cb9291906101d4565b50905050505050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061021557805160ff1916838001178555610243565b82800160010185558215610243579182015b82811115610242578251825591602001919060010190610227565b5b5090506102509190610254565b5090565b61027691905b8082111561027257600081600090555060010161025a565b5090565b90565b6107cd806102886000396000f3fe608060405234801561001057600080fd5b50600436106100885760003560e01c80638d9776721161005b5780638d977672146101b2578063b6cb58a514610311578063bd72e4fc1461032f578063ec8a3cff1461035b57610088565b8063042708171461008d5780633055d7901461017257806335975a371461017c578063630f703514610186575b600080fd5b610170600480360360608110156100a357600080fd5b81019080803590602001906401000000008111156100c057600080fd5b8201836020820111156100d257600080fd5b803590602001918460018302840111640100000000831117156100f457600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610365565b005b61017a6104c4565b005b6101846104e9565b005b61018e61050f565b6040518082600381111561019e57fe5b60ff16815260200191505060405180910390f35b6101de600480360360208110156101c857600080fd5b8101908080359060200190929190505050610526565b6040518087815260200180602001868152602001851515151581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001838103835288818151815260200191508051906020019080838360005b8381101561026a57808201518184015260208101905061024f565b50505050905090810190601f1680156102975780820380516001836020036101000a031916815260200191505b50838103825284818151815260200191508051906020019080838360005b838110156102d05780820151818401526020810190506102b5565b50505050905090810190601f1680156102fd5780820380516001836020036101000a031916815260200191505b509850505050505050505060405180910390f35b6103196106bf565b6040518082815260200191505060405180910390f35b6103376106c5565b6040518082600381111561034757fe5b60ff16815260200191505060405180910390f35b6103636106cd565b005b60008081548092919060010191905055506040518060c0016040528060005481526020018481526020018381526020016000151581526020018273ffffffffffffffffffffffffffffffffffffffff1681526020016040518060400160405280600481526020017f7465737400000000000000000000000000000000000000000000000000000000815250815250600160008054815260200190815260200160002060008201518160000155602082015181600101908051906020019061042d9291906106f3565b506040820151816002015560608201518160030160006101000a81548160ff02191690831515021790555060808201518160030160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060a08201518160040190805190602001906104bb9291906106f3565b50905050505050565b60028060006101000a81548160ff021916908360038111156104e257fe5b0217905550565b6001600260006101000a81548160ff0219169083600381111561050857fe5b0217905550565b6000600260009054906101000a900460ff16905090565b6001602052806000526040600020600091509050806000015490806001018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156105d85780601f106105ad576101008083540402835291602001916105d8565b820191906000526020600020905b8154815290600101906020018083116105bb57829003601f168201915b5050505050908060020154908060030160009054906101000a900460ff16908060030160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690806004018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156106b55780601f1061068a576101008083540402835291602001916106b5565b820191906000526020600020905b81548152906001019060200180831161069857829003601f168201915b5050505050905086565b60005481565b600080905090565b6003600260006101000a81548160ff021916908360038111156106ec57fe5b0217905550565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061073457805160ff1916838001178555610762565b82800160010185558215610762579182015b82811115610761578251825591602001919060010190610746565b5b50905061076f9190610773565b5090565b61079591905b80821115610791576000816000905550600101610779565b5090565b9056fea265627a7a72315820bc8317c44d913d1749689f2a863f4a94ac8c5c006d0a7400ff1ddb238a39c93d64736f6c63430005100032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100885760003560e01c80638d9776721161005b5780638d977672146101b2578063b6cb58a514610311578063bd72e4fc1461032f578063ec8a3cff1461035b57610088565b8063042708171461008d5780633055d7901461017257806335975a371461017c578063630f703514610186575b600080fd5b610170600480360360608110156100a357600080fd5b81019080803590602001906401000000008111156100c057600080fd5b8201836020820111156100d257600080fd5b803590602001918460018302840111640100000000831117156100f457600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929080359060200190929190803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610365565b005b61017a6104c4565b005b6101846104e9565b005b61018e61050f565b6040518082600381111561019e57fe5b60ff16815260200191505060405180910390f35b6101de600480360360208110156101c857600080fd5b8101908080359060200190929190505050610526565b6040518087815260200180602001868152602001851515151581526020018473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200180602001838103835288818151815260200191508051906020019080838360005b8381101561026a57808201518184015260208101905061024f565b50505050905090810190601f1680156102975780820380516001836020036101000a031916815260200191505b50838103825284818151815260200191508051906020019080838360005b838110156102d05780820151818401526020810190506102b5565b50505050905090810190601f1680156102fd5780820380516001836020036101000a031916815260200191505b509850505050505050505060405180910390f35b6103196106bf565b6040518082815260200191505060405180910390f35b6103376106c5565b6040518082600381111561034757fe5b60ff16815260200191505060405180910390f35b6103636106cd565b005b60008081548092919060010191905055506040518060c0016040528060005481526020018481526020018381526020016000151581526020018273ffffffffffffffffffffffffffffffffffffffff1681526020016040518060400160405280600481526020017f7465737400000000000000000000000000000000000000000000000000000000815250815250600160008054815260200190815260200160002060008201518160000155602082015181600101908051906020019061042d9291906106f3565b506040820151816002015560608201518160030160006101000a81548160ff02191690831515021790555060808201518160030160016101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555060a08201518160040190805190602001906104bb9291906106f3565b50905050505050565b60028060006101000a81548160ff021916908360038111156104e257fe5b0217905550565b6001600260006101000a81548160ff0219169083600381111561050857fe5b0217905550565b6000600260009054906101000a900460ff16905090565b6001602052806000526040600020600091509050806000015490806001018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156105d85780601f106105ad576101008083540402835291602001916105d8565b820191906000526020600020905b8154815290600101906020018083116105bb57829003601f168201915b5050505050908060020154908060030160009054906101000a900460ff16908060030160019054906101000a900473ffffffffffffffffffffffffffffffffffffffff1690806004018054600181600116156101000203166002900480601f0160208091040260200160405190810160405280929190818152602001828054600181600116156101000203166002900480156106b55780601f1061068a576101008083540402835291602001916106b5565b820191906000526020600020905b81548152906001019060200180831161069857829003601f168201915b5050505050905086565b60005481565b600080905090565b6003600260006101000a81548160ff021916908360038111156106ec57fe5b0217905550565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061073457805160ff1916838001178555610762565b82800160010185558215610762579182015b82811115610761578251825591602001919060010190610746565b5b50905061076f9190610773565b5090565b61079591905b80821115610791576000816000905550600101610779565b5090565b9056fea265627a7a72315820bc8317c44d913d1749689f2a863f4a94ac8c5c006d0a7400ff1ddb238a39c93d64736f6c63430005100032",
+  "sourceMap": "67:1970:2:-;;;175:1;148:28;;402:112;8:9:-1;5:2;;;30:1;27;20:12;5:2;402:112:2;433:74;;;;;;;;;;;;;;;;;;462:1;464:42;433:10;;;:74;;:::i;:::-;67:1970;;1104:210;1204:9;;:11;;;;;;;;;;;;;1244:63;;;;;;;;1249:9;;1244:63;;;;1260:12;1244:63;;;;1274:7;1244:63;;;;1283:5;1244:63;;;;;;1290:8;1244:63;;;;;;;;;;;;;;;;;;;;;;;;;;1225:5;:16;1231:9;;1225:16;;;;;;;;;;;:82;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;1104:210;;;:::o;67:1970::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;",
+  "deployedSourceMap": "67:1970:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;67:1970:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1104:210;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1104:210:2;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1104:210:2;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1104:210:2;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1104:210:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1104:210:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1671:72;;;:::i;:::-;;1389:69;;;:::i;:::-;;1802:79;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;258:37;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;258:37:2;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;258:37:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;258:37:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;148:28;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1935:96;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1529:70;;;:::i;:::-;;1104:210;1204:9;;:11;;;;;;;;;;;;;1244:63;;;;;;;;1249:9;;1244:63;;;;1260:12;1244:63;;;;1274:7;1244:63;;;;1283:5;1244:63;;;;;;1290:8;1244:63;;;;;;;;;;;;;;;;;;;;;;;;;;1225:5;:16;1231:9;;1225:16;;;;;;;;;;;:82;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;1104:210;;;:::o;1671:72::-;1720:16;1711:6;;:25;;;;;;;;;;;;;;;;;;;;;;;;1671:72::o;1389:69::-;1434:17;1425:6;;:26;;;;;;;;;;;;;;;;;;;;;;;;1389:69::o;1802:79::-;1845:6;1868;;;;;;;;;;;1861:13;;1802:79;:::o;258:37::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;148:28::-;;;;:::o;1935:96::-;1982:6;809:14;2002:20;;1935:96;:::o;1529:70::-;1577:15;1568:6;;:24;;;;;;;;;;;;;;;;;;;;;;;;1529:70::o;67:1970::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity >=0.4.25 <0.7.0;\n\n// This is just a task contract.\ncontract Tasks {\n    // state variable to keep track of the number of tasks.\n    uint256 public taskCount = 0;\n\n    //allows to use id as key to find tasks (basically search asset by id)\n    mapping(uint256 => Task) public tasks;\n\n    //constructor\n    //executed once when a contract is created and it initialises contract state.\n    constructor() public {\n        createTask( \"Source Leather\",1,0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE);\n    }\n\n    //https://www.tutorialspoint.com/solidity/solidity_enums.htm\n    //used this is learn the sturcutre of how to use enums and\n    //create functions for accessing their values\n    enum States {Pending, InProgress, Cancelled, Complete }\n    States choice;\n    States constant defaultChoice = States.Pending;\n\n    //definition of a data type of Task using structs\n    struct Task {\n        //attributes of the struct\n        uint256 id;\n        string content;\n        uint256 assetId;\n        bool completed;\n        address signator;\n        string test;\n    }\n\n    //create a task\n    function createTask(string memory _taskcontent, uint256 assetId, address signator) public {\n        taskCount++;\n        tasks[taskCount] = Task(taskCount, _taskcontent, assetId, false, signator, \"test\");\n    }\n\n\n    // Defining a function to set value of inprogress to state enum\n    function setStart() public{\n        choice = States.InProgress;\n    }\n    // Defining a function to set value of complete to state enum\n    function setComplete() public{\n        choice = States.Complete;\n    }\n    // Defining a function to set value of cancelled to state enum\n    function setCancelled() public{\n        choice = States.Cancelled;\n    }\n    // Defining a function to return value of choice \n    function get_choice() public view returns (States) {\n      return choice;\n    }\n    // Defining function to return default value\n    function getdefaultvalue() public pure returns(States) {  \n        return defaultChoice;  \n    } \n\n\n\n}\n",
+  "sourcePath": "/Users/tobiadewunmi/Desktop/unbolt/UnBolt/contracts/Tasks.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/Tasks.sol",
+    "exportedSymbols": {
+      "Tasks": [
+        195
+      ]
+    },
+    "id": 196,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 84,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".25",
+          "<",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 195,
+        "linearizedBaseContracts": [
+          195
+        ],
+        "name": "Tasks",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 87,
+            "name": "taskCount",
+            "nodeType": "VariableDeclaration",
+            "scope": 195,
+            "src": "148:28:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 85,
+              "name": "uint256",
+              "nodeType": "ElementaryTypeName",
+              "src": "148:7:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30",
+              "id": 86,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "175:1:2",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 91,
+            "name": "tasks",
+            "nodeType": "VariableDeclaration",
+            "scope": 195,
+            "src": "258:37:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Task_$125_storage_$",
+              "typeString": "mapping(uint256 => struct Tasks.Task)"
+            },
+            "typeName": {
+              "id": 90,
+              "keyType": {
+                "id": 88,
+                "name": "uint256",
+                "nodeType": "ElementaryTypeName",
+                "src": "266:7:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                }
+              },
+              "nodeType": "Mapping",
+              "src": "258:24:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Task_$125_storage_$",
+                "typeString": "mapping(uint256 => struct Tasks.Task)"
+              },
+              "valueType": {
+                "contractScope": null,
+                "id": 89,
+                "name": "Task",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 125,
+                "src": "277:4:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Task_$125_storage_ptr",
+                  "typeString": "struct Tasks.Task"
+                }
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 100,
+              "nodeType": "Block",
+              "src": "423:91:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "536f75726365204c656174686572",
+                        "id": 95,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "445:16:2",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_cd6ac96ed8dceb9af2506d5fd0dfd61f733f6789dde34a0770f47ba312b0bca2",
+                          "typeString": "literal_string \"Source Leather\""
+                        },
+                        "value": "Source Leather"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 96,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "462:1:2",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "307835453762324262623134423861393039374132364139333938323632343036374131644231316445",
+                        "id": 97,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "464:42:2",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        },
+                        "value": "0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_stringliteral_cd6ac96ed8dceb9af2506d5fd0dfd61f733f6789dde34a0770f47ba312b0bca2",
+                          "typeString": "literal_string \"Source Leather\""
+                        },
+                        {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 94,
+                      "name": "createTask",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 151,
+                      "src": "433:10:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_string_memory_ptr_$_t_uint256_$_t_address_$returns$__$",
+                        "typeString": "function (string memory,uint256,address)"
+                      }
+                    },
+                    "id": 98,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "433:74:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 99,
+                  "nodeType": "ExpressionStatement",
+                  "src": "433:74:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 101,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 92,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "413:2:2"
+            },
+            "returnParameters": {
+              "id": 93,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "423:0:2"
+            },
+            "scope": 195,
+            "src": "402:112:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Tasks.States",
+            "id": 106,
+            "members": [
+              {
+                "id": 102,
+                "name": "Pending",
+                "nodeType": "EnumValue",
+                "src": "711:7:2"
+              },
+              {
+                "id": 103,
+                "name": "InProgress",
+                "nodeType": "EnumValue",
+                "src": "720:10:2"
+              },
+              {
+                "id": 104,
+                "name": "Cancelled",
+                "nodeType": "EnumValue",
+                "src": "732:9:2"
+              },
+              {
+                "id": 105,
+                "name": "Complete",
+                "nodeType": "EnumValue",
+                "src": "743:8:2"
+              }
+            ],
+            "name": "States",
+            "nodeType": "EnumDefinition",
+            "src": "698:55:2"
+          },
+          {
+            "constant": false,
+            "id": 108,
+            "name": "choice",
+            "nodeType": "VariableDeclaration",
+            "scope": 195,
+            "src": "758:13:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_enum$_States_$106",
+              "typeString": "enum Tasks.States"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 107,
+              "name": "States",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 106,
+              "src": "758:6:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_States_$106",
+                "typeString": "enum Tasks.States"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": true,
+            "id": 112,
+            "name": "defaultChoice",
+            "nodeType": "VariableDeclaration",
+            "scope": 195,
+            "src": "777:46:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_enum$_States_$106",
+              "typeString": "enum Tasks.States"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 109,
+              "name": "States",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 106,
+              "src": "777:6:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_States_$106",
+                "typeString": "enum Tasks.States"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "expression": {
+                "argumentTypes": null,
+                "id": 110,
+                "name": "States",
+                "nodeType": "Identifier",
+                "overloadedDeclarations": [],
+                "referencedDeclaration": 106,
+                "src": "809:6:2",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_type$_t_enum$_States_$106_$",
+                  "typeString": "type(enum Tasks.States)"
+                }
+              },
+              "id": 111,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "lValueRequested": false,
+              "memberName": "Pending",
+              "nodeType": "MemberAccess",
+              "referencedDeclaration": null,
+              "src": "809:14:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_enum$_States_$106",
+                "typeString": "enum Tasks.States"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "canonicalName": "Tasks.Task",
+            "id": 125,
+            "members": [
+              {
+                "constant": false,
+                "id": 114,
+                "name": "id",
+                "nodeType": "VariableDeclaration",
+                "scope": 125,
+                "src": "941:10:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 113,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "941:7:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 116,
+                "name": "content",
+                "nodeType": "VariableDeclaration",
+                "scope": 125,
+                "src": "961:14:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 115,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "961:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 118,
+                "name": "assetId",
+                "nodeType": "VariableDeclaration",
+                "scope": 125,
+                "src": "985:15:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 117,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "985:7:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 120,
+                "name": "completed",
+                "nodeType": "VariableDeclaration",
+                "scope": 125,
+                "src": "1010:14:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 119,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1010:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 122,
+                "name": "signator",
+                "nodeType": "VariableDeclaration",
+                "scope": 125,
+                "src": "1034:16:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 121,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1034:7:2",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 124,
+                "name": "test",
+                "nodeType": "VariableDeclaration",
+                "scope": 125,
+                "src": "1060:11:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 123,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1060:6:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Task",
+            "nodeType": "StructDefinition",
+            "scope": 195,
+            "src": "884:194:2",
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 150,
+              "nodeType": "Block",
+              "src": "1194:120:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 135,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "++",
+                    "prefix": false,
+                    "src": "1204:11:2",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "id": 134,
+                      "name": "taskCount",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 87,
+                      "src": "1204:9:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 136,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1204:11:2"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 148,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 137,
+                        "name": "tasks",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 91,
+                        "src": "1225:5:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_uint256_$_t_struct$_Task_$125_storage_$",
+                          "typeString": "mapping(uint256 => struct Tasks.Task storage ref)"
+                        }
+                      },
+                      "id": 139,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 138,
+                        "name": "taskCount",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 87,
+                        "src": "1231:9:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1225:16:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Task_$125_storage",
+                        "typeString": "struct Tasks.Task storage ref"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 141,
+                          "name": "taskCount",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 87,
+                          "src": "1249:9:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 142,
+                          "name": "_taskcontent",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 127,
+                          "src": "1260:12:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 143,
+                          "name": "assetId",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 129,
+                          "src": "1274:7:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "66616c7365",
+                          "id": 144,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "bool",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1283:5:2",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "value": "false"
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 145,
+                          "name": "signator",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 131,
+                          "src": "1290:8:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "74657374",
+                          "id": 146,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "string",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1300:6:2",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_stringliteral_9c22ff5f21f0b81b113e63f7db6da94fedef11b2119b4088b89664fb9a3cb658",
+                            "typeString": "literal_string \"test\""
+                          },
+                          "value": "test"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_string_memory_ptr",
+                            "typeString": "string memory"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          {
+                            "typeIdentifier": "t_stringliteral_9c22ff5f21f0b81b113e63f7db6da94fedef11b2119b4088b89664fb9a3cb658",
+                            "typeString": "literal_string \"test\""
+                          }
+                        ],
+                        "id": 140,
+                        "name": "Task",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 125,
+                        "src": "1244:4:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_struct$_Task_$125_storage_ptr_$",
+                          "typeString": "type(struct Tasks.Task storage pointer)"
+                        }
+                      },
+                      "id": 147,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "structConstructorCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1244:63:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Task_$125_memory",
+                        "typeString": "struct Tasks.Task memory"
+                      }
+                    },
+                    "src": "1225:82:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Task_$125_storage",
+                      "typeString": "struct Tasks.Task storage ref"
+                    }
+                  },
+                  "id": 149,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1225:82:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 151,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "createTask",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 132,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 127,
+                  "name": "_taskcontent",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 151,
+                  "src": "1124:26:2",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 126,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1124:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 129,
+                  "name": "assetId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 151,
+                  "src": "1152:15:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 128,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1152:7:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 131,
+                  "name": "signator",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 151,
+                  "src": "1169:16:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 130,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1169:7:2",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1123:63:2"
+            },
+            "returnParameters": {
+              "id": 133,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1194:0:2"
+            },
+            "scope": 195,
+            "src": "1104:210:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 159,
+              "nodeType": "Block",
+              "src": "1415:43:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 157,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 154,
+                      "name": "choice",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 108,
+                      "src": "1425:6:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_States_$106",
+                        "typeString": "enum Tasks.States"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 155,
+                        "name": "States",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 106,
+                        "src": "1434:6:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_States_$106_$",
+                          "typeString": "type(enum Tasks.States)"
+                        }
+                      },
+                      "id": 156,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "InProgress",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "1434:17:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_States_$106",
+                        "typeString": "enum Tasks.States"
+                      }
+                    },
+                    "src": "1425:26:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_States_$106",
+                      "typeString": "enum Tasks.States"
+                    }
+                  },
+                  "id": 158,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1425:26:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 160,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setStart",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 152,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1406:2:2"
+            },
+            "returnParameters": {
+              "id": 153,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1415:0:2"
+            },
+            "scope": 195,
+            "src": "1389:69:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 168,
+              "nodeType": "Block",
+              "src": "1558:41:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 166,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 163,
+                      "name": "choice",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 108,
+                      "src": "1568:6:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_States_$106",
+                        "typeString": "enum Tasks.States"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 164,
+                        "name": "States",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 106,
+                        "src": "1577:6:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_States_$106_$",
+                          "typeString": "type(enum Tasks.States)"
+                        }
+                      },
+                      "id": 165,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Complete",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "1577:15:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_States_$106",
+                        "typeString": "enum Tasks.States"
+                      }
+                    },
+                    "src": "1568:24:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_States_$106",
+                      "typeString": "enum Tasks.States"
+                    }
+                  },
+                  "id": 167,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1568:24:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 169,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setComplete",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 161,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1549:2:2"
+            },
+            "returnParameters": {
+              "id": 162,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1558:0:2"
+            },
+            "scope": 195,
+            "src": "1529:70:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 177,
+              "nodeType": "Block",
+              "src": "1701:42:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 175,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 172,
+                      "name": "choice",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 108,
+                      "src": "1711:6:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_States_$106",
+                        "typeString": "enum Tasks.States"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 173,
+                        "name": "States",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 106,
+                        "src": "1720:6:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_enum$_States_$106_$",
+                          "typeString": "type(enum Tasks.States)"
+                        }
+                      },
+                      "id": 174,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "memberName": "Cancelled",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "1720:16:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_enum$_States_$106",
+                        "typeString": "enum Tasks.States"
+                      }
+                    },
+                    "src": "1711:25:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_States_$106",
+                      "typeString": "enum Tasks.States"
+                    }
+                  },
+                  "id": 176,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1711:25:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 178,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setCancelled",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 170,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1692:2:2"
+            },
+            "returnParameters": {
+              "id": 171,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1701:0:2"
+            },
+            "scope": 195,
+            "src": "1671:72:2",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 185,
+              "nodeType": "Block",
+              "src": "1853:28:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 183,
+                    "name": "choice",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 108,
+                    "src": "1868:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_States_$106",
+                      "typeString": "enum Tasks.States"
+                    }
+                  },
+                  "functionReturnParameters": 182,
+                  "id": 184,
+                  "nodeType": "Return",
+                  "src": "1861:13:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 186,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "get_choice",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 179,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1821:2:2"
+            },
+            "returnParameters": {
+              "id": 182,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 181,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 186,
+                  "src": "1845:6:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_States_$106",
+                    "typeString": "enum Tasks.States"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 180,
+                    "name": "States",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 106,
+                    "src": "1845:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_States_$106",
+                      "typeString": "enum Tasks.States"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1844:8:2"
+            },
+            "scope": 195,
+            "src": "1802:79:2",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 193,
+              "nodeType": "Block",
+              "src": "1990:41:2",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 191,
+                    "name": "defaultChoice",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 112,
+                    "src": "2009:13:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_States_$106",
+                      "typeString": "enum Tasks.States"
+                    }
+                  },
+                  "functionReturnParameters": 190,
+                  "id": 192,
+                  "nodeType": "Return",
+                  "src": "2002:20:2"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 194,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getdefaultvalue",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 187,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1959:2:2"
+            },
+            "returnParameters": {
+              "id": 190,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 189,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 194,
+                  "src": "1982:6:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_States_$106",
+                    "typeString": "enum Tasks.States"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 188,
+                    "name": "States",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 106,
+                    "src": "1982:6:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_enum$_States_$106",
+                      "typeString": "enum Tasks.States"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1981:8:2"
+            },
+            "scope": 195,
+            "src": "1935:96:2",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 196,
+        "src": "67:1970:2"
+      }
+    ],
+    "src": "0:2038:2"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/Tasks.sol",
+      "exportedSymbols": {
+        "Tasks": [
+          195
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.4",
+            ".25",
+            "<",
+            "0.7",
+            ".0"
+          ]
+        },
+        "id": 84,
+        "name": "PragmaDirective",
+        "src": "0:32:2"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            195
+          ],
+          "name": "Tasks",
+          "scope": 196
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "name": "taskCount",
+              "scope": 195,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint256",
+                  "type": "uint256"
+                },
+                "id": 85,
+                "name": "ElementaryTypeName",
+                "src": "148:7:2"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "30",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 0",
+                  "value": "0"
+                },
+                "id": 86,
+                "name": "Literal",
+                "src": "175:1:2"
+              }
+            ],
+            "id": 87,
+            "name": "VariableDeclaration",
+            "src": "148:28:2"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "tasks",
+              "scope": 195,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(uint256 => struct Tasks.Task)",
+              "value": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(uint256 => struct Tasks.Task)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 88,
+                    "name": "ElementaryTypeName",
+                    "src": "266:7:2"
+                  },
+                  {
+                    "attributes": {
+                      "contractScope": null,
+                      "name": "Task",
+                      "referencedDeclaration": 125,
+                      "type": "struct Tasks.Task"
+                    },
+                    "id": 89,
+                    "name": "UserDefinedTypeName",
+                    "src": "277:4:2"
+                  }
+                ],
+                "id": 90,
+                "name": "Mapping",
+                "src": "258:24:2"
+              }
+            ],
+            "id": 91,
+            "name": "VariableDeclaration",
+            "src": "258:37:2"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "scope": 195,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 92,
+                "name": "ParameterList",
+                "src": "413:2:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 93,
+                "name": "ParameterList",
+                "src": "423:0:2"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_stringliteral_cd6ac96ed8dceb9af2506d5fd0dfd61f733f6789dde34a0770f47ba312b0bca2",
+                                  "typeString": "literal_string \"Source Leather\""
+                                },
+                                {
+                                  "typeIdentifier": "t_rational_1_by_1",
+                                  "typeString": "int_const 1"
+                                },
+                                {
+                                  "typeIdentifier": "t_address_payable",
+                                  "typeString": "address payable"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 151,
+                              "type": "function (string memory,uint256,address)",
+                              "value": "createTask"
+                            },
+                            "id": 94,
+                            "name": "Identifier",
+                            "src": "433:10:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "536f75726365204c656174686572",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "string",
+                              "type": "literal_string \"Source Leather\"",
+                              "value": "Source Leather"
+                            },
+                            "id": 95,
+                            "name": "Literal",
+                            "src": "445:16:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "31",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 1",
+                              "value": "1"
+                            },
+                            "id": 96,
+                            "name": "Literal",
+                            "src": "462:1:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "307835453762324262623134423861393039374132364139333938323632343036374131644231316445",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "address payable",
+                              "value": "0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE"
+                            },
+                            "id": 97,
+                            "name": "Literal",
+                            "src": "464:42:2"
+                          }
+                        ],
+                        "id": 98,
+                        "name": "FunctionCall",
+                        "src": "433:74:2"
+                      }
+                    ],
+                    "id": 99,
+                    "name": "ExpressionStatement",
+                    "src": "433:74:2"
+                  }
+                ],
+                "id": 100,
+                "name": "Block",
+                "src": "423:91:2"
+              }
+            ],
+            "id": 101,
+            "name": "FunctionDefinition",
+            "src": "402:112:2"
+          },
+          {
+            "attributes": {
+              "canonicalName": "Tasks.States",
+              "name": "States"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "Pending"
+                },
+                "id": 102,
+                "name": "EnumValue",
+                "src": "711:7:2"
+              },
+              {
+                "attributes": {
+                  "name": "InProgress"
+                },
+                "id": 103,
+                "name": "EnumValue",
+                "src": "720:10:2"
+              },
+              {
+                "attributes": {
+                  "name": "Cancelled"
+                },
+                "id": 104,
+                "name": "EnumValue",
+                "src": "732:9:2"
+              },
+              {
+                "attributes": {
+                  "name": "Complete"
+                },
+                "id": 105,
+                "name": "EnumValue",
+                "src": "743:8:2"
+              }
+            ],
+            "id": 106,
+            "name": "EnumDefinition",
+            "src": "698:55:2"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "choice",
+              "scope": 195,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "enum Tasks.States",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "States",
+                  "referencedDeclaration": 106,
+                  "type": "enum Tasks.States"
+                },
+                "id": 107,
+                "name": "UserDefinedTypeName",
+                "src": "758:6:2"
+              }
+            ],
+            "id": 108,
+            "name": "VariableDeclaration",
+            "src": "758:13:2"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "defaultChoice",
+              "scope": 195,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "enum Tasks.States",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "States",
+                  "referencedDeclaration": 106,
+                  "type": "enum Tasks.States"
+                },
+                "id": 109,
+                "name": "UserDefinedTypeName",
+                "src": "777:6:2"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "member_name": "Pending",
+                  "referencedDeclaration": null,
+                  "type": "enum Tasks.States"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 106,
+                      "type": "type(enum Tasks.States)",
+                      "value": "States"
+                    },
+                    "id": 110,
+                    "name": "Identifier",
+                    "src": "809:6:2"
+                  }
+                ],
+                "id": 111,
+                "name": "MemberAccess",
+                "src": "809:14:2"
+              }
+            ],
+            "id": 112,
+            "name": "VariableDeclaration",
+            "src": "777:46:2"
+          },
+          {
+            "attributes": {
+              "canonicalName": "Tasks.Task",
+              "name": "Task",
+              "scope": 195,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "id",
+                  "scope": 125,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 113,
+                    "name": "ElementaryTypeName",
+                    "src": "941:7:2"
+                  }
+                ],
+                "id": 114,
+                "name": "VariableDeclaration",
+                "src": "941:10:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "content",
+                  "scope": 125,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 115,
+                    "name": "ElementaryTypeName",
+                    "src": "961:6:2"
+                  }
+                ],
+                "id": 116,
+                "name": "VariableDeclaration",
+                "src": "961:14:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "assetId",
+                  "scope": 125,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 117,
+                    "name": "ElementaryTypeName",
+                    "src": "985:7:2"
+                  }
+                ],
+                "id": 118,
+                "name": "VariableDeclaration",
+                "src": "985:15:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "completed",
+                  "scope": 125,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "bool",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "bool",
+                      "type": "bool"
+                    },
+                    "id": 119,
+                    "name": "ElementaryTypeName",
+                    "src": "1010:4:2"
+                  }
+                ],
+                "id": 120,
+                "name": "VariableDeclaration",
+                "src": "1010:14:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "signator",
+                  "scope": 125,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "stateMutability": "nonpayable",
+                      "type": "address"
+                    },
+                    "id": 121,
+                    "name": "ElementaryTypeName",
+                    "src": "1034:7:2"
+                  }
+                ],
+                "id": 122,
+                "name": "VariableDeclaration",
+                "src": "1034:16:2"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "test",
+                  "scope": 125,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "string",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string"
+                    },
+                    "id": 123,
+                    "name": "ElementaryTypeName",
+                    "src": "1060:6:2"
+                  }
+                ],
+                "id": 124,
+                "name": "VariableDeclaration",
+                "src": "1060:11:2"
+              }
+            ],
+            "id": 125,
+            "name": "StructDefinition",
+            "src": "884:194:2"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "createTask",
+              "scope": 195,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_taskcontent",
+                      "scope": 151,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 126,
+                        "name": "ElementaryTypeName",
+                        "src": "1124:6:2"
+                      }
+                    ],
+                    "id": 127,
+                    "name": "VariableDeclaration",
+                    "src": "1124:26:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "assetId",
+                      "scope": 151,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 128,
+                        "name": "ElementaryTypeName",
+                        "src": "1152:7:2"
+                      }
+                    ],
+                    "id": 129,
+                    "name": "VariableDeclaration",
+                    "src": "1152:15:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "signator",
+                      "scope": 151,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 130,
+                        "name": "ElementaryTypeName",
+                        "src": "1169:7:2"
+                      }
+                    ],
+                    "id": 131,
+                    "name": "VariableDeclaration",
+                    "src": "1169:16:2"
+                  }
+                ],
+                "id": 132,
+                "name": "ParameterList",
+                "src": "1123:63:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 133,
+                "name": "ParameterList",
+                "src": "1194:0:2"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "++",
+                          "prefix": false,
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 87,
+                              "type": "uint256",
+                              "value": "taskCount"
+                            },
+                            "id": 134,
+                            "name": "Identifier",
+                            "src": "1204:9:2"
+                          }
+                        ],
+                        "id": 135,
+                        "name": "UnaryOperation",
+                        "src": "1204:11:2"
+                      }
+                    ],
+                    "id": 136,
+                    "name": "ExpressionStatement",
+                    "src": "1204:11:2"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "struct Tasks.Task storage ref"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "struct Tasks.Task storage ref"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 91,
+                                  "type": "mapping(uint256 => struct Tasks.Task storage ref)",
+                                  "value": "tasks"
+                                },
+                                "id": 137,
+                                "name": "Identifier",
+                                "src": "1225:5:2"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 87,
+                                  "type": "uint256",
+                                  "value": "taskCount"
+                                },
+                                "id": 138,
+                                "name": "Identifier",
+                                "src": "1231:9:2"
+                              }
+                            ],
+                            "id": 139,
+                            "name": "IndexAccess",
+                            "src": "1225:16:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": true,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "struct Tasks.Task memory",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_string_memory_ptr",
+                                      "typeString": "string memory"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_bool",
+                                      "typeString": "bool"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_stringliteral_9c22ff5f21f0b81b113e63f7db6da94fedef11b2119b4088b89664fb9a3cb658",
+                                      "typeString": "literal_string \"test\""
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 125,
+                                  "type": "type(struct Tasks.Task storage pointer)",
+                                  "value": "Task"
+                                },
+                                "id": 140,
+                                "name": "Identifier",
+                                "src": "1244:4:2"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 87,
+                                  "type": "uint256",
+                                  "value": "taskCount"
+                                },
+                                "id": 141,
+                                "name": "Identifier",
+                                "src": "1249:9:2"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 127,
+                                  "type": "string memory",
+                                  "value": "_taskcontent"
+                                },
+                                "id": 142,
+                                "name": "Identifier",
+                                "src": "1260:12:2"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 129,
+                                  "type": "uint256",
+                                  "value": "assetId"
+                                },
+                                "id": 143,
+                                "name": "Identifier",
+                                "src": "1274:7:2"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "66616c7365",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "bool",
+                                  "type": "bool",
+                                  "value": "false"
+                                },
+                                "id": 144,
+                                "name": "Literal",
+                                "src": "1283:5:2"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 131,
+                                  "type": "address",
+                                  "value": "signator"
+                                },
+                                "id": 145,
+                                "name": "Identifier",
+                                "src": "1290:8:2"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "74657374",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "string",
+                                  "type": "literal_string \"test\"",
+                                  "value": "test"
+                                },
+                                "id": 146,
+                                "name": "Literal",
+                                "src": "1300:6:2"
+                              }
+                            ],
+                            "id": 147,
+                            "name": "FunctionCall",
+                            "src": "1244:63:2"
+                          }
+                        ],
+                        "id": 148,
+                        "name": "Assignment",
+                        "src": "1225:82:2"
+                      }
+                    ],
+                    "id": 149,
+                    "name": "ExpressionStatement",
+                    "src": "1225:82:2"
+                  }
+                ],
+                "id": 150,
+                "name": "Block",
+                "src": "1194:120:2"
+              }
+            ],
+            "id": 151,
+            "name": "FunctionDefinition",
+            "src": "1104:210:2"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setStart",
+              "scope": 195,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 152,
+                "name": "ParameterList",
+                "src": "1406:2:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 153,
+                "name": "ParameterList",
+                "src": "1415:0:2"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "enum Tasks.States"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 108,
+                              "type": "enum Tasks.States",
+                              "value": "choice"
+                            },
+                            "id": 154,
+                            "name": "Identifier",
+                            "src": "1425:6:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "member_name": "InProgress",
+                              "referencedDeclaration": null,
+                              "type": "enum Tasks.States"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 106,
+                                  "type": "type(enum Tasks.States)",
+                                  "value": "States"
+                                },
+                                "id": 155,
+                                "name": "Identifier",
+                                "src": "1434:6:2"
+                              }
+                            ],
+                            "id": 156,
+                            "name": "MemberAccess",
+                            "src": "1434:17:2"
+                          }
+                        ],
+                        "id": 157,
+                        "name": "Assignment",
+                        "src": "1425:26:2"
+                      }
+                    ],
+                    "id": 158,
+                    "name": "ExpressionStatement",
+                    "src": "1425:26:2"
+                  }
+                ],
+                "id": 159,
+                "name": "Block",
+                "src": "1415:43:2"
+              }
+            ],
+            "id": 160,
+            "name": "FunctionDefinition",
+            "src": "1389:69:2"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setComplete",
+              "scope": 195,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 161,
+                "name": "ParameterList",
+                "src": "1549:2:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 162,
+                "name": "ParameterList",
+                "src": "1558:0:2"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "enum Tasks.States"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 108,
+                              "type": "enum Tasks.States",
+                              "value": "choice"
+                            },
+                            "id": 163,
+                            "name": "Identifier",
+                            "src": "1568:6:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "member_name": "Complete",
+                              "referencedDeclaration": null,
+                              "type": "enum Tasks.States"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 106,
+                                  "type": "type(enum Tasks.States)",
+                                  "value": "States"
+                                },
+                                "id": 164,
+                                "name": "Identifier",
+                                "src": "1577:6:2"
+                              }
+                            ],
+                            "id": 165,
+                            "name": "MemberAccess",
+                            "src": "1577:15:2"
+                          }
+                        ],
+                        "id": 166,
+                        "name": "Assignment",
+                        "src": "1568:24:2"
+                      }
+                    ],
+                    "id": 167,
+                    "name": "ExpressionStatement",
+                    "src": "1568:24:2"
+                  }
+                ],
+                "id": 168,
+                "name": "Block",
+                "src": "1558:41:2"
+              }
+            ],
+            "id": 169,
+            "name": "FunctionDefinition",
+            "src": "1529:70:2"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setCancelled",
+              "scope": 195,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 170,
+                "name": "ParameterList",
+                "src": "1692:2:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 171,
+                "name": "ParameterList",
+                "src": "1701:0:2"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "enum Tasks.States"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 108,
+                              "type": "enum Tasks.States",
+                              "value": "choice"
+                            },
+                            "id": 172,
+                            "name": "Identifier",
+                            "src": "1711:6:2"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "member_name": "Cancelled",
+                              "referencedDeclaration": null,
+                              "type": "enum Tasks.States"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 106,
+                                  "type": "type(enum Tasks.States)",
+                                  "value": "States"
+                                },
+                                "id": 173,
+                                "name": "Identifier",
+                                "src": "1720:6:2"
+                              }
+                            ],
+                            "id": 174,
+                            "name": "MemberAccess",
+                            "src": "1720:16:2"
+                          }
+                        ],
+                        "id": 175,
+                        "name": "Assignment",
+                        "src": "1711:25:2"
+                      }
+                    ],
+                    "id": 176,
+                    "name": "ExpressionStatement",
+                    "src": "1711:25:2"
+                  }
+                ],
+                "id": 177,
+                "name": "Block",
+                "src": "1701:42:2"
+              }
+            ],
+            "id": 178,
+            "name": "FunctionDefinition",
+            "src": "1671:72:2"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "get_choice",
+              "scope": 195,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 179,
+                "name": "ParameterList",
+                "src": "1821:2:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 186,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "enum Tasks.States",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "States",
+                          "referencedDeclaration": 106,
+                          "type": "enum Tasks.States"
+                        },
+                        "id": 180,
+                        "name": "UserDefinedTypeName",
+                        "src": "1845:6:2"
+                      }
+                    ],
+                    "id": 181,
+                    "name": "VariableDeclaration",
+                    "src": "1845:6:2"
+                  }
+                ],
+                "id": 182,
+                "name": "ParameterList",
+                "src": "1844:8:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 182
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 108,
+                          "type": "enum Tasks.States",
+                          "value": "choice"
+                        },
+                        "id": 183,
+                        "name": "Identifier",
+                        "src": "1868:6:2"
+                      }
+                    ],
+                    "id": 184,
+                    "name": "Return",
+                    "src": "1861:13:2"
+                  }
+                ],
+                "id": 185,
+                "name": "Block",
+                "src": "1853:28:2"
+              }
+            ],
+            "id": 186,
+            "name": "FunctionDefinition",
+            "src": "1802:79:2"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "getdefaultvalue",
+              "scope": 195,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 187,
+                "name": "ParameterList",
+                "src": "1959:2:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 194,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "enum Tasks.States",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "States",
+                          "referencedDeclaration": 106,
+                          "type": "enum Tasks.States"
+                        },
+                        "id": 188,
+                        "name": "UserDefinedTypeName",
+                        "src": "1982:6:2"
+                      }
+                    ],
+                    "id": 189,
+                    "name": "VariableDeclaration",
+                    "src": "1982:6:2"
+                  }
+                ],
+                "id": 190,
+                "name": "ParameterList",
+                "src": "1981:8:2"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 190
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "overloadedDeclarations": [
+                            null
+                          ],
+                          "referencedDeclaration": 112,
+                          "type": "enum Tasks.States",
+                          "value": "defaultChoice"
+                        },
+                        "id": 191,
+                        "name": "Identifier",
+                        "src": "2009:13:2"
+                      }
+                    ],
+                    "id": 192,
+                    "name": "Return",
+                    "src": "2002:20:2"
+                  }
+                ],
+                "id": 193,
+                "name": "Block",
+                "src": "1990:41:2"
+              }
+            ],
+            "id": 194,
+            "name": "FunctionDefinition",
+            "src": "1935:96:2"
+          }
+        ],
+        "id": 195,
+        "name": "ContractDefinition",
+        "src": "67:1970:2"
+      }
+    ],
+    "id": 196,
+    "name": "SourceUnit",
+    "src": "0:2038:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x115522E89Ff926947192A455255F1F104328CCbC",
+      "transactionHash": "0xd5a6fd03b7d95bf5aacc893e617d5bbeca022f2977a2cd0a268d1ece347dc78c"
+    }
+  },
+  "schemaVersion": "3.4.6",
+  "updatedAt": "2022-03-21T16:23:34.148Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

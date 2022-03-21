@@ -7,7 +7,7 @@ module.exports = function(deployer) {
     // deploy Task into the network
     deployer.deploy(Task);
     // Take the deployed Task address and link it to Asset contract in bytecode
-    deployer.link(Task, Asset);
+    // deployer.link(Task, Asset);
     // Now deploy the linked Asset contract to the network
     deployer.deploy(Asset);
 
