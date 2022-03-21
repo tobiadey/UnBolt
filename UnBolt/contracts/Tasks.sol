@@ -1,25 +1,25 @@
 pragma solidity >=0.4.25 <0.7.0;
 
 // This is just a task contract.
-
 contract Tasks {
     // state variable to keep track of the number of tasks.
     uint256 public taskCount = 0;
 
-    //allows to use id as key to find assets & tasks (basically search asset by id)
+    //allows to use id as key to find tasks (basically search asset by id)
     mapping(uint256 => Task) public tasks;
 
-    //constructor, execultes when code is run
+    //constructor
+    //executed once when a contract is created and it initialises contract state.
     constructor() public {
-        createTask( "Source Leather",1);
+        createTask( "Source Leather",1,0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE);
     }
 
     //https://www.tutorialspoint.com/solidity/solidity_enums.htm
+    //used this is learn the sturcutre of how to use enums and
+    //create functions for accessing their values
     enum States {Pending, InProgress, Cancelled, Complete }
     States choice;
     States constant defaultChoice = States.Pending;
-
-
 
     //definition of a data type of Task using structs
     struct Task {
@@ -28,11 +28,12 @@ contract Tasks {
         string content;
         uint256 assetId;
         bool completed;
+        address signator;
     }
 
-    function createTask(string memory _taskcontent, uint256 assetId) public {
+    function createTask(string memory _taskcontent, uint256 assetId, address signator) public {
         taskCount++;
-        tasks[taskCount] = Task(taskCount, _taskcontent, assetId, false);
+        tasks[taskCount] = Task(taskCount, _taskcontent, assetId, false, signator);
     }
 
 
