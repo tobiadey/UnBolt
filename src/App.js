@@ -1,5 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import Dashboard from './pages/Dashboard';

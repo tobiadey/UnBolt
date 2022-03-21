@@ -17,13 +17,13 @@ const AboutPage = () => {
     <div className="about-page-container">
         <div className='header display-inline'>
             <div>
-            <img src={logo} className="App-logo-sma" alt="logo" />
+            <img src={logo} className="App-logo-small" alt="logo" />
             </div>
             {/* {check if user is already connected} */}
             {isAuthenticated ?
             <>
               <small>{user.get("ethAddress")}</small>
-              <Button text={'Logout'} onClick ={ logout}/> 
+              <Button text={'Logout'} onClick ={logout}/> 
             </>
               :
               <Button  text={'Connect Wallet'} onClick ={() => authenticate({ provider: "metamask" })}/> 
@@ -40,6 +40,8 @@ const AboutPage = () => {
                     Risus tellus scelerisque nunc odio viverra senectus. 
                     Dui sollicitudin ornare a ornare morbi posuere maecenas sagittis, nisi.
                 </small>
+
+                <Button text={'Do something'}/> 
               </div>
 
            </div>

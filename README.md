@@ -1,5 +1,62 @@
 # UnBolt
 
+## Directories
+#### `.vscode`
+This was created automatically due to an error I fixed with my solidity parser extension. This is used for things like syntax highlitiy of solodity code. 
+- settings.json
+
+#### `constants`
+This was created in order to store the ABI. This allows for easy access and keep code clean.
+- abi.js
+
+#### `MetaCoin`
+This is a package provided by truffle I installed to get a working example using truffle to compile and test smart contracts. (this is not visible)
+
+#### `node_modules`
+In react when we install libraries we use npm e.g `npm install --global yarn`. This package is used to keep track of packages that have been installed using npm... i think, research more
+
+This module can be loaded/installed using `npm install <module_name>`
+
+#### `public`
+This is a directory with the base files:
+- logo.png
+- index.html
+
+#### `src`
+This is one of the most important directories!
+
+#### `test`
+This is...
+
+#### `unbolt`
+This is the directory where truffle meets the smart contract.
+
+#### `.env.local`
+This is a file to store local variables (this is hidden)
+
+#### `.gitignore`
+This is a file to let github know which files to ignore on each push.
+
+#### `bs-config.json`
+This is...
+
+#### `db.json`
+This is...
+
+#### `package-lock.json`
+This is...
+
+#### `package.json`
+This is...
+
+
+---
+## References
+
+
+
+
+---
 ## Available Scripts
 In the project directory, you can run:
 
