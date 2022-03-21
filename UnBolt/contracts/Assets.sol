@@ -1,7 +1,7 @@
 pragma solidity >=0.4.25 <0.7.0;
 
 // This is just an asset contract.
-contract Asset {
+contract Assets {
     // state variable to keep track of the number of assets.
     uint256 public assetCount = 0;
 

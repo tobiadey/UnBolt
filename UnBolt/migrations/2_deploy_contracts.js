@@ -1,6 +1,5 @@
-// const UnBolt = artifacts.require("UnBolt");
-const Task = artifacts.require("Task");
-const Asset = artifacts.require("Asset");
+const Task = artifacts.require("Tasks");
+const Asset = artifacts.require("Assets");
 
 
 module.exports = function(deployer) {

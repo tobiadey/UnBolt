@@ -2,7 +2,7 @@ pragma solidity >=0.4.25 <0.7.0;
 
 // This is just a task contract.
 
-contract Task {
+contract Tasks {
     // state variable to keep track of the number of tasks.
     uint256 public taskCount = 0;
 
@@ -19,14 +19,7 @@ contract Task {
     States choice;
     States constant defaultChoice = States.Pending;
 
-    //definition of a data type of Asset using structs
-    struct Asset {
-        //attributes of the struct
-        uint256 id;
-        string assetName;
-        uint256 quantity;
-        bool completed;
-    }
+
 
     //definition of a data type of Task using structs
     struct Task {
@@ -45,22 +38,22 @@ contract Task {
 
     // Defining a function to set value of inprogress to state enum
     function setStart() public{
-        choice = TaskState.InProgress;
+        choice = States.InProgress;
     }
     // Defining a function to set value of complete to state enum
     function setComplete() public{
-        choice = TaskState.Complete;
+        choice = States.Complete;
     }
     // Defining a function to set value of cancelled to state enum
     function setCancelled() public{
-        choice = TaskState.Cancelled;
+        choice = States.Cancelled;
     }
     // Defining a function to return value of choice 
-    function get_choice() public view returns (TaskState) {
+    function get_choice() public view returns (States) {
       return choice;
     }
     // Defining function to return default value
-    function getdefaultvalue() public pure returns(TaskState) {  
+    function getdefaultvalue() public pure returns(States) {  
         return defaultChoice;  
     } 
 
