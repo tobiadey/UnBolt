@@ -5,13 +5,15 @@ import {Link} from 'react-router-dom'
 import { useMoralis } from "react-moralis";
 
 
-function onAdd (){
-    console.log("Hii");
-  }
+
 
 const AboutPage = () => {
   const { authenticate, isAuthenticated, logout, user } = useMoralis();
-
+  
+  function onAdd (){
+    console.log("Hiiff");
+    console.log(user);
+  }
   
   return (
     <div className="about-page-container">
@@ -41,7 +43,7 @@ const AboutPage = () => {
                     Dui sollicitudin ornare a ornare morbi posuere maecenas sagittis, nisi.
                 </small>
 
-                <Button text={'Do something'}/> 
+                <Button text={'Do something'} onClick = {() => onAdd()} /> 
               </div>
 
            </div>

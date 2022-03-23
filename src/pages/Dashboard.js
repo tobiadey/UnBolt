@@ -34,7 +34,7 @@ const Dashboard = () => {
               <input type='text' placeholder= 'Search...'></input>
               <SearchIcon className='icon'/> 
             </div>
-            <Link to= '/'> <Button classVar='dark' text={'Create Task'}/> </Link> 
+            <Link to= '/createAsset'> <Button classVar='dark' text={'Create Asset'}/> </Link> 
           </div>  
           <Table/>
         </div>

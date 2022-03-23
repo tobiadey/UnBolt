@@ -1,7 +1,7 @@
 import HomePage from './pages/HomePage';
 import AboutPage from './pages/AboutPage';
 import Dashboard from './pages/Dashboard';
-import CreateAsset from './pages/CreateAsset';
+import CreateAssetPage from './pages/CreateAssetPage';
 import { BrowserRouter as Router, Route,Routes  } from 'react-router-dom'
 
 
@@ -13,7 +13,7 @@ function App() {
           <Route path= '/' element = {<HomePage/>}/>
           <Route path= '/about' element={<AboutPage />} />
           <Route path= '/dashboard' element={<Dashboard />} />
-          <Route path= '/createAsset' element={<CreateAsset />} />
+          <Route path= '/createAsset' element={<CreateAssetPage />} />
         </Routes>
       </>
     </Router>
