@@ -1,13 +1,14 @@
 // import logo from '../logo.svg';
 import Button from '../components/Button'
-import Input from '../components/Input'
+import Navbar from '../components/Navbar'
+import Input from '../components/Input' //at the moment this is only used to target the css, using componets causes some errors!
 import './CreateAssetPage.css';
 import {Link} from 'react-router-dom'
 import { useMoralis } from "react-moralis";
 import { useState } from 'react'
 
-function onAdd (){
-    console.log("hii");
+function onAdd (name,description,quantity){
+    console.log(name, ":", description, ":",quantity);
   }
 
 const CreateAssetPage = ({}) => {
@@ -16,12 +17,13 @@ const CreateAssetPage = ({}) => {
   const [description, setDescription] = useState('')
   const [quantity, setQuantity] = useState(0)
   const [complete, setComplete] = useState(false)
+  const [image, setImage] = useState('')
 
   const onSubmit = (e) => {
     e.preventDefault()
 
-    if (!name) {
-      alert('Please add a task description')
+    if (!name | !description | !quantity) {
+      alert('Fill in the missing field')
       return
     }
     onAdd({name,description,quantity})
@@ -31,39 +33,52 @@ const CreateAssetPage = ({}) => {
     setQuantity(0)
     setComplete(false)
   }
-
-
-
   
   return (
-    <div className='createAsset'>
-        <Link to= '/dashboard'> <Button color='black' text={'Go Back'} /> </Link>
-        <div className='title'>Add an Asset</div>
-        <div className='createAsset-form'>
-            <div className='createAsset-data'>
-                <div className='form-box'>
-                    <Input title={"Asset Name"} value = {text}  onChange = {(e) => setName(e.target.value)} />
+      <>
+        <Navbar/>
+        <div className='createAsset'>
+            {/* <Link to= '/dashboard'> <Button color='black' text={'Go Back'} /> </Link> */}
+            <div className='title'>Add an Asset</div>
+            <div className='createAsset-form'>
+                <div className='createAsset-data'>
+                    <div className='form-box'>
+                        <div className='input'>
+                            <label className='input-title'>Name</label>
+                            <div className='input-box'>
+                                <input type='text' value={name} placeholder = 'Add Asset Name...' onChange = {(e) => setName(e.target.value)}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='form-box'>
+                        <div className='input'>
+                            <label className='input-title'>Asset Description</label>
+                            <div className='input-box'>
+                                <input type='text' value={description} placeholder = 'Add New Description...' onChange = {(e) => setDescription(e.target.value)}/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='form-box'>
+                        <div className='input'>
+                            <label className='input-title'>Quantity</label>
+                            <div className='input-box'>
+                                <input type='number' value={quantity} onChange = {(e) => setQuantity(e.target.value)}/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className='form-box'>
-                    <Input title={"Asset Description"}/>
-                </div>
-                <div className='form-box'>
-                    <Input title={"Quantity"}/>
+                <div className='createAsset-image-container'>
+                    <input type="file" value={image}/>
                 </div>
             </div>
-            <div className='createAsset-image-container'>
-                Upload Image
+
+            <div className='createAsset-button-container'>
+            <Link to= '/dashboard'> <Button color='black' text={'Go Back'} /> </Link>
+            <Button text={"Complete"} onClick ={(e) => onSubmit(e)} />
             </div>
         </div>
-       
-        <div className='createAsset-button-container'>
-            <Button text={"Complete"} onClick ={(e) => onSubmit()} />
-            </div>
-        
-        
-        
-        
-    </div>
+      </>
+
   );
 }
 
