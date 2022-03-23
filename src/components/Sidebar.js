@@ -3,10 +3,11 @@ import logo from '../logo.svg';
 import GridViewIcon from '@mui/icons-material/GridView';
 import SettingsIcon from '@mui/icons-material/Settings';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
-import CropFreeIcon from '@mui/icons-material/CropFree';
+import SearchIcon from '@mui/icons-material/Search';
 import LogoutIcon from '@mui/icons-material/Logout';
+import {Link} from 'react-router-dom'
 
-const Sidebar = ({props}) => {
+const Sidebar = ({page}) => {
 
 
     return(
@@ -17,27 +18,48 @@ const Sidebar = ({props}) => {
 
             <div className='middle'>
                 <ul>
-                    <li>
+                    { page == 'dashboard'?  
+                        <li className='hovered'>
                         <GridViewIcon className='icon'/>
                         {/* <span>Dashboard</span> */}
-                    </li>
-                    <li>
-                        <CropFreeIcon className='icon'/>
-                        {/* <span>Something</span> */}
-                    </li>
-                    <li>
+                        </li>
+                    : 
+                        <li>
+                        <GridViewIcon className='icon'/>
+                        {/* <span>Dashboard</span> */}
+                        </li>
+                    }
+                    
+                    { page == 'search'?  
+                        <li className='hovered'>
+                        <SearchIcon className='icon'/>
+                        {/* <span>Search</span> */}
+                        </li>
+                    : 
+                        <li>
+                        <SearchIcon className='icon'/>
+                        {/* <span>Search</span> */}
+                        </li>
+                    }
+                    { page == 'setting'?  
+                        <li className='hovered'>
                         <PersonOutlineIcon className='icon'/>
-                        {/* <span>Users</span> */}
-                    </li>
-                    <li>
-                        <SettingsIcon className='icon'/>
-                        {/* <span>Settings</span> */}
-                    </li>
+                        {/* <span>Setting</span> */}
+                        </li>
+                    : 
+                        <li>
+                        <PersonOutlineIcon className='icon'/>
+                        {/* <span>Setting</span> */}
+                        </li>
+                    }
 
-                    <li className='bottom-icon'>
-                        <LogoutIcon className='icon'/>
+
+                    <li className='bottom-icon' onClick={(e) => {console.log("clicking")}} >
+                        <LogoutIcon className='icon' />
                         {/* <span>Logout</span> */}
                     </li>
+
+                    <Link to= '/'> back </Link>
 
                 </ul>
             </div>

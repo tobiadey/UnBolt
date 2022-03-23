@@ -73,8 +73,8 @@ const CreateAssetPage = ({}) => {
             </div>
 
             <div className='createAsset-button-container'>
-            <Link to= '/dashboard'> <Button color='black' text={'Go Back'} /> </Link>
-            <Button text={"Complete"} onClick ={(e) => onSubmit(e)} />
+            <Link to= '/dashboard'> <Button text={'Go Back'} /> </Link>
+            <Button text={"Complete"} classVar={'dark'} onClick ={(e) => onSubmit(e)} />
             </div>
         </div>
       </>
