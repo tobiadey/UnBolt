@@ -29,6 +29,15 @@ contract Assets {
         assets[assetCount] = Asset(assetCount, _assetName, quantity, false);
     }
 
+// https://medium.com/coinmonks/solidity-tutorial-returning-structs-from-public-functions-e78e48efb378
+    // recreating the getter for assets even thoug soloditiy provides it
+    // function getAssets(uint256 _id) public  view returns (uint256 id, string memory assetName, uint256 _quantity, bool _completed) {
+    //     // copy the data into memory
+    //     Asset memory asset = assets[_id];
+    //     // break the struct's members out into a tuple
+    //     return (asset.id, asset.assetName, asset.quantity, asset.completed);
+    // }
+
 }
 
 //To access in truffle console 

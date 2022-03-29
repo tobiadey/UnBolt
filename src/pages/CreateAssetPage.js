@@ -1,26 +1,49 @@
-// import logo from '../logo.svg';
+
+import { useState, useEffect } from 'react'
+import {Link} from 'react-router-dom'
+import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import Button from '../components/Button'
 import Navbar from '../components/Navbar'
 import Input from '../components/Input' //at the moment this is only used to target the css, using componets causes some errors!
 import './CreateAssetPage.css';
-import {Link} from 'react-router-dom'
-import { useMoralis } from "react-moralis";
-import { useState } from 'react'
+import assets from '../truffle/build/contracts/Assets.json'
 
 function onAdd (name,description,quantity){
     console.log(name, ":", description, ":",quantity);
   }
 
 const CreateAssetPage = ({}) => {
-  const { authenticate, isAuthenticated, logout, user } = useMoralis();
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
-  const [quantity, setQuantity] = useState(0)
-  const [complete, setComplete] = useState(false)
-  const [image, setImage] = useState('')
-
-  const onSubmit = (e) => {
+    const { authenticate, isAuthenticated, enableWeb3,isWeb3Enabled, logout, user } = useMoralis();
+    const {fetch, error, data} = useWeb3ExecuteFunction();
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [quantity, setQuantity] = useState(0)
+    const [complete, setComplete] = useState(false)
+    const [image, setImage] = useState('')
+    useEffect(() => {
+        const connectorId = window.localStorage.getItem("connectorId");
+        if (isAuthenticated && !isWeb3Enabled)
+          enableWeb3({ provider: connectorId });
+      }, [isAuthenticated, isWeb3Enabled]);
+    
+ async function  onSubmit(e){
     e.preventDefault()
+
+    console.log(assets.abi);
+    const options = {
+      abi: assets.abi,
+      contractAddress: '0x9424470461F07135B35C09742A71fCE758d2e4FA',
+      functionName: 'createAsset',
+      params: {
+        _assetName: name,
+        quantity: quantity
+      }
+    }
+    await fetch({
+      params: options
+    })
+    await console.log("Error: ",error);
+    await console.log("Data: ",data);
 
     if (!name | !description | !quantity) {
       alert('Fill in the missing field')
@@ -68,7 +91,7 @@ const CreateAssetPage = ({}) => {
                     </div>
                 </div>
                 <div className='createAsset-image-container'>
-                    <input type="file" value={image}/>
+                    <input type="file"/>
                 </div>
             </div>
 
