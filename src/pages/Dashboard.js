@@ -27,6 +27,8 @@ const Dashboard = () => {
   const [body, setBody] = useState('');
   //allow the sidebar.js componenet to call the handleSetBody() function passing the current body to use
   const handleSetBody = (value) => {setBody(value)};
+  const [search, setSearch] = useState('');
+
 
     //this function is run on each render/loading of the page
     useEffect(() => {
@@ -133,8 +135,9 @@ const Dashboard = () => {
             <div className='list-title'> 
               {/* Latest Transactions */}
               <div className='search'>
-                <input type='text' placeholder= 'Search...'></input>
-                <SearchIcon className='icon'/> 
+                {/* <input type='text' placeholder= 'Search...'></input> */}
+                {/* <SearchIcon className='icon'/>  */}
+                UNBOLT
               </div>
               <Link to= '/createAsset'> <Button classVar='dark' text={'Create Asset'}/> </Link> 
               {isWeb3Enabled && 
@@ -175,7 +178,7 @@ const Dashboard = () => {
               <div className='list-title-search'> 
                 {/* Latest Transactions */}
                 <div className='search'>
-                <input type='text_search' placeholder= 'Search...'></input>
+                <input onChange={(e) => {setSearch(e.target.value)}} type='text_search' placeholder= 'Search...'></input>
                 <SearchIcon className='icon'/> 
                 </div>
               </div>  
@@ -186,7 +189,16 @@ const Dashboard = () => {
                 <small>See all</small>
               </div>
               <div className='search-results'>
-                {asset.map((item)=>{
+              {/* https://www.youtube.com/watch?v=-QsdzCs2hCU this helped me with the search filter */}
+                {asset.filter(item => {
+                  if (search == '') {
+                    return item
+                  } else if(item.assetName.toLowerCase().includes(search.toLowerCase())) {
+                    return item
+                  }
+
+                }).
+                map((item)=>{
                   return(
               <div className='widgets2'>
                  <AssetDisplay assetName={item.assetName} username={'username'}/> 
