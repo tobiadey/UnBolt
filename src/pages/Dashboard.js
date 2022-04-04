@@ -7,9 +7,11 @@ import Button from '../components/Button'
 import Navbar from '../components/Navbar'
 import Sidebar from '../components/Sidebar'
 import Widgets from '../components/Widgets'
+import AssetDisplay from '../components/AssetDisplay'
 import SearchIcon from '@mui/icons-material/Search';
 import './Dashboard.css';
 import logo from '../logo.svg';
+import bag from '../images/bag.png';
 import { ProductionQuantityLimits } from '@mui/icons-material';
 
 
@@ -21,7 +23,10 @@ const Dashboard = () => {
   const { authenticate, isAuthenticated, logout, user, enableWeb3,isWeb3Enabled,Moralis } = useMoralis();
   const [assetCount, setAssetCount] = useState(0)
   const [asset, setAsset] = useState([]);
-
+  // state hooks to know which body to use for the dashbaord
+  const [body, setBody] = useState('');
+  //allow the sidebar.js componenet to call the handleSetBody() function passing the current body to use
+  const handleSetBody = (value) => {setBody(value)};
 
     //this function is run on each render/loading of the page
     useEffect(() => {
@@ -54,7 +59,7 @@ const Dashboard = () => {
   async function getAssetCount(){
     //defining the parameters for the execute function call, which executes a function in the smart contract
     const readOptions = {
-      contractAddress: '0x9424470461F07135B35C09742A71fCE758d2e4FA',
+      contractAddress: '0x71D6B1f99f3832FF199753Bb0469fd25456A6C43',
       functionName: "assetCount",
       abi: assets.abi,
     };
@@ -68,7 +73,7 @@ const Dashboard = () => {
     //defining the parameters for the execute function call, which executes a function in the smart contract
     const options = {
       abi: assets.abi,
-      contractAddress: '0x9424470461F07135B35C09742A71fCE758d2e4FA',
+      contractAddress: '0x71D6B1f99f3832FF199753Bb0469fd25456A6C43',
       functionName: 'assets',
       //empty parameter because this getter is generated automatically by solidity on creation of a mapping
       params: {
@@ -107,61 +112,132 @@ const Dashboard = () => {
     await setAsset(assetFromBlockchain)
     // await console.log('asset from blockchain:',assetFromBlockchain);
   }
+
+  
+
   return(
-    <div className='dashboard'>
-       <Sidebar page={'dashboard'}/>
-      <div className='dashboard-container'> 
-        <Navbar/>
-        <div className='widgets'>
-          <Widgets/>
-          <Widgets/>
-          <Widgets/>
-          <Widgets/>
-        </div>
-        <div className='list-container'>
-          <div className='list-title'> 
-          {/* Latest Transactions */}
-            <div className='search'>
-              <input type='text' placeholder= 'Search...'></input>
-              <SearchIcon className='icon'/> 
+  <>
+    {body == 'dashboard' | body == '' ?
+      <div className='dashboard'>
+        {/* onClick= {(e)=> {setBody('search')}} */}
+        <Sidebar page={'dashboard'}handleSetBody= {handleSetBody}/>
+        <div className='dashboard-container'> 
+          <Navbar/>
+          <div className='widgets'>
+            <Widgets/>
+            <Widgets/>
+            <Widgets/>
+            <Widgets/>
+          </div>
+          <div className='list-container'>
+            <div className='list-title'> 
+              {/* Latest Transactions */}
+              <div className='search'>
+                <input type='text' placeholder= 'Search...'></input>
+                <SearchIcon className='icon'/> 
+              </div>
+              <Link to= '/createAsset'> <Button classVar='dark' text={'Create Asset'}/> </Link> 
+              {isWeb3Enabled && 
+              <>
+              {/* <Button classVar='dark' text={'asset'} onClick={(e)=> {asset.map((item)=>{console.log(item)})}}/> 
+              <Button classVar='dark' text={'count'} onClick={(e)=> {asset.map((item)=>{console.log(assetCount)})}}/>  */}
+              </>
+              }
+            </div>  
+            {asset.length >0 ? 
+
+            <div className='table-container'>
+            <Table assets={asset} />
             </div>
-            <Link to= '/createAsset'> <Button classVar='dark' text={'Create Asset'}/> </Link> 
-            {isWeb3Enabled && 
-            <>
-            {/* <Button classVar='dark' text={'asset'} onClick={(e)=> {asset.map((item)=>{console.log(item)})}}/> 
-            <Button classVar='dark' text={'count'} onClick={(e)=> {asset.map((item)=>{console.log(assetCount)})}}/>  */}
-            </>
 
-            }
+            :
 
-        
-          </div>  
-          {asset.length >0 ? 
-          <Table assets={asset} />
-          :
-          <>Loading assets...</>
-
-          // <>
-          // {asset.map((item)=>{
-          //   return (
-          //     <>
-          //       <h3>Asset {item.id.toNumber()} is a {item.assetName} </h3>
-          //       <p>Quantity : {item.quantity.toNumber()}</p>
-          //       <p>{item.complete}</p>
-          //     </>
+            <div>
+              Loading assets...
+            </div>
            
-          //   )
-          // })}
-          // </>
-          // :
-          // <>
-          // Loading assets...
-          // </>
-
-          }
+            }
+          </div>
         </div>
       </div>
-    </div>
+       :
+       <>
+       </>
+    }
+    
+    {body== 'search' ?
+        <div className='search'>
+          {/* onClick= {(e)=> {setBody('search')}} */}
+          <Sidebar page={'search'}handleSetBody= {handleSetBody}/>
+          <div className='search-container'> 
+            <Navbar/>
+            <div className='list-container-search'>
+              <div className='list-title-search'> 
+                {/* Latest Transactions */}
+                <div className='search'>
+                <input type='text_search' placeholder= 'Search...'></input>
+                <SearchIcon className='icon'/> 
+                </div>
+              </div>  
+            </div>
+            <div className='mapping-container'>
+              <div className='header-search'>
+                <small>Trending Assets</small>
+                <small>See all</small>
+              </div>
+              <div className='search-results'>
+                {asset.map((item)=>{
+                  return(
+              <div className='widgets2'>
+                 <AssetDisplay assetName={item.assetName} username={'username'}/> 
+              </div>
+                )})}
+
+              </div>
+
+            </div>
+            <div className='load-more'>
+              <Button text={'Load More'}/>
+      
+            </div>
+          </div>
+        </div>
+      :
+        <>
+        </>
+
+    }
+
+    {body== 'setting' ?
+            <div className='setting'>
+              <Sidebar page={'setting'}handleSetBody= {handleSetBody}/>
+              <div className='setting-container'> 
+                <Navbar/>
+                <div className='list-container'>
+                  <div className='list-title'> 
+                    {/* Latest Transactions */}
+                    {/* <div className='search'>
+                    <input type='text' placeholder= 'Search...'></input>
+                    <SearchIcon className='icon'/> 
+                    </div> */}
+                  </div>  
+                </div>
+                <div className='users-container'>
+                  <h1>Setting</h1>
+                </div>
+              
+              </div>
+            </div>
+          :
+            <>
+            </>
+
+        }
+
+
+
+  </>
+
 
   )
 }

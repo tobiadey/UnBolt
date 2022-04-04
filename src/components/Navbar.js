@@ -11,10 +11,11 @@ const Navbar = () => {
     return(
         <div className='navbar'>
             <div className='nav-wrapper'>
-                <div className='search'>
+                {/* <div className='search'>
                     <input type='text' placeholder= 'Search...'></input>
                     <SearchIcon className='icon'/>
-                </div>
+                </div> */}
+                <h3 className='message'>Welcome back to UnBolt</h3>
                 <div className='items'>
 
                     {/* <div className='item alert'> 

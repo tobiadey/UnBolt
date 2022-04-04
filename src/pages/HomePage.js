@@ -84,7 +84,7 @@ const HomePage = ({}) => {
           { isAuthenticated && 
           <>
             <Link to= 'dashboard'> <Button classVar='dark' text={'Go to App'}/> </Link> 
-            <Button classVar='dark' text={'Test Function'} onClick={()=> test2()}/> 
+            {/* <Button classVar='dark' text={'Test Function'} onClick={()=> test2()}/>  */}
           </>
     
           }

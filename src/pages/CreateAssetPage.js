@@ -32,7 +32,7 @@ const CreateAssetPage = ({}) => {
     console.log(assets.abi);
     const options = {
       abi: assets.abi,
-      contractAddress: '0x9424470461F07135B35C09742A71fCE758d2e4FA',
+      contractAddress: '0x71D6B1f99f3832FF199753Bb0469fd25456A6C43',
       functionName: 'createAsset',
       params: {
         _assetName: name,
