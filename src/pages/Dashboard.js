@@ -53,7 +53,7 @@ const Dashboard = () => {
       // call the function loadPage on each render of the page
       loadPage()
     }, 
-    //callback functions
+    //callback functions, array of variables that the component will check to make sure changed before re-rendering. 
     [isAuthenticated, isWeb3Enabled, asset]);
 
 
@@ -200,8 +200,9 @@ const Dashboard = () => {
                 }).
                 map((item)=>{
                   return(
-              <div className='widgets2'>
-                 <AssetDisplay assetName={item.assetName} username={'username'}/> 
+              // key value is item.id as each child in a list should have a unique "key" prop
+              <div className='widgets2' key={item.id}>
+                 <AssetDisplay id={item.id} assetName={item.assetName} username={'username'} onClick={(e)=>{console.log(item.assetName)}} /> 
               </div>
                 )})}
 

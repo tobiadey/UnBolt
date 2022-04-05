@@ -1,0 +1,86 @@
+.asset{
+    padding: 10px 20px;
+    /* margin: 20px; */
+    display: flex;
+    flex-direction: column;
+}
+
+.loading-message{
+    /* max-width: 1000px; */
+    margin: auto;
+    left: 45%;
+    top: 30%;
+    position: absolute;
+}
+.asset-task-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.asset-task-container .section{
+    margin: 25px ;
+
+}
+
+.asset-display2{
+    flex: 1;
+    border: 0.5px solid grey;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    min-height: 90vh;
+    background-color: white;
+}
+
+.asset-task-container .asset-display2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.task-display{
+    /* border-right: 0.5px solid grey; */
+    border-radius: 10px;
+    flex: 3;
+    /* background-color: yellow; */
+}
+
+
+
+.task-display .task-header{
+    color: grey;
+    font-size: small;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    /* background-color: yellow; */
+
+ }
+
+ .task-display .task-header .icon{
+    font-size: 11.5px;
+    margin-right: 5px;
+ }
+
+ .task-display .task-content{
+     padding: 20px;
+     /* background-color: aqua; */
+ }
+
+ .task-display .task-content .task-list{
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.task-list .task{
+    background-color: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px;
+}

@@ -107,36 +107,3 @@ const CreateAssetPage = ({}) => {
 
 export default CreateAssetPage
 
-
-{/* <div className="createAsset">
-        <div className='createAsset-container'>
-            <div className='form-div'>
-                <Link to= '/dashboard'> <Button color='black' text={'Go Back'} /> </Link>
-                <p>Add an asset</p>
-                <form className ='add-form' onSubmit={onSubmit}>
-                    <div className='form-control'>
-                        <label> Task </label>
-                        <input type='text' placeholder = 'Add New Task' value = {text} onChange = {(e) => setText(e.target.value)}/>
-                    </div>
-
-                    <div className='form-control '>
-                        <label> Day Time </label>
-                        <input type='text' placeholder = 'Add DayTime' value = {day} onChange = {(e) => setDay(e.target.value)} />
-                    </div>
-
-                    <div className='form-control form-control-check'>
-                        <label> Set Reminder </label>
-                        <input type='checkbox' checked= {reminder} value = {reminder} onChange = {(e) => setReminder(e.currentTarget.checked)} />
-                    </div>
-
-                    <input className = 'btn btn-block' type='submit' value = 'Add Task' />
-
-                </form>
-                <div className='uplaodImage-container'>
-                    IMG
-                </div>
-            </div>
-
-        </div>
-        <Button text={'Complete'}/>
-    </div> */}

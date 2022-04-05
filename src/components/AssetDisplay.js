@@ -3,13 +3,13 @@ import bag from '../images/bag.png';
 import {Link} from 'react-router-dom'
 
 
-const AssetDisplay = ({assetName,username}) => {
+const AssetDisplay = ({id,assetName,username,onClick}) => {
 
 
 
     return(
-        <Link className='link' to= '/'>  
-        <div className='asset-display'>
+        <Link className='link' to={`/asset/${id}`}>  
+        <div className='asset-display' onClick = {onClick}>
             <img className='image' src={bag} alt="Logo" />
 
             <div className='bottom'>
