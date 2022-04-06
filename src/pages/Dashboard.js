@@ -13,6 +13,7 @@ import './Dashboard.css';
 import logo from '../logo.svg';
 import bag from '../images/bag.png';
 import { ProductionQuantityLimits } from '@mui/icons-material';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
@@ -157,6 +158,7 @@ const Dashboard = () => {
 
             <div>
               Loading assets...
+              {/* <CircularProgress color="inherit" /> */}
             </div>
            
             }

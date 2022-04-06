@@ -8,8 +8,8 @@
 .loading-message{
     /* max-width: 1000px; */
     margin: auto;
-    left: 45%;
-    top: 30%;
+    left: 47.5%;
+    top: 45%;
     position: absolute;
 }
 .asset-task-container{
@@ -45,7 +45,11 @@
     /* background-color: yellow; */
 }
 
+.task{
+    border: 0.5px solid grey;
+    background-color: white;
 
+}
 
 .task-display .task-header{
     color: grey;
@@ -57,6 +61,16 @@
     /* background-color: yellow; */
 
  }
+
+.task-display .task-header a{
+    cursor: pointer;
+    color: brown;
+    font-weight: bold;
+}
+
+.task-display .task-header a:hover{
+    font-size: 12.5px
+}
 
  .task-display .task-header .icon{
     font-size: 11.5px;
@@ -77,10 +91,25 @@
 }
 
 .task-list .task{
-    background-color: blue;
+    /* background-color: blue; */
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: 100%;
     margin: 20px;
+    flex-direction: column;
+}
+.task-list .no-task-message-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: blue; */
+    padding-top: 30px;
+    position: absolute;
+    top: 40%;
+}
+.no-task-message{
+    padding: 10px;
 }

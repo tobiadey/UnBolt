@@ -12,6 +12,7 @@ contract Tasks {
     //executed once when a contract is created and it initialises contract state.
     constructor() public {
         createTask( "Source Leather",1,0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE);
+        createTask( "Transport to Factory",1,0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE);
     }
 
     //https://www.tutorialspoint.com/solidity/solidity_enums.htm

@@ -1,0 +1,56 @@
+.createTask{
+    display: flex;
+    /* justify-content: center; */
+    margin: 5%;
+    /* align-items: flex-start; */
+    /* border : 0.5px solid lightgrey; */
+    padding: 50px 0px;
+    /* background-color: lightblue; */
+    flex-direction: column;
+}
+
+.createTask .title{
+    color: grey;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.createTask .createTask-form{
+    display: flex;
+    flex-direction: row;
+}
+
+.createTask .createTask-form .createTask-data{
+    /* background-color: green; */
+    flex: 1.5;
+}
+.createTask .createTask-form .form-box{
+    /* background-color: green; */
+    /* flex: 1.5; */
+    /* padding: 30px;
+    padding-left: 0px; */
+
+}
+
+.createTask .createTask-form .createTask-image-container{
+    /* background-color: yellow; */
+    cursor: pointer;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border : 0.5px solid lightgrey;
+    height: 150px;
+    width: 20px;
+}
+
+.createTask .createTask-button-container{
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.createTask .createTask-form .createTask-image-container:hover{
+    
+    background-color: lightgray;
+}
