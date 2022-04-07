@@ -31,7 +31,7 @@ const CreateTaskPage = () => {
         console.log(tasks.abi);
         const options = {
           abi: tasks.abi,
-          contractAddress: '0x79655a20e9d6BA7296188644d9411f37fFF1f4b8',
+          contractAddress: '0xBaab56D8B51736e99BaAd8a40f67D5a171a7C205',
           functionName: 'createTask',
           params: {
             _taskcontent: content,

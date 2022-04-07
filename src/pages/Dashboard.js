@@ -62,7 +62,7 @@ const Dashboard = () => {
   async function getAssetCount(){
     //defining the parameters for the execute function call, which executes a function in the smart contract
     const readOptions = {
-      contractAddress: '0x71D6B1f99f3832FF199753Bb0469fd25456A6C43',
+      contractAddress: '0x79433D3eE2172d66f580ea0D1064e987c0F44DbC',
       functionName: "assetCount",
       abi: assets.abi,
     };
@@ -76,7 +76,7 @@ const Dashboard = () => {
     //defining the parameters for the execute function call, which executes a function in the smart contract
     const options = {
       abi: assets.abi,
-      contractAddress: '0x71D6B1f99f3832FF199753Bb0469fd25456A6C43',
+      contractAddress: '0x79433D3eE2172d66f580ea0D1064e987c0F44DbC',
       functionName: 'assets',
       //empty parameter because this getter is generated automatically by solidity on creation of a mapping
       params: {

@@ -25,7 +25,7 @@ const HomePage = ({}) => {
   async function test(){
   // const web3Provider = await enableWeb3();
   const readOptions = {
-    contractAddress: '0x9424470461F07135B35C09742A71fCE758d2e4FA',
+    contractAddress: '0x79433D3eE2172d66f580ea0D1064e987c0F44DbC',
     functionName: "assetCount",
     abi: assets.abi,
   };
@@ -36,7 +36,7 @@ const HomePage = ({}) => {
   async function test2(){
     const options = {
       abi: assets.abi,
-      contractAddress: '0x9424470461F07135B35C09742A71fCE758d2e4FA',
+      contractAddress: '0x79433D3eE2172d66f580ea0D1064e987c0F44DbC',
       functionName: 'assets',
       params: {
         '': 7,

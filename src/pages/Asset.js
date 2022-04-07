@@ -55,7 +55,7 @@ const Asset = () => {
   async function getTaskCount(){
     //defining the parameters for the execute function call, which executes a function in the smart contract
     const readOptions = {
-      contractAddress: '0x79655a20e9d6BA7296188644d9411f37fFF1f4b8',
+      contractAddress: '0xBaab56D8B51736e99BaAd8a40f67D5a171a7C205',
       functionName: "taskCount",
       abi: tasks.abi,
     };
@@ -70,7 +70,7 @@ const Asset = () => {
         //defining the parameters for the execute function call, which executes a function in the smart contract
         const options = {
         abi: assets.abi,
-        contractAddress: '0x71D6B1f99f3832FF199753Bb0469fd25456A6C43',
+        contractAddress: '0x79433D3eE2172d66f580ea0D1064e987c0F44DbC',
         functionName: 'assets',
         //empty parameter because this getter is generated automatically by solidity on creation of a mapping
         params: {
@@ -88,7 +88,7 @@ const Asset = () => {
         //defining the parameters for the execute function call, which executes a function in the smart contract
         const options = {
         abi: tasks.abi,
-        contractAddress: '0x79655a20e9d6BA7296188644d9411f37fFF1f4b8',
+        contractAddress: '0xBaab56D8B51736e99BaAd8a40f67D5a171a7C205',
         functionName: 'tasks',
         //empty parameter because this getter is generated automatically by solidity on creation of a mapping
         params: {
@@ -137,6 +137,22 @@ const Asset = () => {
 
       }
 
+    async function toggleTaskComplete(id) {
+      console.log('Task of id ', id,'is set to complete');
+      console.log(tasks.abi);
+      const options = {
+        abi: tasks.abi,
+        contractAddress: '0xBaab56D8B51736e99BaAd8a40f67D5a171a7C205',
+        functionName: 'toggleCompleted',
+        //empty parameter because this getter is generated automatically by solidity on creation of a mapping
+        params: {
+          _id: id,
+        }
+        }
+        //calls the smart contract function while returning the data in variable message
+        const message = await Moralis.executeFunction(options)
+        console.log('completed at:', message);
+    }
 
     // if there are asset to display, display them else set screen to loading...
     return asset.length==0 ? (<h1 className='loading-message'> <CircularProgress color="inherit" /> </h1>) :(
@@ -157,6 +173,7 @@ const Asset = () => {
                         <div className=''>
                         <h1>Task</h1>
                         <p>View tasks allocated to the production of this asset</p>
+                        <p>This section is scrollable(if you have enough tasks)</p>
                         {/* <Button classVar='dark' text={'get tasks'} onClick={()=>{console.log(task)}}/> 
                         <Button classVar='dark' text={'get asset'} onClick={()=>{console.log(asset)}}/> 
                          */}
@@ -185,6 +202,14 @@ const Asset = () => {
                               <p>Description: {item.content}</p> 
                               <p>Asset id: {item.assetId}</p>
                               <p>signator: {item.signator}</p>
+                              {console.log(item.completed)}
+                              {item.completed ? <>Completed</> : <>Not Complete</>}
+                              {item.signator.toLowerCase().includes(user.get("ethAddress").toLowerCase()) &&
+                              <>
+                                <Button classVar='dark' text={'Toggle Complete'} onClick={()=>{toggleTaskComplete(item.id)}}/> 
+                            
+                              </>
+                              }
                             </div>
                             
                             )})}

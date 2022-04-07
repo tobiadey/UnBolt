@@ -37,6 +37,15 @@
     align-items: center;
 
 }
+.task-content{
+    /* background-color: gray; */
+    max-height: 85vh;
+    overflow-y: scroll;
+    /* overflow-y: auto; */
+    scroll-behavior: smooth;
+    scroll-behavior: auto;
+    
+}
 
 .task-display{
     /* border-right: 0.5px solid grey; */

@@ -29,6 +29,12 @@ contract Assets {
         assets[assetCount] = Asset(assetCount, _assetName, quantity, false);
     }
 
+    function toggleCompleted(uint _id) public {
+        Asset memory _asset = assets[_id];
+        _asset.completed = !_asset.completed;
+        assets[_id] = _asset;
+  }
+
 // https://medium.com/coinmonks/solidity-tutorial-returning-structs-from-public-functions-e78e48efb378
     // recreating the getter for assets even thoug soloditiy provides it
     // function getAssets(uint256 _id) public  view returns (uint256 id, string memory assetName, uint256 _quantity, bool _completed) {

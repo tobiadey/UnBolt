@@ -37,6 +37,12 @@ contract Tasks {
         taskCount++;
         tasks[taskCount] = Task(taskCount, _taskcontent, assetId, false, signator);
     }
+    function toggleCompleted(uint _id) public {
+        Task memory _task = tasks[_id];
+        require(msg.sender == _task.signator, "This function is restricted to the signator");
+        _task.completed = !_task.completed;
+        tasks[_id] = _task;
+  }
 
 
     // Defining a function to set value of inprogress to state enum
