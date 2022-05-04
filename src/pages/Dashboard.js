@@ -14,30 +14,41 @@ import logo from '../logo.svg';
 import bag from '../images/bag.png';
 import { ProductionQuantityLimits } from '@mui/icons-material';
 import CircularProgress from '@mui/material/CircularProgress';
-
+import contractAddress from '../constants/contractAddress';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import Settings from './Settings';
 
 
 
 
 const Dashboard = () => {
-
+ // The useMoralis hook provides all the basics functionalities that is needed for authentication and user data.
   const { authenticate, isAuthenticated, logout, user, enableWeb3,isWeb3Enabled,Moralis } = useMoralis();
+
+  // useState gives a local state in a function component
+  // the first paramter is the value and the second is the setter
   const [assetCount, setAssetCount] = useState(0)
   const [asset, setAsset] = useState([]);
   // state hooks to know which body to use for the dashbaord
   const [body, setBody] = useState('');
-  //allow the sidebar.js componenet to call the handleSetBody() function passing the current body to use
+  //allow the sidebar.js componenet to call the handleSetBody() function which passes the current body to use
   const handleSetBody = (value) => {setBody(value)};
   const [search, setSearch] = useState('');
 
+  //varables gotten from the constants directory
+  const assetContractAddress = contractAddress.assetContractAddress;
+  const taskContractAddress = contractAddress.taskContractAddress;
 
-    //this function is run on each render/loading of the page
+    // allows for performing side effects in the component
+    // side effect in this case being calling the loadPage() function
+    // use effect runs after every render
+    // if the value of the second argunment changes(isAuthenticated, isWeb3Enabled, asset), useEffect is rerun
     useEffect(() => {
       const loadPage = async () => {
-        //ge the connectorID using the console window 
+        //get the connectorID using the console window 
         const connectorId = window.localStorage.getItem("connectorId");
         try {
-          //check if authicated and web3 is not enabled in order
+          //check if autenticated and web3 is not enabled in order
           if (isAuthenticated && !isWeb3Enabled){
             //enable web3 and store in a varible
             const web3Provider = await enableWeb3({ provider: connectorId });
@@ -62,7 +73,7 @@ const Dashboard = () => {
   async function getAssetCount(){
     //defining the parameters for the execute function call, which executes a function in the smart contract
     const readOptions = {
-      contractAddress: '0x79433D3eE2172d66f580ea0D1064e987c0F44DbC',
+      contractAddress: contractAddress.assetContractAddress,
       functionName: "assetCount",
       abi: assets.abi,
     };
@@ -76,7 +87,7 @@ const Dashboard = () => {
     //defining the parameters for the execute function call, which executes a function in the smart contract
     const options = {
       abi: assets.abi,
-      contractAddress: '0x79433D3eE2172d66f580ea0D1064e987c0F44DbC',
+      contractAddress: contractAddress.assetContractAddress,
       functionName: 'assets',
       //empty parameter because this getter is generated automatically by solidity on creation of a mapping
       params: {
@@ -120,7 +131,9 @@ const Dashboard = () => {
 
   return(
   <>
-    {body == 'dashboard' | body == '' ?
+    {/* main/dashboard section */}
+    {/* {body == 'dashboard' | body == '' ? */}
+    {body == 'dashboard'  ?
       <div className='dashboard'>
         {/* onClick= {(e)=> {setBody('search')}} */}
         <Sidebar page={'dashboard'}handleSetBody= {handleSetBody}/>
@@ -139,6 +152,7 @@ const Dashboard = () => {
                 {/* <input type='text' placeholder= 'Search...'></input> */}
                 {/* <SearchIcon className='icon'/>  */}
                 UNBOLT
+                  {/* <Button classVar='dark' text={'asset Addrr'} onClick={(e)=>{console.log(assetContractAddress)}}/> */}
               </div>
               <Link to= '/createAsset'> <Button classVar='dark' text={'Create Asset'}/> </Link> 
               {isWeb3Enabled && 
@@ -169,7 +183,8 @@ const Dashboard = () => {
        <>
        </>
     }
-    
+
+    {/* search section */}
     {body== 'search' ?
         <div className='search'>
           {/* onClick= {(e)=> {setBody('search')}} */}
@@ -191,7 +206,11 @@ const Dashboard = () => {
                 <small>See all</small>
               </div>
               <div className='search-results'>
-              {/* https://www.youtube.com/watch?v=-QsdzCs2hCU this helped me with the search filter */}
+              {/* https://www.youtube.com/watch?v=-QsdzCs2hCU
+              This video was used to understand how to implement searching a list, the code is exactly the same
+              but it is alterted to fit my code by changing the list which is filtered through 
+              and the return value of the mapping
+               */}
                 {asset.filter(item => {
                   if (search == '') {
                     return item
@@ -222,8 +241,8 @@ const Dashboard = () => {
         </>
 
     }
-
-    {body== 'setting' ?
+    {/* benefitiary section */}
+    {body== 'setting'| body == '' ?
             <div className='setting'>
               <Sidebar page={'setting'}handleSetBody= {handleSetBody}/>
               <div className='setting-container'> 
@@ -237,10 +256,9 @@ const Dashboard = () => {
                     </div> */}
                   </div>  
                 </div>
-                <div className='users-container'>
-                  <h1>Setting</h1>
+                <div className='user-container'>
+                   <Settings/>
                 </div>
-              
               </div>
             </div>
           :

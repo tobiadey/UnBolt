@@ -4,8 +4,9 @@ import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import FaceIcon from '@mui/icons-material/Face';
 import { useMoralis } from "react-moralis";
 
+// components for showing the navbar
 const Navbar = () => {
-
+ // The useMoralis hook provides all the basics functionalities that is needed for authentication and user data.
     const { authenticate, isAuthenticated, logout, user } = useMoralis();
 
     return(
@@ -15,7 +16,7 @@ const Navbar = () => {
                     <input type='text' placeholder= 'Search...'></input>
                     <SearchIcon className='icon'/>
                 </div> */}
-                <h3 className='message'>Welcome back to UnBolt</h3>
+                <h3 className='message'>Welcome back to UnBolt, {user.get('username').toUpperCase()} </h3>
                 <div className='items'>
 
                     {/* <div className='item alert'> 

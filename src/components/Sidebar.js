@@ -8,8 +8,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import LogoutIcon from '@mui/icons-material/Logout';
 import {Link} from 'react-router-dom'
 
+// components for showing the sidebar
+//takes in props which it uses to differentiate from other sidebars components
 const Sidebar = (props) => {
 
+// useState gives a local state in a function component
+// the first paramter is the value and the second is the setter
 const [isShown, setIsShown] = useState(false);
 
 function changeBody(value){
@@ -27,6 +31,7 @@ function changeBody(value){
 
             <div className='middle'>
                 <ul>
+                    {/* if props.page == dashboard show with style changes or else dont */}
                     { props.page == 'dashboard'?  
                         <li className='hovered'>
                         <GridViewIcon className='icon'/>
@@ -38,7 +43,8 @@ function changeBody(value){
                         {/* <span>Dashboard</span> */}
                         </li>
                     }
-                    
+
+                    {/* if props.page == search show with style changes or else dont */}
                     { props.page == 'search'?  
                         <li className='hovered'>
                         <SearchIcon className='icon'/>
@@ -50,6 +56,9 @@ function changeBody(value){
                         {isShown && <span>Search3</span> }
                         </li>
                     }
+
+                    {/* if props.page == setting show with style changes or else dont */}
+
                     { props.page == 'setting'?  
                         <li className='hovered'>
                         <PersonOutlineIcon className='icon'/>

@@ -9,9 +9,15 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Task } from '@mui/icons-material';
 import {Link} from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
+import contractAddress from '../constants/contractAddress';
+
 
 const Asset = () => {
+   // The useMoralis hook provides all the basics functionalities that is needed for authentication and user data.
     const { authenticate, isAuthenticated, logout, user, enableWeb3,isWeb3Enabled,Moralis } = useMoralis();
+
+    // useState gives a local state in a function component
+    // the first paramter is the value and the second is the setter
     const [loading, setLoading] = useState(true)
     const [asset, setAsset] = useState([])
     const [taskCount, setTaskCount] = useState([])
@@ -22,7 +28,11 @@ const Asset = () => {
     const navigate = useNavigate()
     const { pathname } = useLocation()
 
-    //this function is run on each render/loading of the page
+    
+    // allows for performing side effects in the component
+    // side effect in this case being calling the loadPage() function
+    // use effect runs after every render
+    // if the value of the second argunment changes(isAuthenticated, isWeb3Enabled, asset,task,loading), useEffect is rerun
     useEffect(() => {
         const loadPage = async () => {
           //ge the connectorID using the console window 
@@ -55,7 +65,7 @@ const Asset = () => {
   async function getTaskCount(){
     //defining the parameters for the execute function call, which executes a function in the smart contract
     const readOptions = {
-      contractAddress: '0xBaab56D8B51736e99BaAd8a40f67D5a171a7C205',
+      contractAddress: contractAddress.taskContractAddress,
       functionName: "taskCount",
       abi: tasks.abi,
     };
@@ -70,7 +80,7 @@ const Asset = () => {
         //defining the parameters for the execute function call, which executes a function in the smart contract
         const options = {
         abi: assets.abi,
-        contractAddress: '0x79433D3eE2172d66f580ea0D1064e987c0F44DbC',
+        contractAddress: contractAddress.assetContractAddress,
         functionName: 'assets',
         //empty parameter because this getter is generated automatically by solidity on creation of a mapping
         params: {
@@ -88,7 +98,7 @@ const Asset = () => {
         //defining the parameters for the execute function call, which executes a function in the smart contract
         const options = {
         abi: tasks.abi,
-        contractAddress: '0xBaab56D8B51736e99BaAd8a40f67D5a171a7C205',
+        contractAddress: contractAddress.taskContractAddress,
         functionName: 'tasks',
         //empty parameter because this getter is generated automatically by solidity on creation of a mapping
         params: {
@@ -137,14 +147,15 @@ const Asset = () => {
 
       }
 
+    //call smart contract function that changes the task status to the opposite value 
     async function toggleTaskComplete(id) {
       console.log('Task of id ', id,'is set to complete');
       console.log(tasks.abi);
       const options = {
         abi: tasks.abi,
-        contractAddress: '0xBaab56D8B51736e99BaAd8a40f67D5a171a7C205',
+        contractAddress: contractAddress.taskContractAddress,
         functionName: 'toggleCompleted',
-        //empty parameter because this getter is generated automatically by solidity on creation of a mapping
+        //takes id as parameter as the solidity function needs this
         params: {
           _id: id,
         }
@@ -157,7 +168,9 @@ const Asset = () => {
     // if there are asset to display, display them else set screen to loading...
     return asset.length==0 ? (<h1 className='loading-message'> <CircularProgress color="inherit" /> </h1>) :(
         <div className='asset'>
+
             <div className='asset-task-container'>
+                {/* div for displaying the current asset  */}
                 <div className='section asset-display2'> 
                     AssetDisplay2 
                 </div>
@@ -181,6 +194,7 @@ const Asset = () => {
                         </div>
 
                         {/* filter task [] to make sure their assetId is related to current asset */}
+                        {/* check if this array after filter is == 0, then show no tasks */}
                         <div className='task-list'>
                             {task.filter(item=>{
                               if (item.assetId == params.id) {
@@ -193,6 +207,8 @@ const Asset = () => {
                             </div>
                             :
                             <>
+                          {/* filter task [] to make sure their assetId is related to current asset */}
+                          {/* as task array is not ==0 show all taks by mapping through the array */}
                             {task.filter(item=>{
                               if (item.assetId  == params.id) {
                                 return item

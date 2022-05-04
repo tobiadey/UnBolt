@@ -1,7 +1,8 @@
 
 import './Button.css';
 
-
+// components for buttons
+//takes in props which it uses to differentiate from other button components
 const Button = ({classVar,bgColor,color, text, onClick}) => {
 
 

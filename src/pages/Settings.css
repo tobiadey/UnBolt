@@ -1,0 +1,97 @@
+.section-container{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: center;
+    font: bold;
+    color: grey;
+    font-size: 20px;
+
+}
+.section-header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: black;
+
+    justify-content: center;
+}
+
+.section-header2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: black;
+    font-size: 14px;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid grey;
+}
+
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+    justify-content: center;
+}
+
+.profile-form{
+    width: 100%;
+}
+.profile-data{
+    width: 100%;
+
+}
+.form-box{
+    width: 70%;
+    /* background-color: blue; */
+}
+
+
+.title{
+    color: grey;
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+.input{
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.input-box{
+
+    padding-bottom: 20px;
+}
+
+.profile-container .profile-form{
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-container .profile-form .profile-data{
+    flex: 1.5;
+}
+
+
+.profile-container .profile-button-container{
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+.intermediary-text{
+padding-bottom: 10px;
+}
+
+.item{
+    padding-bottom: 20px;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
+    /* margin-bottom: 10px; */
+}
+
+.bin{
+    /* margin-top: 2.5px; */
+}

@@ -2,8 +2,10 @@ import {Link} from 'react-router-dom'
 import { useMoralis } from "react-moralis";
 import Button from '../components/Button'
 
+//page that handles when a user tries to access a page they should not be on due to not being authenticated
 function NoAccess() {
 
+     // The useMoralis hook provides all the basics functionalities that is needed for authentication and user data.
     const { authenticate, isAuthenticated, logout, user } = useMoralis();
     return (
      <>

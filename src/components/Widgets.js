@@ -1,6 +1,6 @@
 import './Widgets.css';
 
-
+// components for showing the widgets
 const Widgets = () => {
 
 

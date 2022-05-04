@@ -3,9 +3,9 @@ import bag from '../images/bag.png';
 import {Link} from 'react-router-dom'
 
 
+// components for displaying assets
+//takes in props which it uses to differentiate from other AssetDisplay components
 const AssetDisplay = ({id,assetName,username,onClick}) => {
-
-
 
     return(
         <Link className='link' to={`/asset/${id}`}>  
@@ -18,19 +18,6 @@ const AssetDisplay = ({id,assetName,username,onClick}) => {
             </div>          
         </div>
         </Link>
-
-
-
-        // <div className='items-container'>
-        // <div className='item'>
-        //     <img src={bag} alt="Logo" />
-        //     <div className='label'>
-        //     <p className='name'>{item.assetName}</p>
-        //     <small className='name'> Username </small>
-        //     </div>
-
-        // </div>
-        // </div>
     )
   
   }

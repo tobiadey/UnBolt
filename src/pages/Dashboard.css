@@ -186,7 +186,15 @@ flex : 5 */
 }
 
 
-.users-container{
-    padding: 10px;
-    margin: 10px;
+.user-container{
+    display: flex;
+    border: 2px solid grey;
+    width: 80%;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 10%;
+
+    box-shadow: 12px 12px 2px 1px rgba(30, 30, 34, 0.2);
+    /* background-color: yellow; */
+    padding-top: 10%;
 }

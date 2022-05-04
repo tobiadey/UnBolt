@@ -1,0 +1,51 @@
+
+.user-container{
+    display: flex;
+    border: 2px solid grey;
+    width: 80%;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 10%;
+
+    box-shadow: 12px 12px 2px 1px rgba(30, 30, 34, 0.2);
+    /* background-color: yellow; */
+    padding-top: 10%;
+}
+
+
+.section-container{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    justify-content: center;
+    font: bold;
+    color: grey;
+    font-size: 20px;
+
+}
+.section-header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: black;
+
+    justify-content: center;
+}
+
+.section-header2{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    color: black;
+    font-size: 14px;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-bottom: 1px solid grey;
+}
+
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    /* width: 50%; */
+    justify-content: center;
+}
