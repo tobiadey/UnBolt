@@ -6,8 +6,10 @@ import Button from '../components/Button'
 import Navbar from '../components/Navbar'
 import Input from '../components/Input' //at the moment this is only used to target the css, using componets causes some errors!
 import './CreateAsset.css';
-import assets from '../truffle/build/contracts/Assets.json'
+// import assets from '../truffle/build/contracts/Assets.json'
 import contractAddress from '../constants/contractAddress';
+import unbolt from '../truffle/build/contracts/UnBolt.json'
+
 
 
 function onAdd (name,description,quantity){
@@ -43,6 +45,7 @@ const CreateAsset = ({}) => {
 // function for handling the submition of a form
 // calls the smart contract function then clears the form
  async function  onSubmit(e){
+    console.log(unbolt.abi);
     e.preventDefault()
 
     //check if any input is missing 
@@ -53,19 +56,20 @@ const CreateAsset = ({}) => {
   
     // console.log(assets.abi);
     const options = {
-      abi: assets.abi,
-      contractAddress: contractAddress.assetContractAddress,
+      abi: unbolt.abi,
+      contractAddress: contractAddress.unboltContractAddress,
       functionName: 'createAsset',
       params: {
         _assetName: name,
-        quantity: quantity
+        _quantity: quantity
       }
     }
     // calling of the smart contract function using the options const as a parameter
-    await fetch({
-      params: options
-    })
+    const message = await fetch({params: options})
+    console.log(message);
 
+    
+  
     await console.log("Error: ",error);
     await console.log("Data: ",data);
 

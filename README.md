@@ -9,9 +9,6 @@ This was created automatically due to an error I fixed with my solidity parser e
 This was created in order to store the ABI. This allows for easy access and keep code clean.
 - abi.js
 
-#### `MetaCoin`
-This is a package provided by truffle I installed to get a working example using truffle to compile and test smart contracts. (this is not visible)
-
 #### `node_modules`
 In react when we install libraries we use npm e.g `npm install --global yarn`. This package is used to keep track of packages that have been installed using npm... i think, research more
 

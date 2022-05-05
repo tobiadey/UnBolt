@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
-import assets from '../truffle/build/contracts/Assets.json'
-import tasks from '../truffle/build/contracts/Tasks.json'
 import { useParams, Navigate, useNavigate, useLocation} from 'react-router-dom'
 import './Asset.css';
 import Button from '../components/Button'
@@ -10,7 +8,9 @@ import { Task } from '@mui/icons-material';
 import {Link} from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
 import contractAddress from '../constants/contractAddress';
-
+import unbolt from '../truffle/build/contracts/UnBolt.json'
+// import tasks from '../truffle/build/contracts/Tasks.json'
+// import assets from '../truffle/build/contracts/Assets.json'
 
 const Asset = () => {
    // The useMoralis hook provides all the basics functionalities that is needed for authentication and user data.
@@ -60,101 +60,102 @@ const Asset = () => {
       [isAuthenticated, isWeb3Enabled, asset,task,loading]);
 
     
+   //convrt all the bigNumbers type in the asset to number
+   async function convertAssetToNumber(_array){
+    const data = _array
+    const tempArray = { id: data.id.toNumber(), assetName: data.assetName,quantity: data.quantity.toNumber() ,completed: data.completed, creator: data.creator  }
+  
+    return tempArray
+  }
 
-  //gett task count from the smart contract by calling function taskCount() which returns the task count
-  async function getTaskCount(){
-    //defining the parameters for the execute function call, which executes a function in the smart contract
-    const readOptions = {
-      contractAddress: contractAddress.taskContractAddress,
-      functionName: "taskCount",
-      abi: tasks.abi,
-    };
-    //calls the smart contract function while returning the data in variable message
-    const message = await Moralis.executeFunction(readOptions);
-    console.log(message.toNumber());
-    setTaskCount(message.toNumber())
+  //getting an asset data based on the index of the mapping from the smart contract, returns a message object
+  async function getAsset(){
+  //defining the parameters for the execute function call, which executes a function in the smart contract
+  const options = {
+    abi: unbolt.abi,
+    contractAddress: contractAddress.unboltContractAddress,
+    functionName: 'assets',
+    //empty parameter because this getter is generated automatically by solidity on creation of a mapping
+    params: {
+        '': params.id-1,
     }
+    }
+    //calls the smart contract function while returning the data in variable message
+    const message = await Moralis.executeFunction(options)
+    const _asset = await convertAssetToNumber(message)
+    setAsset(_asset)
 
-    //getting an asset data based on the index of the mapping from the smart contract, returns a message object
-    async function getAssetDataIndex(i){
-        //defining the parameters for the execute function call, which executes a function in the smart contract
-        const options = {
-        abi: assets.abi,
-        contractAddress: contractAddress.assetContractAddress,
-        functionName: 'assets',
-        //empty parameter because this getter is generated automatically by solidity on creation of a mapping
-        params: {
-            '': i,
+  }
+  
+
+  //convrt all the bigNumbers type in the asset to number
+  async function convertTasksToNumber(array){
+    const tempArray = []
+
+    try {
+      for (let index = 0; index <= array.length-1; index++) {
+        const data = array[index]
+        if(data.id != undefined){
+          tempArray[index] = { 
+            id: data.id.toNumber(), 
+            content: data.content,
+            creator_note: data.creator_note,
+            intermediary_note: data.intermediary_note,
+            completed: data.completed, 
+            signator: data.signator, 
+            asset: data.asset  }
         }
-        }
-        //calls the smart contract function while returning the data in variable message
-        const message = await Moralis.executeFunction(options)
-        // console.log(message);
-        setAsset(message)
-        }
-      
-      //getting a task based on the index of the mapping from the smart contract, returns a message object
-      async function getTaskDataIndex(i){
-        //defining the parameters for the execute function call, which executes a function in the smart contract
-        const options = {
-        abi: tasks.abi,
-        contractAddress: contractAddress.taskContractAddress,
-        functionName: 'tasks',
-        //empty parameter because this getter is generated automatically by solidity on creation of a mapping
-        params: {
-            '': i,
-        }
-        }
-        //calls the smart contract function while returning the data in variable message
-        const message = await Moralis.executeFunction(options)
-        console.log('task at index:', message);
-        return message
-        }
-
-        //getting all asset data and putting them into an array to allow for ease of use, this array is returned 
-        async function getAllTasks(){
-          await getTaskCount();
-          const tempArray = []
-          try {
-            for (let index = 1; index <= taskCount; index++) {
-              const data = await getTaskDataIndex(index);
-              tempArray[index] = { id: data.id.toNumber(), content: data.content,assetId: data.assetId.toNumber() ,completed: data.completed , signator: data.signator }
-              console.log('inside',data);
-
-            }
-          } catch (error) {
-          console.log(error);
-          }
-         console.log('tasks:',tempArray);
-
-          return tempArray;
-        }
-
-      //load data and store them in state in state hooks 
-      //in order to access them and pass them as props to other pages/components
-      async function loadData() {
-        const _taskCount = await getTaskCount();
-
-        await setTaskCount(_taskCount)
-        await console.log('task count:',_taskCount);
-
-        const taskFromBlockchain = await getAllTasks();
-        await setTask(taskFromBlockchain)
-        await console.log('task from blockchain:',taskFromBlockchain);
-
-        await getAssetDataIndex(params.id);
-        await console.log('asset on page:',asset);
-
       }
+    } catch (error) {
+      console.log(error);
+    }
+    // console.log(tempArray);
+
+    return tempArray
+  // obj.map((o) => { id: parseInt(o[0]['hex'])})
+
+  }
+
+  //getting all task based  returns a message object
+  async function getAllTasks(){
+    //defining the parameters for the execute function call, which executes a function in the smart contract
+    const options = {
+      abi: unbolt.abi,
+      contractAddress: contractAddress.unboltContractAddress,
+      functionName: 'getAssetTasks',
+      params: {
+        _assetID: params.id,
+    }
+    }
+    //calls the smart contract function while returning the data in variable message
+    const message = await Moralis.executeFunction(options)
+    // console.log(message);
+    const list = convertTasksToNumber(message)
+    return list
+  }
+    
+
+    
+      
+
+    //load data and store them in state in state hooks 
+    //in order to access them and pass them as props to other pages/components
+    async function loadData() {
+      const taskFromBlockchain = await getAllTasks();
+      await setTask(taskFromBlockchain)
+
+      await setTimeout(function() { getAsset(); }, 1000);
+
+    }
 
     //call smart contract function that changes the task status to the opposite value 
     async function toggleTaskComplete(id) {
       console.log('Task of id ', id,'is set to complete');
-      console.log(tasks.abi);
+      console.log(unbolt.abi);
       const options = {
-        abi: tasks.abi,
-        contractAddress: contractAddress.taskContractAddress,
-        functionName: 'toggleCompleted',
+        abi: unbolt.abi,
+        contractAddress: contractAddress.unboltContractAddress,
+        functionName: 'toggleTaskCompleted',
         //takes id as parameter as the solidity function needs this
         params: {
           _id: id,
@@ -163,16 +164,20 @@ const Asset = () => {
         //calls the smart contract function while returning the data in variable message
         const message = await Moralis.executeFunction(options)
         console.log('completed at:', message);
+        alert("task has been set to complete")
     }
 
     // if there are asset to display, display them else set screen to loading...
-    return asset.length==0 ? (<h1 className='loading-message'> <CircularProgress color="inherit" /> </h1>) :(
+    return asset.length == 0 ? (<h1 className='loading-message'> <CircularProgress color="inherit" /> </h1>) :(
         <div className='asset'>
 
             <div className='asset-task-container'>
                 {/* div for displaying the current asset  */}
                 <div className='section asset-display2'> 
                     AssetDisplay2 
+                    <Button classVar='dark' text={'Tasks'} onClick={()=>{console.log(task);}}/> 
+                    <Button classVar='dark' text={'asset'} onClick={()=>{console.log(asset)}}/> 
+
                 </div>
                 <div className='section task-display'> 
                     <div className='task-header'>
@@ -180,7 +185,6 @@ const Asset = () => {
                         <Link to= '/dashboard'> 
                          <ArrowBackIosNewIcon className='icon'/> Back to Dashboard
                         </Link>
-
                     </div>
                     <div className='task-content'>
                         <div className=''>
@@ -196,11 +200,7 @@ const Asset = () => {
                         {/* filter task [] to make sure their assetId is related to current asset */}
                         {/* check if this array after filter is == 0, then show no tasks */}
                         <div className='task-list'>
-                            {task.filter(item=>{
-                              if (item.assetId == params.id) {
-                                return item
-                              }
-                            }).length == 0 ? 
+                            {task.length == 0 ? 
                             <div className='no-task-message-container'>
                             <small className='no-task-message'>You dont have any tasks at the moment</small>
                             <Link to={`/createTask/${asset.id}`}> <Button classVar='dark' text={'Create Task'}/> </Link> 
@@ -209,18 +209,14 @@ const Asset = () => {
                             <>
                           {/* filter task [] to make sure their assetId is related to current asset */}
                           {/* as task array is not ==0 show all taks by mapping through the array */}
-                            {task.filter(item=>{
-                              if (item.assetId  == params.id) {
-                                return item
-                              }
-                            }).map((item)=>{return(
-                            <div className='task' key={item.id}>
+                            {task.map((item)=>{return(
+                            <div className='task' key={parseInt(item.id)}>
                               <p>Description: {item.content}</p> 
-                              <p>Asset id: {item.assetId}</p>
+                              {/* <p>Asset id: {item.assetId}</p> */}
                               <p>signator: {item.signator}</p>
-                              {console.log(item.completed)}
+                              {/* {console.log(item.completed)} */}
                               {item.completed ? <>Completed</> : <>Not Complete</>}
-                              {item.signator.toLowerCase().includes(user.get("ethAddress").toLowerCase()) &&
+                              {item.signator.toLowerCase() == user.get("ethAddress").toLowerCase() &&
                               <>
                                 <Button classVar='dark' text={'Toggle Complete'} onClick={()=>{toggleTaskComplete(item.id)}}/> 
                             

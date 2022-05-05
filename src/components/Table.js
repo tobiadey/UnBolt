@@ -8,23 +8,11 @@ import { DataGrid } from '@mui/x-data-grid';
 // this is a material ui component mainly, which was edited to take a prop rather than const variables to load the table
 // https://mui.com/material-ui/react-table/
 const Table = (assets) => {
-  // const [row, setRow] = useState([]);
 
-  const tempArray = []
+  console.log(assets.assets);
+  const tempArray = assets.assets
 
-  // i dont remember
-  const data = Object.values(assets)
-
-  // loop through assets array passed in a prop
-  //appending the tempArray with the data
-  for (let index = 1; index <= (data[0].length-1); index++) {
-    tempArray[index] = data[0][index]
-  }
-
-  // shift as first index of 0 is empty 
-  tempArray.shift()
-  console.log(tempArray);
-
+ 
 
 // column headings 
 const columns = [

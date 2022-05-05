@@ -1,7 +1,6 @@
 import { useEffect,useState } from 'react'
 import {Link} from 'react-router-dom'
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
-import assets from '../truffle/build/contracts/Assets.json'
 import Table from '../components/Table'
 import Button from '../components/Button'
 import Navbar from '../components/Navbar'
@@ -17,7 +16,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import contractAddress from '../constants/contractAddress';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Settings from './Settings';
+import unbolt from '../truffle/build/contracts/UnBolt.json'
 
+// import assets from '../truffle/build/contracts/Assets.json'
 
 
 
@@ -28,16 +29,14 @@ const Dashboard = () => {
   // useState gives a local state in a function component
   // the first paramter is the value and the second is the setter
   const [assetCount, setAssetCount] = useState(0)
-  const [asset, setAsset] = useState([]);
+  const [assets, setAssets] = useState([]);
   // state hooks to know which body to use for the dashbaord
   const [body, setBody] = useState('');
   //allow the sidebar.js componenet to call the handleSetBody() function which passes the current body to use
   const handleSetBody = (value) => {setBody(value)};
   const [search, setSearch] = useState('');
 
-  //varables gotten from the constants directory
-  const assetContractAddress = contractAddress.assetContractAddress;
-  const taskContractAddress = contractAddress.taskContractAddress;
+;
 
     // allows for performing side effects in the component
     // side effect in this case being calling the loadPage() function
@@ -54,7 +53,7 @@ const Dashboard = () => {
             const web3Provider = await enableWeb3({ provider: connectorId });
           }
           //checking if the asset has already been loaded with the data, if (length==0) then no data has been loaded
-          if(asset.length == 0){
+          if(assets.length == 0){
             // call the function loadData() but wait 1 second before doing this in order to let enableweb3() run above
             await setTimeout(function() { loadData(); }, 1000);
           }
@@ -66,74 +65,55 @@ const Dashboard = () => {
       loadPage()
     }, 
     //callback functions, array of variables that the component will check to make sure changed before re-rendering. 
-    [isAuthenticated, isWeb3Enabled, asset]);
+    [isAuthenticated, isWeb3Enabled, assets]);
 
 
-  //gett asset count from the smart contract by calling function assetCount() which returns the asset count
-  async function getAssetCount(){
-    //defining the parameters for the execute function call, which executes a function in the smart contract
-    const readOptions = {
-      contractAddress: contractAddress.assetContractAddress,
-      functionName: "assetCount",
-      abi: assets.abi,
-    };
-    //calls the smart contract function while returning the data in variable message
-    const message = await Moralis.executeFunction(readOptions);
-    setAssetCount(message.toNumber())
-    }
-
-  //getting an asset data based on the index of the mapping from the smart contract, returns a message object
-  async function getAssetDataIndex(i){
+    async function getAllAssets(){
     //defining the parameters for the execute function call, which executes a function in the smart contract
     const options = {
-      abi: assets.abi,
-      contractAddress: contractAddress.assetContractAddress,
-      functionName: 'assets',
-      //empty parameter because this getter is generated automatically by solidity on creation of a mapping
-      params: {
-        '': i,
-      }
+      abi: unbolt.abi,
+      contractAddress: contractAddress.unboltContractAddress,
+      functionName: 'getAssets',
+    //empty parameter because this getter is generated automatically by solidity on creation of a mapping
     }
     //calls the smart contract function while returning the data in variable message
     const message = await Moralis.executeFunction(options)
-
-    return message;
+    return message
     }
 
-  //getting all asset data and putting them into an array to allow for ease of use, this array is returned 
-  async function getAllAssets(){
-    await getAssetCount();
-    const tempArray = []
-    try {
-      for (let index = 1; index <= assetCount; index++) {
-        const data = await getAssetDataIndex(index);
-        tempArray[index] = { id: data.id.toNumber(), assetName: data.assetName, completed: data.completed , quantity: data.quantity.toNumber() }
+    //convrt all the bigNumbers type in the asset to number
+    async function convertToNumber(array){
+      const tempArray = []
+      // console.log(array);
+      try {
+        for (let index = 0; index <= array.length-1; index++) {
+          const data = array[index]
+          if(data.id != undefined){
+            tempArray[index] = { id: data.id.toNumber(), assetName: data.assetName,quantity: data.quantity.toNumber() ,completed: data.completed, creator: data.creator  }
+          }
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+      return tempArray
     }
-    return tempArray;
-  }
+
 
   //load data and store them in state in state hooks 
   //in order to access them and pass them as props to other pages/components
   async function loadData() {
-    const _assetCount = await getAssetCount();
-    await setAssetCount(_assetCount)
-    // await console.log('asset count:',_assetCount);
-
     const assetFromBlockchain = await getAllAssets();
-    await setAsset(assetFromBlockchain)
-    // await console.log('asset from blockchain:',assetFromBlockchain);
+    const _assets = await convertToNumber(assetFromBlockchain);
+    setAssets(_assets)
   }
 
-  
+
 
   return(
   <>
     {/* main/dashboard section */}
-    {/* {body == 'dashboard' | body == '' ? */}
-    {body == 'dashboard'  ?
+    {body == 'dashboard' | body == '' ?
+    // {body == 'dashboard'  ?
       <div className='dashboard'>
         {/* onClick= {(e)=> {setBody('search')}} */}
         <Sidebar page={'dashboard'}handleSetBody= {handleSetBody}/>
@@ -152,7 +132,7 @@ const Dashboard = () => {
                 {/* <input type='text' placeholder= 'Search...'></input> */}
                 {/* <SearchIcon className='icon'/>  */}
                 UNBOLT
-                  {/* <Button classVar='dark' text={'asset Addrr'} onClick={(e)=>{console.log(assetContractAddress)}}/> */}
+                  <Button classVar='dark' text={'Refresh Table'} onClick={(e)=>{test2()}}/>
               </div>
               <Link to= '/createAsset'> <Button classVar='dark' text={'Create Asset'}/> </Link> 
               {isWeb3Enabled && 
@@ -162,10 +142,10 @@ const Dashboard = () => {
               </>
               }
             </div>  
-            {asset.length >0 ? 
+            {assets.length >0 ? 
 
             <div className='table-container'>
-            <Table assets={asset} />
+            <Table assets={assets} />
             </div>
 
             :
@@ -211,7 +191,7 @@ const Dashboard = () => {
               but it is alterted to fit my code by changing the list which is filtered through 
               and the return value of the mapping
                */}
-                {asset.filter(item => {
+                {assets.filter(item => {
                   if (search == '') {
                     return item
                   } else if(item.assetName.toLowerCase().includes(search.toLowerCase())) {
@@ -242,7 +222,7 @@ const Dashboard = () => {
 
     }
     {/* benefitiary section */}
-    {body== 'setting'| body == '' ?
+    {body== 'setting' ?
             <div className='setting'>
               <Sidebar page={'setting'}handleSetBody= {handleSetBody}/>
               <div className='setting-container'> 
