@@ -6,6 +6,9 @@ pragma experimental ABIEncoderV2;
 contract Assets{
     uint256 public assetCount = 0; //state variable to keep track of the number of assets.
     Asset[] public assets; //allows to use id as key to find assets (basically search asset by id)
+    
+    // //mappping each asset (id) with an array of assets it is made up of
+    // mapping(uint256 => Task[]) public userAssetMap;
 
     //constructor - executed once when a contract is created and it initialises contract state.
     constructor() public { 
@@ -51,6 +54,23 @@ contract Assets{
     function getAssets() public view returns (Asset[] memory){
         return assets;
     }
+
+    // function getUserid(address _userAddress) public view returns (uint){
+    //     Asset
+    // }
+
+    // function getUserAssets(address _userAddress) public view returns (Asset[] memory){
+    //     Asset[] memory tempAsset;
+
+    //     for (uint i=0; i<assets.length; i++){
+    //         Asset memory newAsset; //an empty temporary Asset object
+    //         if(assets[i].creator == _userAddress ){
+    //             tempAsset.push(assets[i]);
+    //         }
+    //     }
+    //     return tempAsset;
+
+    // }
 
     //change the toggle completed variable to the opposide of current value
     // should only works if all tasks associated with the asset are completed (need to work on this!)
@@ -155,9 +175,28 @@ contract Tasks is Assets{ //make assets the parent contract
     //change the toggle completed variable to the opposide of current value
     function toggleTaskCompleted(uint _id) public returns (bool){
         Task memory _task = tasks[_id-1];
-        require(msg.sender == _task.signator, "This function is restricted to the signator");
+        // require(msg.sender == _task.signator, "This function is restricted to the signator");
         _task.completed = !_task.completed;
         tasks[_id-1] = _task;
+
+
+        //find the index of the task in the assetTaskMap
+        Task[] memory _allTasks = getAssetTasks(_task.asset.id);
+        uint8 index = 0;
+        for (index; index < _allTasks.length-1; index++) {
+            if (_allTasks[index].id == _id) {
+                index = index;
+                break;
+            } 
+        }
+        //make these changes in the asset task map
+        // assetTaskMap[_task.asset.id-1][0] = _task;
+        assetTaskMap[_task.asset.id-1][index] = _task;
+
+      
+        // Task[] memory _allTasks = getAssetTasks(_task.asset.id);
+        
+        
 
         emit CompletedTaskValueChanged(!_task.completed);
         return !_task.completed;  // retruns the new value 

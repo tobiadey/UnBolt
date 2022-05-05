@@ -9,7 +9,7 @@ module.exports = function(deployer) {
     // deployer.deploy(Task);
 
     // // deploy Task into the network
-    deployer.deploy(Asset);
+    deployer.deploy(Task);
 
     // deploy Task into the network
     // deployer.deploy(Unbolt);
