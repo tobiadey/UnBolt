@@ -50,9 +50,13 @@
     justify-content: center;
 }
 
+
+.input{
+    padding: 0px 0px;
+}
 .input-box{
     /* background-color: blue; */
-    height: 100px;
+    /* height: 100px; */
 }
 
 .input-box .bio{
@@ -66,5 +70,7 @@
 }
 
 .bio-container{
-    color: blue;
+    color: black;
+    border-bottom: 1px solid grey;
+    margin-bottom: 20px;
 }

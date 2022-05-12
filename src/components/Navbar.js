@@ -29,7 +29,7 @@ const Navbar = () => {
                         {/* display user or else display small */}
                         {user ? <small>{
                         
-                        <Link  to={`/profile/${user.get('username')}/${user.get('ethAddress')}`}> {user.get("ethAddress")} </Link>
+                        <Link  to={`/profile/${user.get('username')}`}> {user.get("ethAddress")} </Link>
 
                         
                         }</small> : <small>idk</small> }

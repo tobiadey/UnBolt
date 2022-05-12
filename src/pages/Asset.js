@@ -23,6 +23,7 @@ const Asset = () => {
     const [taskCount, setTaskCount] = useState([])
     const [task, setTask] = useState([])
     const [error, setError] = useState(null)
+    const [usernameData, setUsernameData] = useState(null)
 
     const params = useParams()
     const navigate = useNavigate()
@@ -167,6 +168,21 @@ const Asset = () => {
         alert("task has been set to complete")
     }
 
+      //commit changes of bio to the database
+      async function getUsername(_ethAddress){
+        // console.log(_ethAddress);
+        // 0x8cae7f1b51feff8f8b73ed17e0c183ff08d541aa
+        // get user by address
+        const results = await Moralis.Cloud.run("getUsernames", {address:_ethAddress.toLowerCase()}) 
+        // console.log(results);
+        // console.log(results[0]);
+        console.log(results[0].attributes.username);
+        setUsernameData(results[0].attributes.username)
+  
+        return results[0].attributes.username
+    
+        }
+
     // if there are asset to display, display them else set screen to loading...
     return asset.length == 0 ? (<h1 className='loading-message'> <CircularProgress color="inherit" /> </h1>) :(
         <div className='asset'>
@@ -175,8 +191,10 @@ const Asset = () => {
                 {/* div for displaying the current asset  */}
                 <div className='section asset-display2'> 
                     AssetDisplay2 
-                    <Button classVar='dark' text={'Tasks'} onClick={()=>{console.log(task);}}/> 
+                    <Button classVar='dark' text={'Tasks'} onClick={()=>{console.log(task)}}/> 
                     <Button classVar='dark' text={'asset'} onClick={()=>{console.log(asset)}}/> 
+                    <Button text={'test'} classVar='dark' onClick = {(e) => getUsername("0x8cae7f1b51feff8f8b73ed17e0c183ff08d541aa")}/>
+
 
                 </div>
                 <div className='section task-display'> 
@@ -214,7 +232,10 @@ const Asset = () => {
                               <p>Description: {item.content}</p> 
                               {/* <p>Asset id: {item.assetId}</p> */}
                               {/* <Link  to={`/profile/${user.get('username')}/${item.signator}`}>  */}
-                              <p>signator: {item.signator}</p>
+                              {/* {console.log(item.signator)} */}
+                              <Link  to={`/profile/${item.signator.toLowerCase()}`}> signator: {item.signator} </Link>
+
+                              {/* <p>signator: {item.signator}</p> */}
                               {/* </Link> */}
                               {/* {console.log(item.completed)} */}
                               {item.completed ? <>Completed</> : <>Not Complete</>}

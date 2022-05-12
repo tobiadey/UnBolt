@@ -35,7 +35,8 @@ function App() {
           <Route path= '/createAsset' element={<CreateAsset />} />
           <Route path= '/createTask/:id' element={<CreateTask />} />
           <Route path= '/asset/:id' element={<Asset/>} />
-          <Route path= '/profile/:name/:address' element={<Profile/>} />
+          <Route path= '/profile/:value' element={<Profile/>} />
+          {/* <Route path= '/profile/:address' element={<Profile/>} /> */}
           <Route path= '/intermediaries' element={<Intermediaries/>} />
           </>
           :
@@ -44,7 +45,8 @@ function App() {
           <Route path= '/createAsset' element={<NoAccess />} />
           <Route path= '/createTask/:id' element={<NoAccess />} />
           <Route path= '/asset/:id' element={<NoAccess/>} />
-          <Route path= '/profile/:name/:address' element={<NoAccess/>} />
+          <Route path= '/profile/:value' element={<NoAccess/>} />
+          {/* <Route path= '/profile/:address' element={<Profile/>} /> */}
           <Route path= '/intermediaries' element={<NoAccess/>} />
 
           </>}

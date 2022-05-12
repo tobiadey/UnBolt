@@ -9,24 +9,33 @@ import Button from '../components/Button'
 // this is a handler for the profile page
 const Profile = () => {
   
-const {name,address} = useParams()
+const {value} = useParams()
   
   // The useMoralis hook provides all the basics functionalities that is needed for authentication and user data.
   const {user,Moralis, setUserData,useMoralisQuery } = useMoralis();
   const [ethAddress, setEthAddress] = useState('');
-  const [bio, setBio] = useState(user.get('bio'));
+  const [bio, setBio] = useState('');
   const [otherUserbio, setOtherUserBio] = useState('');
   const [username, setUserName] = useState(user.get('username'));
+  const [name, setName] = useState(user.get(''));
 
 
 
   useEffect(() => {
-    if (user.get('username') != name && otherUserbio == '' ) {
-      // await getUsersBio()
-      setOtherUserBio("not me")
-    }
+    const loadPage = async () => {
+      if (bio== ''){
+        const bioValue = await getUsersBio()
+        if (bioValue != undefined) {
+          setBio(bioValue)
+        } else {
+          setBio("This user has not defined a bio")
+        }  
+      }
+  }
 
-  },[otherUserbio]);
+    loadPage()
+
+  },[bio]);
 
 
   
@@ -87,17 +96,34 @@ const {name,address} = useParams()
     // const results = await Moralis.Cloud.run("hello", {name:"Jeff"}) 
     // console.log(results);
 
-    // get user by username
-    const results = await Moralis.Cloud.run("getEthAddress", {name:name}) 
-    console.log(results[0]);
+    // check username has not been taken 
+    //code 
 
+    // https://stackoverflow.com/questions/5778020/check-whether-an-input-string-contains-a-number-in-javascript
+    var hasNumber = /\d/; 
 
-    // make sure username is not taken
-    
- 
+    // if we have the eth address as the params
+    // get username only
+    if (hasNumber.test(value)){
+      setEthAddress(value)
+      const results = await Moralis.Cloud.run("getUsernames", {address:value.toLowerCase()}) 
+      console.log(results[0].attributes.username);
+      setName(results[0].attributes.username)
       return results[0].attributes.bio
-
+  
+    // we have the user name, therefore lets get the address
+      // get user by username
+    }else{
+      setName(value)
+      const results = await Moralis.Cloud.run("getEthAddress", {name:value}) 
+      console.log(results[0]);
+      setEthAddress(results[0].attributes.ethAddress)
+      return results[0].attributes.bio
     }
+  
+    }
+
+
    
 
  
@@ -118,15 +144,15 @@ const {name,address} = useParams()
   
 
           { user.get('username') != name ? 
-            <div>
-              <Button text={'test'} classVar='dark' onClick = {(e) => getUsersBio()}/>
-              {otherUserbio}
+            <div className='bio-container'>
+              {/* <Button text={'test'} classVar='dark' onClick = {(e) => getUsersBio()}/> */}
+              {bio}
 
             </div>
 
             :
             <div>
-             <Button text={'test'} classVar='dark' onClick = {(e) => getUsersBio()}/>
+             {/* <Button text={'test'} classVar='dark' onClick = {(e) => getUsersBio()}/> */}
              <div className='bio-container'>
              {bio}
              </div>
