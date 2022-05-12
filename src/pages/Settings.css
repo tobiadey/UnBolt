@@ -25,7 +25,7 @@
     font-size: 14px;
     justify-content: center;
     margin-bottom: 20px;
-    border-bottom: 1px solid grey;
+    /* border-bottom: 1px solid grey; */
 }
 
 .profile-container{
@@ -94,4 +94,27 @@ padding-bottom: 10px;
 
 .bin{
     /* margin-top: 2.5px; */
+}
+
+.select-box{
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.table-container-intermediary{
+    /* background-color: blue; */
+    /* border-top: 1px solid black; */
+    padding-top: 10px;
+    border-top: 1px solid grey;
+    display: flex;
+    flex-direction: column;
+}
+
+.table-container-intermediary .btn-container{
+    /* background-color: green; */
+    display: flex;
+    justify-content: flex-end;
+
 }

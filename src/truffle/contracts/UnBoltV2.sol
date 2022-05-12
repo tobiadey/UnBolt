@@ -5,10 +5,10 @@
 
 // //This is an asset contract.
 // contract Assets{
-//     uint256 public assetCount = 0; //state variable to keep track of the number of assets.
+//     uint256 public assetCount = 1; //state variable to keep track of the number of assets.
 //     Asset[] public assets; //allows to use id as key to find assets (basically search asset by id)
 
-//     constructor() { 
+//     constructor payable() { 
 //         createAssets(["Berken Bag", "PS4", "Iphone 6"], [1000, 4500, 6500]);
 //     }
 
@@ -37,12 +37,11 @@
 //             unchecked {
 //                 // There is neve going where it underflows 
 //                 // There is never going to be where it overflow 
-//                 i++;
+//                 ++i;
 //             }
 
 //         }
 //         return true;
-
 //     }
 
 //     // Re-entrancy 
@@ -57,7 +56,7 @@
 //         // Always use a language default values for pimitives to your advantage
 //         assets.push(newAsset);
 //         // Interaction
-//        assetCount++;
+//        ++assetCount;
         
 //         //emit event to stack
 //         emit AssetCreated(
@@ -111,6 +110,7 @@
 //     event Sender(address indexed who, address indexed signator );
 //     event TaskCreated(uint indexed id,address indexed who, string indexed content);
 //     event CompletedTaskValueChanged(bool indexed newValue);
+//     event CompletedTaskValueChanged2(Task indexed newValue);
 
 
 //     //create a task
@@ -122,7 +122,7 @@
 //         currAsset = assets[_assetId-1]; //get the associated asset value to store temporary asset
 //         require(msg.sender == currAsset.creator, "This function is restricted to the asset creator"); 
 
-//         taskCount++;
+//         ++taskCount;
 //         //create an empty temporary Task object adding the function paramenter values to it then
 //         //it is pushed into the the array of assets
 //         Task memory newTask; 
@@ -155,17 +155,48 @@
 //         require(msg.sender == _task.signator, "This function is restricted to the signator");
 //         _task.intermediary_note = _note;
 //         tasks[_id - 1 ] = _task;
+
+//         //find the index of the task in the assetTaskMap
+//         Task[] memory _allTasks = getAssetTasks(_task.asset.id);
+//         uint8 index = 0;
+//         for (index; index < _allTasks.length-1; ++index) {
+//             if (_allTasks[index].id == _id) {
+//                 index = index;
+//                 break;
+//             } 
+//         }
+//         //make these changes in the asset task map
+//         assetTaskMap[_task.asset.id-1][index] = _task;
+
 //         emit Sender(msg.sender,_task.signator);
 //     }
 
 //     //change the toggle completed variable to the opposide of current value
-//     function toggleTaskCompleted(uint _id) public returns (bool completionStatus){
-//         Task memory _task = tasks[_id-1];
-//         require(msg.sender == _task.signator, "This function is restricted to the signator");
+//     function toggleTaskCompleted(uint256 _id) public returns (bool completionStatus){
+//         // require(msg.sender == _task.signator, "This function is restricted to the signator");
+//         Task memory _task = tasks[_id - 1];
 //         completionStatus = !_task.completed;
 //         _task.completed = completionStatus;
 //         tasks[ _id - 1] = _task;
 
+//           //find the index of the task in the assetTaskMap
+//         Task[] memory _allTasks = getAssetTasks(_task.asset.id);
+//         uint8 index = 0;
+//         for (index; index < _allTasks.length-1; ++index) {
+//             if (_allTasks[index].id == _id) {
+//                 index = index;
+//                 break;
+//             } 
+//         }
+//         //make these changes in the asset task map
+//         // assetTaskMap[_task.asset.id-1][0] = _task;
+//         assetTaskMap[_task.asset.id-1][index] = _task;
+
 //         emit CompletedTaskValueChanged(completionStatus);
+
 //     }
+
+// //when a contract inherits from these two only 1 contract is created on the blockchain which is this one
+// contract Unbolt is Tasks{  //inheritance
+
 // }

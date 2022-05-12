@@ -16,6 +16,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import contractAddress from '../constants/contractAddress';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Settings from './Settings';
+import Settings2 from './Settings2';
 import unbolt from '../truffle/build/contracts/UnBolt.json'
 
 // import assets from '../truffle/build/contracts/Assets.json'
@@ -132,7 +133,7 @@ const Dashboard = () => {
                 {/* <input type='text' placeholder= 'Search...'></input> */}
                 {/* <SearchIcon className='icon'/>  */}
                 UNBOLT
-                  <Button classVar='dark' text={'Refresh Table'} onClick={(e)=>{test2()}}/>
+                  {/* <Button classVar='dark' text={'Refresh Table'} onClick={(e)=>{test2()}}/> */}
               </div>
               <Link to= '/createAsset'> <Button classVar='dark' text={'Create Asset'}/> </Link> 
               {isWeb3Enabled && 
@@ -237,7 +238,9 @@ const Dashboard = () => {
                   </div>  
                 </div>
                 <div className='user-container'>
-                   <Settings/>
+                   {/* <Settings/> */}
+                   <Settings2/>
+                   {/* <Table assets={assets} /> */}
                 </div>
               </div>
             </div>

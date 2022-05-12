@@ -3,6 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import FaceIcon from '@mui/icons-material/Face';
 import { useMoralis } from "react-moralis";
+import {Link} from 'react-router-dom'
 
 // components for showing the navbar
 const Navbar = () => {
@@ -26,7 +27,12 @@ const Navbar = () => {
                     
                     <>
                         {/* display user or else display small */}
-                        {user ? <small>{user.get("ethAddress")}</small> : <small>idk</small> }
+                        {user ? <small>{
+                        
+                        <Link  to={`/profile/${user.get('username')}/${user.get('ethAddress')}`}> {user.get("ethAddress")} </Link>
+
+                        
+                        }</small> : <small>idk</small> }
 
                     </>
                     {/* <div className='item alert'> 

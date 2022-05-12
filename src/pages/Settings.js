@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import { useMoralis } from "react-moralis";
 import { useState, useEffect } from 'react'
 import DeleteIcon from '@mui/icons-material/Delete';
+import Table from '../components/Table'
 
 
 // this is a handler for the about page
@@ -37,8 +38,6 @@ const Settings = () => {
 
     // getAllIntermediaries()
 
-
-
   },[toggleAdd,toggleView,buttonTextAdd,buttonTextView]);
 
   async function  onSubmit(e){
@@ -70,25 +69,30 @@ const Settings = () => {
     }else{
       alert('Change username or add intermediary before submitting form! ')
     }
-
-    
   }
 
   async function addIntermediary(){
-    // Simple syntax to create a new subclass of Moralis.Object.
+    // creating a new subclass of of an Intermediary Object.
+    //creates a new table db table called Intermediary (if not exisiting)
     const Intermediary = Moralis.Object.extend("Intermediary");  //creates a new table db table called Intermediary
 
     // Create a new instance of that class.
-    const intermediary = new Intermediary(); //use this object to add data to a row of that table
+    //use this object to add data to a row of that table
+    const intermediary = new Intermediary(); 
     // map the current user to the intermediry relationship
     intermediary.set('user', user.get('username'))
     intermediary.set('name', intermediaryName)
     intermediary.set('ethAddress', intermediaryAddress)
 
+    //create a new column userRelationship which holds the a user object
+    //database relation (user-> intermediary relationship)
     const relation = intermediary.relation("userRelationship");
     relation.add(Moralis.User.current());
 
+    //save the intermediary
     const result = await intermediary.save()
+
+    //create a relation in the user table and another column called users
     createRelationship(intermediary)
 
     // alert("Successfully added " + results.length + " intermediary");
@@ -100,12 +104,15 @@ const Settings = () => {
 
   async function getAllIntermediaries(){
     setToggleView(!toggleView)
+    // creating a new subclass of of an Intermediary Object.
     const Intermediary = Moralis.Object.extend("Intermediary");
+    //query the Intermediary table where users equal the logged in user and return the users column
     const query = new Moralis.Query(Intermediary);
-    // query.equalTo("user", user.get('username'));
     query.equalTo("users", Moralis.User.current());
+    // this returns an array of users that have been added as intermediaries
     const results = await query.find();
     // alert("Successfully retrieved " + results.length + " intermediaries.");
+    //set the state hook intermediaryList to the list returned
     setIntermediaryList(results)
     // Do something with the returned Moralis.Object values
     for (let i = 0; i < results.length; i++) {
@@ -134,18 +141,19 @@ const Settings = () => {
   }
 
   async function createRelationship(_intermediary){
+    //add relation in the intermedairy table as users
     const intermedairy = _intermediary
     const relation1 = intermedairy.relation("users")
     relation1.add(Moralis.User.current());
     const result1 = await intermedairy.save();
     console.log(result1);
 
+    // add the realtion in the users table as Intermediaries
     const user = Moralis.User.current();
     const relation = user.relation("Intermediaries");
     relation.add(_intermediary);
     const result = await user.save();
     console.log(result);
-
   }
 
   return (
@@ -191,8 +199,10 @@ const Settings = () => {
                     return(
                       <div key={item.id} className='item'>
                         <div>
-                        <p>{item.get("name")} <DeleteIcon className='bin' style={{cursor: 'pointer'}} onClick = {(e)=> console.log("deleting this")}/> </p> 
-                        {/* <Button text='delete' onClick = {(e) => removeRelationship(item)}/> */}
+                        <p>{item.get("name")} 
+                        {/* <DeleteIcon className='bin' style={{cursor: 'pointer'}} onClick = {(e)=> console.log("deleting this")}/>  */}
+                        </p> 
+                        <Button text='delete' onClick = {(e) => removeRelationship(item)}/>
                         </div>
                       </div>
                     )

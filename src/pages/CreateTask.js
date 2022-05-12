@@ -25,7 +25,7 @@ const CreateTask = () => {
     const [content, setContent] = useState('')
     const [creatorMessage, setCreatorMessage] = useState('')
     const [signator, setSignator] = useState('')
-    const [intermedairyList, setIntermediaryList]= useState([])
+    const [intermediaryList, setIntermediaryList]= useState([])
 
     // allows for performing side effects in the component
     // side effect in this case being calling the enableWeb3 function
@@ -36,10 +36,10 @@ const CreateTask = () => {
         if (isAuthenticated && !isWeb3Enabled){
           enableWeb3({ provider: connectorId });
         }
-        if(intermedairyList.length < 1){
+        if(intermediaryList.length < 1){
         getAllIntermediaries()
       }
-      }, [isAuthenticated, isWeb3Enabled,intermedairyList]);
+      }, [isAuthenticated, isWeb3Enabled,intermediaryList]);
     
 
   //getting an asset data based on the index of the mapping from the smart contract, returns a message object
@@ -125,7 +125,7 @@ const CreateTask = () => {
   //   const object = results[i];
     // alert(object.id + " - " + object.get("ownerName"));
   //   console.log(object);
-  //   console.log(object.get("user") + " created intermedairy relationship with " + object.get("name"));
+  //   console.log(object.get("user") + " created intermediary relationship with " + object.get("name"));
   // }
   }
 
@@ -168,9 +168,9 @@ const CreateTask = () => {
                               <div className='select-box'>
                                 <select value={signator} onChange={(e) => setSignator(e.target.value)}>
                                   <option defaultValue>None</option>
-                                  { intermedairyList.length > 0 && 
+                                  { intermediaryList.length > 0 && 
                                       <>
-                                        { intermedairyList.map((item)=>{
+                                        { intermediaryList.map((item)=>{
                                         // console.log(item.get("name"));
                                         return(
                                         <option key={item.id} value={item.attributes.ethAddress}>{item.get("name")}</option>

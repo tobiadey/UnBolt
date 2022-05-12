@@ -213,7 +213,9 @@ const Asset = () => {
                             <div className='task' key={parseInt(item.id)}>
                               <p>Description: {item.content}</p> 
                               {/* <p>Asset id: {item.assetId}</p> */}
+                              {/* <Link  to={`/profile/${user.get('username')}/${item.signator}`}>  */}
                               <p>signator: {item.signator}</p>
+                              {/* </Link> */}
                               {/* {console.log(item.completed)} */}
                               {item.completed ? <>Completed</> : <>Not Complete</>}
                               {item.signator.toLowerCase() == user.get("ethAddress").toLowerCase() &&
