@@ -16,7 +16,7 @@ function onAdd (name,description,quantity){
     console.log(name, ":", description, ":",quantity);
   }
 
-const CreateAsset = ({}) => {
+const CreateAsset = () => {
     // The useMoralis hook provides all the basics functionalities that is needed for authentication and user data.
     const { authenticate, isAuthenticated, enableWeb3,isWeb3Enabled, logout, user } = useMoralis();
    
@@ -61,6 +61,7 @@ const CreateAsset = ({}) => {
       functionName: 'createAsset',
       params: {
         _assetName: name,
+        _description: description,
         _quantity: quantity
       }
     }

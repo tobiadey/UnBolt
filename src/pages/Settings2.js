@@ -46,6 +46,7 @@ const Settings2 = () => {
       
           if(intermediaryList.length == 0 ){
               await setTimeout(function() { getAllIntermediaries(); }, 1000);
+              // await getAllIntermediaries();
               
           }
   

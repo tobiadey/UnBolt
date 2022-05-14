@@ -1,8 +1,11 @@
 import './Profile.css';
-import { useParams, Link} from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useMoralis } from "react-moralis";
 import { useState, useEffect } from 'react'
 import Button from '../components/Button'
+import AssetDisplay from '../components/AssetDisplay'
+import unbolt from '../truffle/build/contracts/UnBolt.json'
+import contractAddress from '../constants/contractAddress';
 
 
 
@@ -12,30 +15,47 @@ const Profile = () => {
 const {value} = useParams()
   
   // The useMoralis hook provides all the basics functionalities that is needed for authentication and user data.
-  const {user,Moralis, setUserData,useMoralisQuery } = useMoralis();
+  const {user,Moralis, setUserData,useMoralisQuery, authenticate, isAuthenticated, enableWeb3,isWeb3Enabled, logout } = useMoralis();
   const [ethAddress, setEthAddress] = useState('');
   const [bio, setBio] = useState('');
   const [otherUserbio, setOtherUserBio] = useState('');
-  const [username, setUserName] = useState(user.get('username'));
+  const [username, setUsername] = useState(user.get('username'));
   const [name, setName] = useState(user.get(''));
+  const [userAssets, setUserAssets] = useState([]);
 
 
+  // allows for performing side effects in the component
+  // side effect in this case being calling the enableWeb3 function
+  // use effect runs after every render
+  // if the value of the second argunment changes(isAuthenticated, isWeb3Enabled), useEffect is rerun
 
   useEffect(() => {
     const loadPage = async () => {
+      const connectorId = window.localStorage.getItem("connectorId");
+      if (isAuthenticated && !isWeb3Enabled){
+          await enableWeb3({ provider: connectorId });
+      }
+
       if (bio== ''){
         const bioValue = await getUsersBio()
         if (bioValue != undefined) {
-          setBio(bioValue)
+          await setBio(bioValue)
         } else {
-          setBio("This user has not defined a bio")
+          await setBio("This user has not defined a bio")
         }  
+      }
+
+      if(userAssets.length == 0){
+        // call the function loadData() but wait 1 second before doing this in order to let enableweb3() run above
+        await setTimeout(function() { getUserAssets() }, 100);
       }
   }
 
     loadPage()
 
-  },[bio]);
+  },[isAuthenticated, isWeb3Enabled,bio]);
+
+
 
 
   
@@ -43,28 +63,45 @@ const {value} = useParams()
 //add bio to database helper function
   async function saveChange(){
       //user is changing it all
+      //check if username is take
+      // if (username is taken){
+      //   alert("username is taken")
+      // }
+
+      //add conditions here to know that username is not taken 
       if (username!= user.get('username') && bio != user.get('bio')) {
-        setUserData({username})
-        addBio()
+        const tempUsername = username
+        await setUserData({username})
+        await addBio()
         console.log('bio:', bio,"  " );
-        setUsername('')
-        setBio('')
-        alert("username and new bio added")
+        await setUsername('')
+        await setBio('')
+        await alert("username and new bio added")
+        //navigate to the url of the new newusername as old endpoint doesnt work anymore
+        await navigate(`../profile/${tempUsername}`, { replace: true });
+        await window.location.reload();
   
   
       //user is changing username only
       } else if (username!= user.get('username') && bio == user.get('bio')){
-        setUserData({username})
-        setUsername('')
-        alert("username saved successfully")
+        const tempUsername = username
+        await setUserData({username})
+        await setUsername('')
+        await alert("username saved successfully")
+        //navigate to the url of the new newusername as old endpoint doesnt work anymore
+        await navigate(`../profile/${tempUsername}`, { replace: true });
+        await window.location.reload();
+
+
+
   
   
       //user is chaning bio only
       }else if (username== user.get('username') && bio!= user.get('bio')){
-        addBio()
+        await addBio()
         console.log('bio:', bio);
-        setBio('')
-        alert("Bio saved successfully")
+        await setBio('')
+        await alert("Bio saved successfully")
 
       //user has not changed anything
       }else{
@@ -99,12 +136,16 @@ const {value} = useParams()
     // check username has not been taken 
     //code 
 
-    // https://stackoverflow.com/questions/5778020/check-whether-an-input-string-contains-a-number-in-javascript
-    var hasNumber = /\d/; 
+    
+    // https://ethereum.stackexchange.com/questions/1374/how-can-i-check-if-an-ethereum-address-is-valid
+    function validateInputAddresses(address) {
+      return (/^(0x){1}[0-9a-fA-F]{40}$/i.test(address));
+    }
 
     // if we have the eth address as the params
     // get username only
-    if (hasNumber.test(value)){
+    // if (hasNumber.test(value) && value.length == ){
+    if (validateInputAddresses(value)){
       setEthAddress(value)
       const results = await Moralis.Cloud.run("getUsernames", {address:value.toLowerCase()}) 
       console.log(results[0].attributes.username);
@@ -123,11 +164,31 @@ const {value} = useParams()
   
     }
 
+    async function getUserAssets(){
+      //defining the parameters for the execute function call, which executes a function in the smart contract
+      console.log(unbolt.abi)
+      
+      const options = {
+        abi: unbolt.abi,
+        contractAddress: contractAddress.unboltContractAddress,
+        functionName: 'getUserAssets',
+        params:{
+          _userAddress: ethAddress
+        }
+      }
+      //calls the smart contract function while returning the data in variable message
+      const message = await Moralis.executeFunction(options)
+      console.log(message);
+      setUserAssets(message)
+
+      }
+
 
    
 
  
   return (
+    // <> { name != 'search' ? <> profile </> : <> fllf </> }</>
     <div className='user-container-profile'>
       {/* Profile of {params.name} */}
       <div className='section-container-profile'>
@@ -161,7 +222,7 @@ const {value} = useParams()
               <div className='input'>
                   <label className='input-title'>Username</label>
                   <div className='input-box'>
-                      <input type='text' value={username} placeholder = 'Add New Message...' onChange = {(e) => setUserName(e.target.value)}/>
+                      <input type='text' value={username} placeholder = 'Add New Message...' onChange = {(e) => setUsername(e.target.value)}/>
                   </div>
               </div>
             </div>
@@ -177,10 +238,46 @@ const {value} = useParams()
 
             <Button text={'Save Bio'} classVar='dark' onClick = {(e) => saveChange()}/>
 
+
             </div>
 
           }
-      
+
+          <div className='user-asset-display'>
+
+          { userAssets.length > 0 ? 
+          <>
+          All assets asscoaited with this user 
+          {userAssets.map((item)=>{
+            return(
+              <>
+              <AssetDisplay 
+              id={item.id} 
+              assetName={item.assetName} 
+              username={item.creator.slice(0,4)+'...'+item.creator.slice(-4)} 
+              onClick={(e)=>{console.log(item.assetName)}
+              } /> 
+              </>
+
+            )
+          
+              })}
+
+          </> 
+          : 
+          <>
+            No assets asscoaited with this user 
+
+          </>
+
+          }
+
+
+          {/* <Button text={'test'} classVar='dark' onClick = {(e) => console.log(userAssets)}/>
+          <Button text={'call'} classVar='dark' onClick = {(e) => getUserAssets()}/> */}
+
+          </div>
+                
 
 
         </div>

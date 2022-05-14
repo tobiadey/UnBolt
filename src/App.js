@@ -11,6 +11,7 @@ import Asset from './pages/Asset';
 import Settings from './pages/Settings'
 import Profile from './pages/Profile'
 import Intermediaries from './pages/Intermediaries'
+import AddNote from './pages/AddNote'
 
 // import the react-router-dom hooks to handle the routing
 import { BrowserRouter as Router, Route,Routes  } from 'react-router-dom'
@@ -36,7 +37,7 @@ function App() {
           <Route path= '/createTask/:id' element={<CreateTask />} />
           <Route path= '/asset/:id' element={<Asset/>} />
           <Route path= '/profile/:value' element={<Profile/>} />
-          {/* <Route path= '/profile/:address' element={<Profile/>} /> */}
+          <Route path= '/taskNote/:id' element={<AddNote/>} />
           <Route path= '/intermediaries' element={<Intermediaries/>} />
           </>
           :
@@ -46,7 +47,7 @@ function App() {
           <Route path= '/createTask/:id' element={<NoAccess />} />
           <Route path= '/asset/:id' element={<NoAccess/>} />
           <Route path= '/profile/:value' element={<NoAccess/>} />
-          {/* <Route path= '/profile/:address' element={<Profile/>} /> */}
+          <Route path= '/taskNote/:id' element={<NoAccess/>} />
           <Route path= '/intermediaries' element={<NoAccess/>} />
 
           </>}

@@ -18,6 +18,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import Settings from './Settings';
 import Settings2 from './Settings2';
 import unbolt from '../truffle/build/contracts/UnBolt.json'
+// import unbolt from '../truffle/build/contracts/UnboltV2.json'
 
 // import assets from '../truffle/build/contracts/Assets.json'
 
@@ -31,10 +32,13 @@ const Dashboard = () => {
   // the first paramter is the value and the second is the setter
   const [assetCount, setAssetCount] = useState(0)
   const [assets, setAssets] = useState([]);
+  const [myAssets, setMyAssets] = useState([]);
+  const [selection, setSelection] = useState([]);
   // state hooks to know which body to use for the dashbaord
   const [body, setBody] = useState('');
   //allow the sidebar.js componenet to call the handleSetBody() function which passes the current body to use
   const handleSetBody = (value) => {setBody(value)};
+  const handleSetSelection = (value) => {setSelection(value)};
   const [search, setSearch] = useState('');
 
 ;
@@ -48,39 +52,77 @@ const Dashboard = () => {
         //get the connectorID using the console window 
         const connectorId = window.localStorage.getItem("connectorId");
         try {
+
           //check if autenticated and web3 is not enabled in order
           if (isAuthenticated && !isWeb3Enabled){
             //enable web3 and store in a varible
             const web3Provider = await enableWeb3({ provider: connectorId });
           }
+
+          await getAssetCount()
+
           //checking if the asset has already been loaded with the data, if (length==0) then no data has been loaded
-          if(assets.length == 0){
+          if( assets.length != assetCount || assets.length == 0  ){
             // call the function loadData() but wait 1 second before doing this in order to let enableweb3() run above
-            await setTimeout(function() { loadData(); }, 1000);
+            await setTimeout(function() { loadData(); }, 1);
           }
         } catch (error) {
           console.log(error);
         }
       }
+      
       // call the function loadPage on each render of the page
       loadPage()
     }, 
     //callback functions, array of variables that the component will check to make sure changed before re-rendering. 
-    [isAuthenticated, isWeb3Enabled, assets]);
+    [isAuthenticated, isWeb3Enabled, assets, myAssets]);
 
+    async function getAssetCount(){
+      //defining the parameters for the execute function call, which executes a function in the smart contract
+      console.log(unbolt.abi)
+      
+      const options = {
+        abi: unbolt.abi,
+        contractAddress: contractAddress.unboltContractAddress,
+        functionName: 'assetCount',
+      }
+      //calls the smart contract function while returning the data in variable message
+      const message = await Moralis.executeFunction(options)
+      console.log("assetcounnt",message.toNumber()-1);
+      console.log("asset length",assets.length);
+      setAssetCount(message.toNumber()-1)
+      }
 
     async function getAllAssets(){
     //defining the parameters for the execute function call, which executes a function in the smart contract
+    console.log(unbolt.abi)
+    
     const options = {
       abi: unbolt.abi,
       contractAddress: contractAddress.unboltContractAddress,
       functionName: 'getAssets',
-    //empty parameter because this getter is generated automatically by solidity on creation of a mapping
     }
     //calls the smart contract function while returning the data in variable message
     const message = await Moralis.executeFunction(options)
     return message
     }
+
+    async function getUserAssets(){
+      //defining the parameters for the execute function call, which executes a function in the smart contract
+      console.log(unbolt.abi)
+      
+      const options = {
+        abi: unbolt.abi,
+        contractAddress: contractAddress.unboltContractAddress,
+        functionName: 'getUserAssets',
+        params:{
+          _userAddress: user.get("ethAddress")
+        }
+      }
+      //calls the smart contract function while returning the data in variable message
+      const message = await Moralis.executeFunction(options)
+      return message
+      }
 
     //convrt all the bigNumbers type in the asset to number
     async function convertToNumber(array){
@@ -103,10 +145,55 @@ const Dashboard = () => {
   //load data and store them in state in state hooks 
   //in order to access them and pass them as props to other pages/components
   async function loadData() {
-    const assetFromBlockchain = await getAllAssets();
-    const _assets = await convertToNumber(assetFromBlockchain);
-    setAssets(_assets)
+    try {
+      const assetFromBlockchain = await getAllAssets();
+      const _assets = await convertToNumber(assetFromBlockchain);
+      setAssets(_assets)
+    } catch (error) {
+      console.log(error);
+      // alert("This appication has enncountnered a massive error please refresh")
+    }
+
+    try {
+      const myAssetFromBlockchain = await getUserAssets();
+      const _myAssets = await convertToNumber(myAssetFromBlockchain);
+      setMyAssets(_myAssets)
+    } catch (error) {
+      console.log(error);
+      // alert("This appication has enncountnered a massive error please refresh")
+
+    }
+
   }
+
+  //call smart contract function that changes the assets/asset status to the opposite value 
+  async function toggleAssetComplete() {
+
+    // remove the ticks from the table
+
+
+    //toggle complete
+    console.log(selection);
+    console.log(unbolt.abi);
+    const options = {
+      abi: unbolt.abi,
+      contractAddress: contractAddress.unboltContractAddress,
+      functionName: 'toggleAssetsCompleted',
+      //takes id as parameter as the solidity function needs this
+      params: {
+        _assetIds: selection,
+      }
+      }
+    //calls the smart contract function while returning the data in variable message
+    const message = await Moralis.executeFunction(options)
+    console.log('completed at:', message);
+
+    alert("assets have been set to complete")
+
+  }
+
+      
+  
 
 
 
@@ -117,7 +204,7 @@ const Dashboard = () => {
     // {body == 'dashboard'  ?
       <div className='dashboard'>
         {/* onClick= {(e)=> {setBody('search')}} */}
-        <Sidebar page={'dashboard'}handleSetBody= {handleSetBody}/>
+        <Sidebar page={'dashboard'} handleSetBody= {handleSetBody}/>
         <div className='dashboard-container'> 
           <Navbar/>
           <div className='widgets'>
@@ -132,27 +219,30 @@ const Dashboard = () => {
               <div className='search'>
                 {/* <input type='text' placeholder= 'Search...'></input> */}
                 {/* <SearchIcon className='icon'/>  */}
-                UNBOLT
-                  {/* <Button classVar='dark' text={'Refresh Table'} onClick={(e)=>{test2()}}/> */}
+                YOUR UNBOLT ASSETS
+              {/* <Button classVar='dark' text={'Refresh Table'} onClick={(e)=>{test2()}}/> */}
+              <Button text={'Refresh'} onClick={(e)=> {loadData()}}/> 
+
+              {selection.length > 0 && <Button text={'Toggle Complete'} onClick={(e)=> {toggleAssetComplete()}}/> }
+              
+
               </div>
               <Link to= '/createAsset'> <Button classVar='dark' text={'Create Asset'}/> </Link> 
               {isWeb3Enabled && 
               <>
-              {/* <Button classVar='dark' text={'asset'} onClick={(e)=> {asset.map((item)=>{console.log(item)})}}/> 
-              <Button classVar='dark' text={'count'} onClick={(e)=> {asset.map((item)=>{console.log(assetCount)})}}/>  */}
+              {/* <Button classVar='dark' text={'asset'} onClick={(e)=> {asset.map((item)=>{console.log(item)})}}/>  */}
               </>
               }
             </div>  
-            {assets.length >0 ? 
+            {myAssets.length > 0 ? 
 
             <div className='table-container'>
-            <Table assets={assets} />
+            <Table assets={myAssets} handleSetSelection={handleSetSelection} />
             </div>
 
             :
-
             <div>
-              Loading assets...
+              You have not created any Assets 
               {/* <CircularProgress color="inherit" /> */}
             </div>
            
@@ -169,15 +259,17 @@ const Dashboard = () => {
     {body== 'search' ?
         <div className='search'>
           {/* onClick= {(e)=> {setBody('search')}} */}
-          <Sidebar page={'search'}handleSetBody= {handleSetBody}/>
+          <Sidebar page={'search'} handleSetBody= {handleSetBody}/>
           <div className='search-container'> 
             <Navbar/>
             <div className='list-container-search'>
               <div className='list-title-search'> 
                 {/* Latest Transactions */}
                 <div className='search'>
-                <input onChange={(e) => {setSearch(e.target.value)}} type='text_search' placeholder= 'Search...'></input>
-                <SearchIcon className='icon'/> 
+                  <div className='search-input'><input onChange={(e) => {setSearch(e.target.value)}} type='text_search' placeholder= 'Search...'></input></div>
+                  <div className='search-icon'><SearchIcon className='icon'/> </div>
+                
+                
                 </div>
               </div>  
             </div>
@@ -204,7 +296,12 @@ const Dashboard = () => {
                   return(
               // key value is item.id as each child in a list should have a unique "key" prop
               <div className='widgets2' key={item.id}>
-                 <AssetDisplay id={item.id} assetName={item.assetName} username={'username'} onClick={(e)=>{console.log(item.assetName)}} /> 
+                 <AssetDisplay 
+                 id={item.id} 
+                 assetName={item.assetName} 
+                 username={item.creator.slice(0,4)+'...'+item.creator.slice(-4)} 
+                 onClick={(e)=>{console.log(item.assetName)}
+                 } /> 
               </div>
                 )})}
 

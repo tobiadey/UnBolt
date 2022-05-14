@@ -96,7 +96,7 @@ const Intermediaries = () => {
         <Navbar/>
         <div className='createAsset'>
             {/* <Link to= '/dashboard'> <Button color='black' text={'Go Back'} /> </Link> */}
-            <div className='title'>Add an Inntermediary Relationship</div>
+            <div className='title'>Add an Intermediary Relationship</div>
             <div className='createAsset-form'>
                 <div className='createAsset-data'>
                     <div className='form-box'>

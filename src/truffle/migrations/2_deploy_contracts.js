@@ -1,18 +1,19 @@
 //this is the migration file 2 therefore it is executed 2nd
 // requires the smart contracts created 
-const Tasks = artifacts.require("Tasks");
 const Assets = artifacts.require("Assets");
+const Tasks = artifacts.require("Tasks");
 const Unbolt = artifacts.require("Unbolt");
 
+
 module.exports = function(deployer) {
-    // // deploy Task into the network
-    // deployer.deploy(Task);
+    // deploy Assets into the network
+    // deployer.deploy(Assets);
 
-    // // deploy Task into the network
-    deployer.deploy(Tasks);
+    // // deploy Tasks into the network
+    // deployer.deploy(Tasks);
 
-    // deploy Task into the network
-    // deployer.deploy(Unbolt);
+    // deploy UnBolt into the network
+    deployer.deploy(Unbolt);
   };
 
 

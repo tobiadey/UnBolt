@@ -1,4 +1,4 @@
-pragma solidity >=0.4.25 <0.7.0;
+// pragma solidity >=0.4.25 <0.7.0;
 
 // //This is just an asset contract.
 // contract Assets {
@@ -42,15 +42,15 @@ pragma solidity >=0.4.25 <0.7.0;
 
 
 // https://medium.com/coinmonks/solidity-tutorial-returning-structs-from-public-functions-e78e48efb378
-    // recreating the getter for assets even thoug soloditiy provides it
-    // function getAssets(uint256 _id) public  view returns (uint256 id, string memory assetName, uint256 _quantity, bool _completed) {
-    //     // copy the data into memory
-    //     Asset memory asset = assets[_id];
-    //     // break the struct's members out into a tuple
-    //     return (asset.id, asset.assetName, asset.quantity, asset.completed);
-    // }
+//     recreating the getter for assets even thoug soloditiy provides it
+//     function getAssets(uint256 _id) public  view returns (uint256 id, string memory assetName, uint256 _quantity, bool _completed) {
+//         // copy the data into memory
+//         Asset memory asset = assets[_id];
+//         // break the struct's members out into a tuple
+//         return (asset.id, asset.assetName, asset.quantity, asset.completed);
+//     }
 
-//To access in truffle console 
+// To access in truffle console 
 // truffle compile
 // truffle migrate --reset
 // truffle console

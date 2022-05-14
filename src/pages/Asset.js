@@ -4,7 +4,7 @@ import { useParams, Navigate, useNavigate, useLocation} from 'react-router-dom'
 import './Asset.css';
 import Button from '../components/Button'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import { Task } from '@mui/icons-material';
+import { Note, Task } from '@mui/icons-material';
 import {Link} from 'react-router-dom'
 import CircularProgress from '@mui/material/CircularProgress';
 import contractAddress from '../constants/contractAddress';
@@ -168,6 +168,27 @@ const Asset = () => {
         alert("task has been set to complete")
     }
 
+    //call smart contract function that changes the task status to the opposite value 
+    async function addNote(id) {
+      console.log('Task of id ', id,'has a note being added to it');
+      console.log(unbolt.abi);
+      const options = {
+        abi: unbolt.abi,
+        contractAddress: contractAddress.unboltContractAddress,
+        functionName: 'addDescription',
+        //takes id as parameter as the solidity function needs this
+        params: {
+          _TaskId: id,
+          _note:Note,
+        }
+        }
+        //calls the smart contract function while returning the data in variable message
+        const message = await Moralis.executeFunction(options)
+        console.log('note added:', message);
+        alert("not has been added to task ")
+    }
+
+
       //commit changes of bio to the database
       async function getUsername(_ethAddress){
         // console.log(_ethAddress);
@@ -193,7 +214,7 @@ const Asset = () => {
                     AssetDisplay2 
                     <Button classVar='dark' text={'Tasks'} onClick={()=>{console.log(task)}}/> 
                     <Button classVar='dark' text={'asset'} onClick={()=>{console.log(asset)}}/> 
-                    <Button text={'test'} classVar='dark' onClick = {(e) => getUsername("0x8cae7f1b51feff8f8b73ed17e0c183ff08d541aa")}/>
+
 
 
                 </div>
@@ -221,7 +242,9 @@ const Asset = () => {
                             {task.length == 0 ? 
                             <div className='no-task-message-container'>
                             <small className='no-task-message'>You dont have any tasks at the moment</small>
-                            <Link to={`/createTask/${asset.id}`}> <Button classVar='dark' text={'Create Task'}/> </Link> 
+                            {asset.creator.toLowerCase()  == user.get("ethAddress") && 
+                              <Link to={`/createTask/${asset.id}`}> <Button classVar='dark' text={'Create Task'}/> </Link> 
+                              }
                             </div>
                             :
                             <>
@@ -230,26 +253,25 @@ const Asset = () => {
                             {task.map((item)=>{return(
                             <div className='task' key={parseInt(item.id)}>
                               <p>Description: {item.content}</p> 
-                              {/* <p>Asset id: {item.assetId}</p> */}
-                              {/* <Link  to={`/profile/${user.get('username')}/${item.signator}`}>  */}
-                              {/* {console.log(item.signator)} */}
                               <Link  to={`/profile/${item.signator.toLowerCase()}`}> signator: {item.signator} </Link>
-
-                              {/* <p>signator: {item.signator}</p> */}
-                              {/* </Link> */}
-                              {/* {console.log(item.completed)} */}
-                              {item.completed ? <>Completed</> : <>Not Complete</>}
+                              <p></p> 
+                              {item.creator_note !='' ? <p>Note: {item.creator_note}</p> : <p>No note added by creator</p>}
+                              {item.intermediary_note !='' ? <p>Note: {item.intermediary_note}</p> : <p>No note from Signator</p>}
+                              {item.completed ? <p>Completed</p> : <p>Not Complete</p>}
                               {item.signator.toLowerCase() == user.get("ethAddress").toLowerCase() &&
                               <>
                                 <Button classVar='dark' text={'Toggle Complete'} onClick={()=>{toggleTaskComplete(item.id)}}/> 
+                                <Link to={`/taskNote/${item.id}`}> <Button classVar='dark' text={'Add Note'}/> </Link>
                             
                               </>
                               }
                             </div>
                             
                             )})}
-                        
+                              {/* {console.log(asset.creator, user.get("ethAddress"))} */}
+                              {asset.creator.toLowerCase()  == user.get("ethAddress") && 
                              <Link to={`/createTask/${asset.id}`}> <Button classVar='dark' text={'Add Task'}/> </Link>
+                              }
                             </>
                         }
                         </div>

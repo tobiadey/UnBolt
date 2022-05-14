@@ -74,3 +74,8 @@
     border-bottom: 1px solid grey;
     margin-bottom: 20px;
 }
+
+.user-asset-display{
+    margin-top: 20px;
+    border-top: 1px solid grey;
+}

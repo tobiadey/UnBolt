@@ -7,23 +7,30 @@ import { DataGrid } from '@mui/x-data-grid';
 //takes in props which it uses to load the table with data
 // this is a material ui component mainly, which was edited to take a prop rather than const variables to load the table
 // https://mui.com/material-ui/react-table/
-const Table = (assets) => {
+// const Table = (assets,handleSetSelection) => {
+const Table = (props) => {
 
-  console.log(assets.assets);
-  const tempArray = assets.assets
+  console.log("Inside table");
+  // console.log(props);
+  console.log(props.assets);
+
+  // console.log(props.assets.assets);
+  // const tempArray = props.assets.assets
+  const tempArray = props.assets
 
  
 
 // column headings 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'assetName', headerName: 'Asset name', width: 130 },
-    {field: 'quantity', headerName: 'Quantity', type: 'number', width: 90},
-    { field: 'completed', headerName: 'Status', width: 130 },
+    { field: 'id', headerName: 'ID', width: 130 },
+    { field: 'assetName', headerName: 'Asset name', width: 250 },
+    {field: 'quantity', headerName: 'Quantity', width: 250},
+    { field: 'completed', headerName: 'Completed', width: 250 },
     ];
 
 // use tempArray as the row data
 const rows = tempArray
+// const rows = []
     return(
       <>
         {/* {assets>0 && 
@@ -40,6 +47,9 @@ const rows = tempArray
         pageSize={5}
         rowsPerPageOptions={[5]}
         checkboxSelection
+        onSelectionModelChange={itm => props.handleSetSelection(itm)}
+        // onSelectionModelChange={props.handleSetSelection([2,4])}
+        // handleSetSelection('itm')
         />
         </div>
       </>
