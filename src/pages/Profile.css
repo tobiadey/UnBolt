@@ -79,3 +79,8 @@
     margin-top: 20px;
     border-top: 1px solid grey;
 }
+
+.user-asset-display .item-header{
+    margin-bottom: 20px;
+    /* border-top: 1px solid grey; */
+}

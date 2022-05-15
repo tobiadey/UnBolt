@@ -255,8 +255,8 @@ const Asset = () => {
                               <p>Description: {item.content}</p> 
                               <Link  to={`/profile/${item.signator.toLowerCase()}`}> signator: {item.signator} </Link>
                               <p></p> 
-                              {item.creator_note !='' ? <p>Note: {item.creator_note}</p> : <p>No note added by creator</p>}
-                              {item.intermediary_note !='' ? <p>Note: {item.intermediary_note}</p> : <p>No note from Signator</p>}
+                              {item.creator_note !='' ? <p>Creator's Note: {item.creator_note}</p> : <p>No note added by creator</p>}
+                              {item.intermediary_note !='' ? <p>Signator's Note: {item.intermediary_note}</p> : <p>No note from Signator</p>}
                               {item.completed ? <p>Completed</p> : <p>Not Complete</p>}
                               {item.signator.toLowerCase() == user.get("ethAddress").toLowerCase() &&
                               <>

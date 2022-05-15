@@ -246,24 +246,27 @@ const {value} = useParams()
           <div className='user-asset-display'>
 
           { userAssets.length > 0 ? 
-          <>
-          All assets asscoaited with this user 
+          <div>
+            <div className='item-header'>
+            All assets asscoaited with this user 
+            
+            </div>
           {userAssets.map((item)=>{
             return(
-              <>
+              <div className='item' key={parseInt(item.id)}>
               <AssetDisplay 
               id={item.id} 
               assetName={item.assetName} 
               username={item.creator.slice(0,4)+'...'+item.creator.slice(-4)} 
               onClick={(e)=>{console.log(item.assetName)}
               } /> 
-              </>
+              </div>
 
             )
           
               })}
 
-          </> 
+          </div> 
           : 
           <>
             No assets asscoaited with this user 

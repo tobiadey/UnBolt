@@ -192,7 +192,12 @@ const Dashboard = () => {
 
   }
 
-      
+  async function refresh() {
+    await setMyAssets([])
+    await setAssets([])
+    await loadData()
+  }
+  
   
 
 
@@ -221,7 +226,8 @@ const Dashboard = () => {
                 {/* <SearchIcon className='icon'/>  */}
                 YOUR UNBOLT ASSETS
               {/* <Button classVar='dark' text={'Refresh Table'} onClick={(e)=>{test2()}}/> */}
-              <Button text={'Refresh'} onClick={(e)=> {loadData()}}/> 
+              {/* <Button text={'Refresh'} onClick={(e)=> {loadData()}}/>  */}
+              <Button text={'Refresh'} onClick={(e)=> {refresh()}}/> 
 
               {selection.length > 0 && <Button text={'Toggle Complete'} onClick={(e)=> {toggleAssetComplete()}}/> }
               

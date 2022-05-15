@@ -51,7 +51,7 @@ const CreateTask = () => {
     functionName: 'assets',
     //empty parameter because this getter is generated automatically by solidity on creation of a mapping
     params: {
-        '': params.id,
+        '': params.id-1,
     }
     }
     //calls the smart contract function while returning the data in variable message
@@ -60,10 +60,6 @@ const CreateTask = () => {
     return message.creator
   }
 
-    
-  function onAdd (one,two,three){
-  console.log(one, ":", two,":",three);
-  }
 
   async function  onSubmit(e){
     await e.preventDefault()
@@ -71,6 +67,8 @@ const CreateTask = () => {
       alert('Fill in the missing field')
       return
     }
+    console.log('content:',content,'msg:',creatorMessage,'id:',params.id,'sig:',signator);
+
 
     const creator = await getAssetDataIndex();
 
@@ -82,11 +80,11 @@ const CreateTask = () => {
       await alert('User does not have access to add task to this application')
       console.log(_currUser, "L", creator);
       return
-    }
+    }else{
 
     // maybe take in props which is the asset id which is the params.id
     console.log(unbolt.abi);
-    console.log(params.id);
+
     const options = {
       abi: unbolt.abi,
       contractAddress: contractAddress.unboltContractAddress,
@@ -103,6 +101,9 @@ const CreateTask = () => {
 
     await console.log("Error: ",error);
     await console.log("Data: ",data);
+
+ 
+    }
 
  
     setContent('')
