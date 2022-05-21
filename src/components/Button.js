@@ -22,8 +22,5 @@ const Button = ({classVar,bgColor,color, text, onClick}) => {
   
   }
   
-  Button.defaultProps = {
-    // color: 'steelBlue',
-  }
   
   export default Button

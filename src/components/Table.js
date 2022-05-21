@@ -61,3 +61,11 @@ const rows = tempArray
   
   
   export default Table
+
+
+
+
+
+
+
+

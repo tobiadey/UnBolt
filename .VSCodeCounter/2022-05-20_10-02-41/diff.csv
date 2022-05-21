@@ -1,0 +1,9 @@
+"filename", "language", "JSON", "comment", "blank", "total"
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/Asset.json", "JSON", -1464, 0, 0, -1464
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/Assets.json", "JSON", -31421, 0, 0, -31421
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/Migrations.json", "JSON", -931, 0, 0, -931
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/Task.json", "JSON", -1942, 0, 0, -1942
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/Tasks.json", "JSON", -37961, 0, 0, -37961
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/UnBolt.json", "JSON", -40083, 0, 0, -40083
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/UnboltV2.json", "JSON", -42974, 0, 0, -42974
+"Total", "-", -156776, 0, 0, -156776

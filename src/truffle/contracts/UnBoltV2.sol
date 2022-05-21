@@ -26,7 +26,7 @@ contract Assets{
         string assetName; 
         string description; 
         uint256 creationTime;
-        uint256 compltionTime;
+        uint256 completionTime;
         // enum Status; 
         uint256 quantity;
         bool completed;
@@ -180,7 +180,7 @@ contract Tasks is Assets{ //make assets the parent contract
         string creator_note; //the task creators message 
         string intermediary_note; // the signators message (e.g message on why things are behind schedule)
         uint256 creationTime;
-        uint256 compltionTime;
+        uint256 completionTime;
         bool completed;
         address signator;
         Asset asset; //an Asset object/struct what is associated with the task

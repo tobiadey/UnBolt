@@ -1,3 +1,9 @@
 {
-    "solidity.compileUsingRemoteVersion": "latest"
+    "solidity.compileUsingRemoteVersion": "latest",
+    "VSCodeCounter.exclude": [
+        "**/.gitignore",
+        "**/.vscode/**",
+        "**/node_modules/**",
+        "**/truffle/build/**"
+    ]
 }

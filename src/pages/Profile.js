@@ -62,11 +62,6 @@ const {value} = useParams()
  
 //add bio to database helper function
   async function saveChange(){
-      //user is changing it all
-      //check if username is take
-      // if (username is taken){
-      //   alert("username is taken")
-      // }
 
       //add conditions here to know that username is not taken 
       if (username!= user.get('username') && bio != user.get('bio')) {
@@ -123,20 +118,6 @@ const {value} = useParams()
 
     //commit changes of bio to the database
     async function getUsersBio(){
-   
-    //get all users onn platform
-    // const results = await Moralis.Cloud.run("getAllUsers") 
-    // console.log(results);
-    // console.log(results.length);
-
-    //prinnt hello name
-    // const results = await Moralis.Cloud.run("hello", {name:"Jeff"}) 
-    // console.log(results);
-
-    // check username has not been taken 
-    //code 
-
-    
     // https://ethereum.stackexchange.com/questions/1374/how-can-i-check-if-an-ethereum-address-is-valid
     function validateInputAddresses(address) {
       return (/^(0x){1}[0-9a-fA-F]{40}$/i.test(address));
@@ -144,7 +125,6 @@ const {value} = useParams()
 
     // if we have the eth address as the params
     // get username only
-    // if (hasNumber.test(value) && value.length == ){
     if (validateInputAddresses(value)){
       setEthAddress(value)
       const results = await Moralis.Cloud.run("getUsernames", {address:value.toLowerCase()}) 
@@ -161,7 +141,6 @@ const {value} = useParams()
       setEthAddress(results[0].attributes.ethAddress)
       return results[0].attributes.bio
     }
-  
     }
 
     async function getUserAssets(){
@@ -183,7 +162,7 @@ const {value} = useParams()
 
       }
 
-
+      
    
 
  

@@ -59,7 +59,7 @@ const Settings2 = () => {
   },[toggleAdd,toggleView,buttonTextAdd,buttonTextView]);
 
 
-  async function  onSubmit(e){
+  async function  onDelete(e){
     //user is changing it all
 
     if(intermediaryID != "None" && intermediaryID !=""){
@@ -77,7 +77,6 @@ const Settings2 = () => {
         // setIntermediaryList(results)
 
         console.log(intermediaryID);
-
 
         removeRelationship(result[0])
         // alert('Relationship ended :(')
@@ -125,84 +124,6 @@ const Settings2 = () => {
     console.log("Relationship removed");
   }
 
-  async function createRelationship(_intermediary){
-    //add relation in the intermediary table as users
-    const intermediary = _intermediary
-    const relation1 = intermediary.relation("users")
-    relation1.add(Moralis.User.current());
-    const result1 = await intermediary.save();
-    console.log(result1);
-
-    // add the realtion in the users table as Intermediaries
-    const user = Moralis.User.current();
-    const relation = user.relation("Intermediaries");
-    relation.add(_intermediary);
-    const result = await user.save();
-    console.log(result);
-  }
-
-//   return (
-//     <div className='section-container'>
-//       <div className='section-header' >{user.get('username')}'s User Profile</div>
-//       <div className='section-header2' >
-//         <small>Change Username/ Add Intermediaries</small>
-        
-//         <Link  to={`/profile/${user.get('username')}/${user.get('ethAddress')}`}> <small className='view-profile'>View Profile</small> </Link>
-
-//         </div>
-//       <div className="profile-container">
-//         {/* <div className='title'>Profile</div> */}
-//         <div className='profile-form'>
-//           <div className='profile-data'>
-//             <div className='form-box'>
-//               <div className='input'>
-//                 <label className='input-title'>Username</label>
-//                 <div className='input-box'>
-//                   {/* <input type='text' value={name} placeholder = 'Add Asset Name...' onChange = {(e) => setName(e.target.value)}/> */}
-//                   <input type='text' value={username} placeholder = 'Username...'onChange = {(e) => setUsername(e.target.value)}/>
-//                 </div>
-//                 <label className='input-title'>Create Intermediary Realationship</label>
-//                 <div className='input-box'>
-//                   {/* <Link to= '/intermediaries'> <Button text={"Add"}/> </Link>  */}
-//                   {/* <Button text='test' classVar='dark' onClick = {(e) => test2()}/> */}
-//                   <Button text={buttonTextAdd} classVar='dark' onClick = {(e) => setToggleAdd(!toggleAdd)}/>
-//                   <Button text={buttonTextView} classVar='dark' onClick = {(e) => getAllIntermediaries()}/>
-//                 </div>
-//                 { toggleAdd &&
-//                 <>
-//                   <label className='input-title'>Intermediary</label>
-//                   <div className='input-box'>
-//                     {/* <input type='text' value={name} placeholder = 'Add Asset Name...' onChange = {(e) => setName(e.target.value)}/> */}
-//                     <input type='intermediary-text' value={intermediaryName} placeholder = 'Name' onChange = {(e) => setIntermediaryName(e.target.value)}/>
-//                     <input type='intermediary-text' value={intermediaryAddress} placeholder = 'ethereum address' onChange = {(e) => setIntermediaryAddress(e.target.value)}/>
-//                   </div>
-//                 </>
-//                 }
-//                 { toggleView && intermediaryList.length>0 &&
-//                   <>
-//                   {intermediaryList.map((item)=>{
-//                     return(
-//                       <div key={item.id} className='item'>
-//                         <div>
-//                         <p>{item.get("name")} <DeleteIcon className='bin' style={{cursor: 'pointer'}} onClick = {(e)=> console.log("deleting this")}/> </p> 
-//                         <Button text='delete' onClick = {(e) => removeRelationship(item)}/>
-//                         </div>
-//                       </div>
-//                     )
-//                   })}
-//                   </>
-//                 }
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//         <div className='profile-button-container'>
-//           <Button text={"Save Change"} classVar={'dark'} onClick ={(e) => onSubmit(e)} />
-//         </div>
-//       </div>
-//     </div>
-
-//   );
     return(
         <div className='section-container'>
             <div className='section-header' >{user.get('username')}'s Relationships </div>
@@ -233,7 +154,7 @@ const Settings2 = () => {
                     </select>
                         </div>
                         <div>
-                            <Button text={"End Relationship"}  onClick ={(e) => onSubmit(e)} />
+                            <Button text={"End Relationship"}  onClick ={(e) => onDelete(e)} />
                         </div>
 
                     </div>

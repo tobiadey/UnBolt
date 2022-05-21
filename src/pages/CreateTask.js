@@ -3,7 +3,6 @@ import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
 import './CreateTask.css';
 import Button from '../components/Button'
 import Navbar from '../components/Navbar'
-import Dropdown from '../components/Dropdown'
 import { useParams,Link, Navigate, useNavigate, useLocation} from 'react-router-dom'
 // import tasks from '../truffle/build/contracts/Tasks.json'
 import contractAddress from '../constants/contractAddress';
@@ -121,13 +120,6 @@ const CreateTask = () => {
   const results = await query.find();
   // alert("Successfully retrieved " + results.length + " intermediaries.");
   setIntermediaryList(results)
-  // Do something with the returned Moralis.Object values
-  // for (let i = 0; i < results.length; i++) {
-  //   const object = results[i];
-    // alert(object.id + " - " + object.get("ownerName"));
-  //   console.log(object);
-  //   console.log(object.get("user") + " created intermediary relationship with " + object.get("name"));
-  // }
   }
 
     return (

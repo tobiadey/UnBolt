@@ -213,10 +213,11 @@ const Dashboard = () => {
         <div className='dashboard-container'> 
           <Navbar/>
           <div className='widgets'>
-            <Widgets/>
-            <Widgets/>
-            <Widgets/>
-            <Widgets/>
+            <Widgets left={'Your Assets:'} right={myAssets.length}/>
+            <Widgets left={'Total Assets:'} right={assets.length}/>
+            <Widgets left={'Completed:'} right={'2'}/>
+            <Widgets left={'Cancelled:'} right={'1'}/>
+ 
           </div>
           <div className='list-container'>
             <div className='list-title'> 

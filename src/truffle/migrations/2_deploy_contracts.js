@@ -1,7 +1,7 @@
 //this is the migration file 2 therefore it is executed 2nd
 // requires the smart contracts created 
-const Assets = artifacts.require("Assets");
-const Tasks = artifacts.require("Tasks");
+// const Assets = artifacts.require("Assets");
+// const Tasks = artifacts.require("Tasks");
 const Unbolt = artifacts.require("Unbolt");
 
 

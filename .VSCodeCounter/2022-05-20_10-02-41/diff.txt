@@ -1,0 +1,34 @@
+Date : 2022-05-20 10:02:41
+Directory : /Users/tobiadewunmi/Desktop/unbolt/src
+Total : 7 files,  -156776 codes, 0 comments, 0 blanks, all -156776 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| JSON     |          7 |   -156,776 |          0 |          0 |   -156,776 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                           | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                              |          7 |   -156,776 |          0 |          0 |   -156,776 |
+| truffle                                                                        |          7 |   -156,776 |          0 |          0 |   -156,776 |
+| truffle/build                                                                  |          7 |   -156,776 |          0 |          0 |   -156,776 |
+| truffle/build/contracts                                                        |          7 |   -156,776 |          0 |          0 |   -156,776 |
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                       | language | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/Asset.json      | JSON     |     -1,464 |          0 |          0 |     -1,464 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/Assets.json     | JSON     |    -31,421 |          0 |          0 |    -31,421 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/Migrations.json | JSON     |       -931 |          0 |          0 |       -931 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/Task.json       | JSON     |     -1,942 |          0 |          0 |     -1,942 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/Tasks.json      | JSON     |    -37,961 |          0 |          0 |    -37,961 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/UnBolt.json     | JSON     |    -40,083 |          0 |          0 |    -40,083 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/build/contracts/UnboltV2.json   | JSON     |    -42,974 |          0 |          0 |    -42,974 |
+| Total                                                                          |          |   -156,776 |          0 |          0 |   -156,776 |
++--------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

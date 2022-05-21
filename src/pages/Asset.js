@@ -6,6 +6,7 @@ import Button from '../components/Button'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { Note, Task } from '@mui/icons-material';
 import {Link} from 'react-router-dom'
+import bag from '../images/bag.png';
 import CircularProgress from '@mui/material/CircularProgress';
 import contractAddress from '../constants/contractAddress';
 import unbolt from '../truffle/build/contracts/UnBolt.json'
@@ -211,12 +212,46 @@ const Asset = () => {
             <div className='asset-task-container'>
                 {/* div for displaying the current asset  */}
                 <div className='section asset-display2'> 
-                    AssetDisplay2 
-                    <Button classVar='dark' text={'Tasks'} onClick={()=>{console.log(task)}}/> 
-                    <Button classVar='dark' text={'asset'} onClick={()=>{console.log(asset)}}/> 
+            
+                  <div className='asset-data'>
 
+                    <div className='asset-item'>
+                      <img className='image' src={bag} alt="Logo" />
+                    </div>
 
+                    <div className='asset-item first'>
+                    <b>ID: </b>  {asset.id}
+                    </div>
 
+                    <div className='asset-item'>
+                    <b>Name: </b>  {asset.assetName}
+                    </div>
+
+                    <div className='asset-item'>
+                    <b>Quantity: </b>  {asset.quantity}
+                    </div>
+
+                    <div className='asset-item'>
+                      {asset.completed ? 
+                      <>
+                      <b>Completed: </b>  True
+                      </>
+                      :
+                      <>
+                       <b>Completed: </b>  False
+                      </>
+                      }
+                    
+                    </div>
+                    
+                    
+                    <div className='asset-item'>
+                      <b>Signator: </b> {asset.creator.slice(0,4)+'...'+asset.creator.slice(-4)}
+                    </div>
+                    
+
+                  </div>
+                    
                 </div>
                 <div className='section task-display'> 
                     <div className='task-header'>
@@ -229,10 +264,10 @@ const Asset = () => {
                         <div className=''>
                         <h1>Task</h1>
                         <p>View tasks allocated to the production of this asset</p>
-                        <p>This section is scrollable(if you have enough tasks)</p>
-                        {/* <Button classVar='dark' text={'get tasks'} onClick={()=>{console.log(task)}}/> 
-                        <Button classVar='dark' text={'get asset'} onClick={()=>{console.log(asset)}}/> 
-                         */}
+                        {/* <p>This section is scrollable(if you have enough tasks)</p> */}
+                        {/* <Button classVar='dark' text={'get tasks'} onClick={()=>{console.log(task)}}/>  */}
+                        {/* <Button classVar='dark' text={'get asset'} onClick={()=>{console.log(asset)}}/>  */}
+                        
 
                         </div>
 
