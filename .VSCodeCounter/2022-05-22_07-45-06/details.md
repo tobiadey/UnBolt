@@ -1,25 +1,12 @@
-# UnBolt
-
----
-## Available Scripts
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-
----
-
-# Output (src)
+# Details
 
 Date : 2022-05-22 07:45:06
+
 Directory /Users/tobiadewunmi/Desktop/unbolt/src
+
 Total : 55 files,  3066 codes, 1018 comments, 926 blanks, all 5010 lines
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
 
 ## Files
 | filename | language | code | comment | blank | total |
@@ -80,3 +67,4 @@ Total : 55 files,  3066 codes, 1018 comments, 926 blanks, all 5010 lines
 | [src/truffle/test/test.js](/src/truffle/test/test.js) | JavaScript | 73 | 8 | 10 | 91 |
 | [src/truffle/truffle-config.js](/src/truffle/truffle-config.js) | JavaScript | 20 | 5 | 2 | 27 |
 
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
