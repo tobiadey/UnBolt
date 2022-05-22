@@ -2,7 +2,7 @@
 
 ---
 ## Available Scripts
-In the project directory, you can run:
+###### In the project directory, you can run:
 
 ### `npm start`
 
@@ -17,9 +17,9 @@ You may also see any lint errors in the console.
 
 # Output (src)
 
-Date : 2022-05-22 07:45:06
-Directory /Users/tobiadewunmi/Desktop/unbolt/src
-Total : 55 files,  3066 codes, 1018 comments, 926 blanks, all 5010 lines
+###### Date : 2022-05-22 07:45:06
+###### Directory /Users/tobiadewunmi/Desktop/unbolt/src
+###### Total : 55 files,  3066 codes, 1018 comments, 926 blanks, all 5010 lines
 
 ## Files
 | filename | language | code | comment | blank | total |
