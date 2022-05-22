@@ -1,5 +1,5 @@
 import './Profile.css';
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { useMoralis } from "react-moralis";
 import { useState, useEffect } from 'react'
 import Button from '../components/Button'
@@ -22,7 +22,7 @@ const {value} = useParams()
   const [username, setUsername] = useState(user.get('username'));
   const [name, setName] = useState(user.get(''));
   const [userAssets, setUserAssets] = useState([]);
-
+  const navigate = useNavigate()
 
   // allows for performing side effects in the component
   // side effect in this case being calling the enableWeb3 function

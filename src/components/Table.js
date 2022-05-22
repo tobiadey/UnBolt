@@ -25,7 +25,8 @@ const columns = [
     { field: 'id', headerName: 'ID', width: 130 },
     { field: 'assetName', headerName: 'Asset name', width: 250 },
     {field: 'quantity', headerName: 'Quantity', width: 250},
-    { field: 'completed', headerName: 'Completed', width: 250 },
+    { field: 'completed', headerName: 'Completed', width: 180 },
+    { field: 'cancelled', headerName: 'Cancelled', width: 180 },
     ];
 
 // use tempArray as the row data

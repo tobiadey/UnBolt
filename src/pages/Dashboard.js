@@ -132,7 +132,7 @@ const Dashboard = () => {
         for (let index = 0; index <= array.length-1; index++) {
           const data = array[index]
           if(data.id != undefined){
-            tempArray[index] = { id: data.id.toNumber(), assetName: data.assetName,quantity: data.quantity.toNumber() ,completed: data.completed, creator: data.creator  }
+            tempArray[index] = { id: data.id.toNumber(), assetName: data.assetName,quantity: data.quantity.toNumber() ,completed: data.completed, creator: data.creator, cancelled:data.cancelled  }
           }
         }
       } catch (error) {
@@ -192,6 +192,29 @@ const Dashboard = () => {
 
   }
 
+    //call smart contract function that cancels assets
+    async function cancelAssets() {  
+  
+      //toggle complete
+      console.log(selection);
+      console.log(unbolt.abi);
+      const options = {
+        abi: unbolt.abi,
+        contractAddress: contractAddress.unboltContractAddress,
+        functionName: 'cancelAssets',
+        //takes id as parameter as the solidity function needs this
+        params: {
+          _assetIds: selection,
+        }
+        }
+      //calls the smart contract function while returning the data in variable message
+      const message = await Moralis.executeFunction(options)
+      console.log('completed at:', message);
+  
+      alert("assets have been set to cancelled")
+  
+    }
+
   async function refresh() {
     await setMyAssets([])
     await setAssets([])
@@ -216,7 +239,7 @@ const Dashboard = () => {
             <Widgets left={'Your Assets:'} right={myAssets.length}/>
             <Widgets left={'Total Assets:'} right={assets.length}/>
             <Widgets left={'Completed:'} right={'2'}/>
-            <Widgets left={'Cancelled:'} right={'1'}/>
+            <Widgets left={'Cancelled:'} right={'0'}/>
  
           </div>
           <div className='list-container'>

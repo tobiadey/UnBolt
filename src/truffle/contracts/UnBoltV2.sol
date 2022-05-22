@@ -1,23 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity >=0.8.7;
-// pragma experimental ABIEncoderV2;
 
 //This is an asset contract.
 contract Assets{
-    uint256 public assetCount = 1; //state variable to keep track of the number of assets.
-    Asset[] public assets; //allows to use id as key to find assets (basically search asset by id)
+    uint256 public assetCount = 1; //always -1 
+    Asset[] public assets; 
     
     // //mappping each address  with an array of assets (assets each user has created)
     mapping(address => Asset[]) public userAssetMap;
-
-    //constructor - executed once when a contract is created and it initialises contract state.
-    constructor () payable { 
-        // createAssets(
-        //     ["Berken Bag", "PS4", "Iphone 6","Xbox 1","Issey Miyake Top"],
-        //     ["Pink Bag", "Blue Ps4", "Pink Iphone", "500GB", "Home Plissee jacket"],
-        //     [1000, 4500, 6500,1500,19000]
-        //     );
-    }
 
     //definition of a data type of Asset using structs
     struct Asset {
@@ -27,7 +17,7 @@ contract Assets{
         string description; 
         uint256 creationTime;
         uint256 completionTime;
-        // enum Status; 
+        bool cancelled;
         uint256 quantity;
         bool completed;
         address creator;
@@ -36,10 +26,9 @@ contract Assets{
     //creation of events
     event AssetCreated(uint256 indexed id,string indexed _assetName, string _description,uint256 _quantity, bool completed,address indexed creator);
     event CompletedAssetValueChanged(bool indexed newValue); 
-
+    event CancelledAsset(bool indexed newValue); 
 
     //create multiple assets at once. 
-    //Used inn constructor but cann also be implemnted onn front end, 
     //this is one call and saves gas rather than using 5 seperate calls to create asset
    function createAssets(string[5] memory _assetNames,string[5] memory _description ,uint16[5] memory _quantities) public returns (bool) {
         uint256  assetLength = _assetNames.length;
@@ -50,31 +39,24 @@ contract Assets{
             
         createAsset(_assetNames[i],_description[i], _quantities[i]);
         unchecked {
-            // There is neve going where it underflows 
             // There is never going to be where it overflow 
             ++i;
         }
-
         }
         return true;
     }
 
     //create an asset
     function createAsset(string memory _assetName,string memory _description, uint256 _quantity) public returns (bool){
-        // Checks
-        // Effects 
-        Asset memory newAsset; //an empty temporary Asset object
-        // adding the function paramenter values to it then
+        Asset memory newAsset; 
         newAsset.id = assetCount;
         newAsset.assetName = _assetName;
         newAsset.description = _description;
         newAsset.creationTime = block.timestamp; //store the unix timestamp of when this function was called
         newAsset.quantity = _quantity;
-        // newAsset.completed = false; // using solidity language default value for primitives to my advantage
         newAsset.creator = msg.sender;
         assets.push(newAsset); // Push the newAsset struct into the asset array
         userAssetMap[msg.sender].push(newAsset);  // Push the newAsset struct into the asset array related to an eth address
-        // Interaction
         ++assetCount;
 
         //emit event to stack
@@ -90,18 +72,17 @@ contract Assets{
         return true;
     }
 
+    //get all assets
     function getAssets() public view returns (Asset[] memory){
         return assets;
     }
 
-    // try calling userAssetMap on it own in front end and see if each idnex is needed!!
+    //get all assets associated with a users ethereum address
     function getUserAssets(address _userAddress) public view returns (Asset[] memory){
         Asset[] memory tempAsset;
         tempAsset = userAssetMap[_userAddress];
-
         return tempAsset;
     }
-
 
     //toggle multiple assets at once. 
     //this is one call and saves gas rather toggling assets complete once at a time
@@ -113,7 +94,6 @@ contract Assets{
             
         toggleAssetCompleted(_assetIds[i]);
         unchecked {
-            // There is neve going where it underflows 
             // There is never going to be where it overflow 
             ++i;
         }
@@ -141,36 +121,22 @@ contract Assets{
             } 
         }
         //make these changes in the userAssetMap
-        // userAssetMap[msg.sender][0] = _asset;
         userAssetMap[msg.sender][index] = _asset;
-
-      
-
         //toggle asset complete in the userAssetMap
         emit CompletedAssetValueChanged(newCompletionStatus);
     }
 
+
 }
 
-//This is just a task contract.
 // Tasks which inherts from Assets (all functions and variables from Assets can be accessed int Tasks)
 contract Tasks is Assets{ //make assets the parent contract
-    uint256 public taskCount = 1;//state variable to keep track of the number of assets.
-    Task[] public tasks;//allows to use id as key to find tasks (basically search task by id)
+
+    uint256 public taskCount = 1; //always -1 
+    Task[] public tasks;
 
     //mappping each asset (id) with an array of Tasks it is made up of
     mapping(uint256 => Task[]) public assetTaskMap;
-
-    //constructor - executed once when a contract is created and it initialises contract state.
-
-      constructor () payable { 
-        // createTasks(
-        //     ["Source Leather", "Transport to Factory", "Assemble the plastic"],
-        //     ["Make sure it is the best quality mushroom leather", "Make to deliver before 2/03/2022", "Make sure to use blue plastic!"],
-        //     [1, 1, 3],
-        //     [0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE, 0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE,0x5B38Da6a701c568545dCfcB03FcB875f56beddC4]
-        //     );
-    }
 
     //definition of a data type of Task using structs
     struct Task {
@@ -191,7 +157,6 @@ contract Tasks is Assets{ //make assets the parent contract
     event CompletedTaskValueChanged(bool indexed newValue);
 
     //create multiple tasks at once. 
-    //Used in constructor but cann also be implemnted onn front end, 
     //this is one call and saves gas rather than using 3 seperate calls to create tasks
     function createTasks(string[3] memory _taskContents,string[3] memory _notes ,uint8[3] memory _assetIds, address[3] memory _adresses) public returns (bool) {
         uint256  taskLength = _taskContents.length;
@@ -201,22 +166,18 @@ contract Tasks is Assets{ //make assets the parent contract
         for(uint8 i=0; i < taskLength;) {
             createTask(_taskContents[i],_notes[i], _assetIds[i], _adresses[i]);
             unchecked {
-                // There is neve going where it underflows 
                 // There is never going to be where it overflow 
                 ++i;
             }
-
         }
     return true;
     }
 
     //create a task
     function createTask(string memory _taskContent,string memory _note, uint256 _assetId, address _signator) public returns (bool){        
-        
-        //get asset assoicated with current task and make sure 
-        //the function is being called by the asset creator
-        Asset memory currAsset;  //create empty temporary Asset
-        currAsset = assets[_assetId-1]; //get the associated asset value to store temporary asset
+        //get asset assoicated with current task and make sure the function is being called by the asset creator
+        Asset memory currAsset; 
+        currAsset = assets[_assetId-1]; 
         // require(msg.sender == currAsset.creator, "This function is restricted to the asset creator"); 
 
         //create an empty temporary Task object adding the function paramenter values to it then
@@ -225,9 +186,7 @@ contract Tasks is Assets{ //make assets the parent contract
         newTask.id = taskCount;
         newTask.content = _taskContent;
         newTask.creator_note = _note;
-        // newTask.intermediary_note = '';
         newTask.creationTime = block.timestamp;
-        // newTask.completed = false;
         newTask.signator = _signator;
         newTask.asset = assets[_assetId-1];
         tasks.push(newTask); // Push the newTask struct into the task array
@@ -243,10 +202,6 @@ contract Tasks is Assets{ //make assets the parent contract
         return true;
     }
 
-    // //get all tasks 
-    // function getAllTasks() public view returns (Task[] memory){
-    //     return tasks;
-    // }
 
     //get all tasks associated with a certain asset (by using assetID)
    function getAssetTasks( uint256 _assetID) public view returns (Task[] memory){
@@ -277,11 +232,7 @@ contract Tasks is Assets{ //make assets the parent contract
             } 
         }
         //make these changes in the asset task map
-        // assetTaskMap[_task.asset.id][0] = _task;
         assetTaskMap[_task.asset.id-1][index] = _task;
-
-
-        
         return true;
     }
 
@@ -303,13 +254,7 @@ contract Tasks is Assets{ //make assets the parent contract
             } 
         }
         //make these changes in the asset task map
-        // assetTaskMap[_task.asset.id][0] = _task;
         assetTaskMap[_task.asset.id-1][index] = _task;
-
-      
-        // // Task[] memory _allTasks = getAssetTasks(_task.asset.id);
-        
-        
 
         emit CompletedTaskValueChanged(!_task.completed);
         return !_task.completed;  // retruns the new value 
@@ -325,29 +270,14 @@ contract Unbolt is Tasks{  //inheritance
             ["Pink Bag", "Blue Ps4", "Pink Iphone", "500GB", "Home Plissee jacket"],
             [1000, 4500, 6500,1500,19000]
         );
-        // createTask("contennt", "note", 1, 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4);
+
         createTasks(
             ["Source Leather", "Transport to Factory", "Assemble the plastic"],
             ["Make sure it is the best quality mushroom leather", "Make to deliver before 2/03/2022", "Make sure to use blue plastic!"],
             [1, 1, 3],
-            [0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE, 0x5E7b2Bbb14B8a9097A26A93982624067A1dB11dE,0x5B38Da6a701c568545dCfcB03FcB875f56beddC4]
+            [0x25e86d826d5ccAc2D45Df42c942f8258b143B273, 0xeD7c7e86469E6BC51ef6943253B4DE01173e1473,0x25e86d826d5ccAc2D45Df42c942f8258b143B273]
         );
     }
 
-
 }
 
-// unbolt = await Tasks.deployed()
-// unbolt = await Unbolt.deployed()
-
-// 0xA169AcB9061aEAd2a8A6B06ffE008F75f3d70b70
-
-
-
-// https://ethereum.stackexchange.com/questions/25968/how-do-i-control-compiler-settings-with-truffle
-// "Unbolt" ran out of gas. Something in the constructor (ex: infinite loop) caused gas estimation to fail. Try:
-//    * Making your contract constructor more efficient (done)
-//    * Setting the gas manually in your config or as a deployment parameter
-//    * Using the solc optimizer settings in 'truffle-config.js' (done)
-//    * Setting a higher network block limit if you are on a
-//      private network or test client (like ganache).

@@ -246,7 +246,7 @@ const Asset = () => {
                     
                     
                     <div className='asset-item'>
-                      <b>Signator: </b> {asset.creator.slice(0,4)+'...'+asset.creator.slice(-4)}
+                    <b>Creator: </b> <Link  to={`/profile/${asset.creator.toLowerCase()}`}>  {asset.creator.slice(0,4)+'...'+asset.creator.slice(-4)} </Link>
                     </div>
                     
 
