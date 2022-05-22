@@ -8,14 +8,6 @@ function NoAccess() {
 
      // The useMoralis hook provides all the basics functionalities that is needed for authentication and user data.
     const { authenticate, isAuthenticated, logout, user } = useMoralis();
-    // return (
-    //  <div className='about-page-container'>
-    //      <Link to= '/'> back </Link> 
-    //      No Access to this back please login
-    //     <Button  text={'Connect Wallet'} onClick ={() => authenticate({ provider: "metamask" })}/> 
-    //     {/* on login redirect user to dashboard or homepage */}
-    //  </div>
-    // );
 
     return(
       <div className='about-page-container'>

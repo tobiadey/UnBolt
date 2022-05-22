@@ -13,18 +13,9 @@ const Navbar = () => {
     return(
         <div className='navbar'>
             <div className='nav-wrapper'>
-                {/* <div className='search'>
-                    <input type='text' placeholder= 'Search...'></input>
-                    <SearchIcon className='icon'/>
-                </div> */}
+
                 <h3 className='message'>Welcome back to UnBolt, {user.get('username').toUpperCase()} </h3>
                 <div className='items'>
-
-                    {/* <div className='item alert'> 
-                    <NotificationsActiveIcon className='icon'/> 
-                    <div className='counter'> 1 </div>
-                    </div> */}
-                    
                     <>
                         {/* display user or else display small */}
                         {user ? <small>{
@@ -35,13 +26,6 @@ const Navbar = () => {
                         }</small> : <small>idk</small> }
 
                     </>
-                    {/* <div className='item alert'> 
-                    <NotificationsActiveIcon className='icon'/> 
-                    <div className='counter'> 1 </div>
-                    </div>
-                    <div className='item'> tobiadey.eth</div>
-                    <div className='item'> <FaceIcon className='icon avatar'/> </div> */}
-
                 </div>
             </div>
         </div>

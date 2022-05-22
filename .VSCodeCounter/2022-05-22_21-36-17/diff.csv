@@ -1,0 +1,8 @@
+"filename", "language", "JavaScript", "Solidity", "comment", "blank", "total"
+"/Users/tobiadewunmi/Desktop/unbolt/src/components/Table.js", "JavaScript", 1, 0, 0, 0, 1
+"/Users/tobiadewunmi/Desktop/unbolt/src/constants/contractAddress.js", "JavaScript", 0, 0, 1, 0, 1
+"/Users/tobiadewunmi/Desktop/unbolt/src/pages/Dashboard.js", "JavaScript", 15, 0, 4, 4, 23
+"/Users/tobiadewunmi/Desktop/unbolt/src/pages/Profile.js", "JavaScript", 1, 0, 0, -1, 0
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/contracts/UnBoltV2.sol", "Solidity", 0, -2, -47, -20, -69
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/truffle-config.js", "JavaScript", 0, 0, 0, 2, 2
+"Total", "-", 17, -2, -42, -15, -42

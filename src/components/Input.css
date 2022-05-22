@@ -5,13 +5,7 @@
     flex: 1;
     padding: 12.5px 0px;
     cursor: pointer;
-    /* border : 0.5px solid lightgrey; */
     flex-direction: column;
-    /* -webkit-box-shadow: 2px 4px 10px 1px rgba(0,0,0,0.47); */
-    /* box-shadow: 2px 4px 10px 1px rgba(201,201,201,0.47); */
-    /* border-radius: 10px; */
-    /* height: 100px; */
-    
 }
 
 .input-title{

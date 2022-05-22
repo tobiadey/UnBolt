@@ -1,26 +1,27 @@
 # Diff Summary
 
-Date : 2022-05-22 07:45:06
+Date : 2022-05-22 21:36:17
 
 Directory /Users/tobiadewunmi/Desktop/unbolt/src
 
-Total : 14 files,  96 codes, -123 comments, 17 blanks, all -10 lines
+Total : 6 files,  15 codes, -42 comments, -15 blanks, all -42 lines
 
 [Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)
 
 ## Languages
 | language | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| JavaScript | 10 | 58 | -126 | 10 | -58 |
-| CSS | 4 | 38 | 3 | 7 | 48 |
+| JavaScript | 5 | 17 | 5 | 5 | 27 |
+| Solidity | 1 | -2 | -47 | -20 | -69 |
 
 ## Directories
 | path | files | code | comment | blank | total |
 | :--- | ---: | ---: | ---: | ---: | ---: |
-| . | 14 | 96 | -123 | 17 | -10 |
-| components | 3 | 4 | -49 | -8 | -53 |
-| pages | 10 | 94 | -76 | 25 | 43 |
-| truffle | 1 | -2 | 2 | 0 | 0 |
-| truffle/migrations | 1 | -2 | 2 | 0 | 0 |
+| . | 6 | 15 | -42 | -15 | -42 |
+| components | 1 | 1 | 0 | 0 | 1 |
+| constants | 1 | 0 | 1 | 0 | 1 |
+| pages | 2 | 16 | 4 | 3 | 23 |
+| truffle | 2 | -2 | -47 | -18 | -67 |
+| truffle/contracts | 1 | -2 | -47 | -20 | -69 |
 
 [Summary](results.md) / [Details](details.md) / Diff Summary / [Diff Details](diff-details.md)

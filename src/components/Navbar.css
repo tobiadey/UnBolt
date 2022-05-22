@@ -1,7 +1,6 @@
 .navbar {
     display: flex;
     padding: 30px;
-    /* border-bottom: 0.5px solid grey; */
     align-items: center;
     font-size: 14px;
     color: #555;
@@ -18,62 +17,4 @@
 .navbar .message{
   font-size: 20px;
   font-weight: bold;
-}
-
-.navbar .items{
-  display: flex;
-  align-items: center;
-}
-.navbar .items .item{
-  display: flex;
-  align-items: center;
-  margin: 5px;
-  position: relative;
-
-}
-
-.navbar .items .icon{
-  font-size: 20px;
-}
-
-.navbar .items .avatar{
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-}
-
-.navbar .items .counter{
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: red;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: bold;
-  position: absolute;
-  top:-5px;
-  right: -5px;
-}
-
-.navbar .items .item .alert{
-  padding-right: 10px;
-}
-
-  
-  
-.navbar .search{
-  display: flex;
-  align-items: center;
-  border: 0.5px solid lightgrey;
-  padding: 3px;
-
-}
-.navbar .search input{
-  border: none;
-  outline: none;
-  background-color: transparent;
-
 }

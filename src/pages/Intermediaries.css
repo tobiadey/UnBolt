@@ -2,12 +2,8 @@
 /* reused create asset css to save time :( */
 .createAsset{
     display: flex;
-    /* justify-content: center; */
     margin: 5%;
-    /* align-items: flex-start; */
-    /* border : 0.5px solid lightgrey; */
     padding: 50px 0px;
-    /* background-color: lightblue; */
     flex-direction: column;
 }
 
@@ -23,16 +19,10 @@
 }
 
 .createAsset .createAsset-form .createAsset-data{
-    /* background-color: green; */
+
     flex: 1.5;
 }
-.createAsset .createAsset-form .form-box{
-    /* background-color: green; */
-    /* flex: 1.5; */
-    /* padding: 30px;
-    padding-left: 0px; */
 
-}
 
 .createAsset .createAsset-form .createAsset-image-container{
     /* background-color: yellow; */
