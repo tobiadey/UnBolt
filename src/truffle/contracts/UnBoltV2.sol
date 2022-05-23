@@ -178,7 +178,7 @@ contract Tasks is Assets{ //make assets the parent contract
         //get asset assoicated with current task and make sure the function is being called by the asset creator
         Asset memory currAsset; 
         currAsset = assets[_assetId-1]; 
-        // require(msg.sender == currAsset.creator, "This function is restricted to the asset creator"); 
+        require(msg.sender == currAsset.creator, "This function is restricted to the asset creator"); 
 
         //create an empty temporary Task object adding the function paramenter values to it then
         //it is pushed into the the array of assets

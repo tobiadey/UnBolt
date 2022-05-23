@@ -1,0 +1,45 @@
+Date : 2022-05-23 10:59:05
+Directory : /Users/tobiadewunmi/Desktop/unbolt/src
+Total : 14 files,  -70 codes, -425 comments, -87 blanks, all -582 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| Solidity   |          5 |          1 |       -367 |        -74 |       -440 |
+| JavaScript |          3 |        -18 |        -14 |          0 |        -32 |
+| CSS        |          6 |        -53 |        -44 |        -13 |       -110 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                    | files      | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                       |         14 |        -70 |       -425 |        -87 |       -582 |
+| components                                                              |          4 |        -53 |        -22 |        -14 |        -89 |
+| pages                                                                   |          4 |         -6 |        -38 |         -1 |        -45 |
+| truffle                                                                 |          6 |        -11 |       -365 |        -72 |       -448 |
+| truffle/contracts                                                       |          5 |          1 |       -367 |        -74 |       -440 |
+| truffle/test                                                            |          1 |        -12 |          2 |          2 |         -8 |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                | language   | code       | comment    | blank      | total      |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/tobiadewunmi/Desktop/unbolt/src/components/Input.css             | CSS        |          0 |         -5 |         -1 |         -6 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/components/Navbar.css            | CSS        |        -47 |         -1 |        -11 |        -59 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/components/Navbar.js             | JavaScript |         -6 |         -8 |         -2 |        -16 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/components/Widgets.css           | CSS        |          0 |         -8 |          0 |         -8 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/pages/CreateAsset.css            | CSS        |         -2 |         -8 |          0 |        -10 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/pages/CreateTask.css             | CSS        |         -2 |        -13 |         -2 |        -17 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/pages/Intermediaries.css         | CSS        |         -2 |         -9 |          1 |        -10 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/pages/NoAccess.js                | JavaScript |          0 |         -8 |          0 |         -8 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/contracts/Assets_old.sol | Solidity   |          0 |        -51 |         -9 |        -60 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/contracts/Tasks_old.sol  | Solidity   |          0 |        -77 |        -10 |        -87 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/contracts/UnBolt.sol     | Solidity   |          0 |       -175 |        -43 |       -218 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/contracts/UnBoltV2.sol   | Solidity   |          1 |         -1 |          0 |          0 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/contracts/UnBolt_old.sol | Solidity   |          0 |        -63 |        -12 |        -75 |
+| /Users/tobiadewunmi/Desktop/unbolt/src/truffle/test/test.js             | JavaScript |        -12 |          2 |          2 |         -8 |
+| Total                                                                   |            |        -70 |       -425 |        -87 |       -582 |
++-------------------------------------------------------------------------+------------+------------+------------+------------+------------+

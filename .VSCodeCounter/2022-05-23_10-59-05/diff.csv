@@ -1,0 +1,16 @@
+"filename", "language", "CSS", "Solidity", "JavaScript", "comment", "blank", "total"
+"/Users/tobiadewunmi/Desktop/unbolt/src/components/Input.css", "CSS", 0, 0, 0, -5, -1, -6
+"/Users/tobiadewunmi/Desktop/unbolt/src/components/Navbar.css", "CSS", -47, 0, 0, -1, -11, -59
+"/Users/tobiadewunmi/Desktop/unbolt/src/components/Navbar.js", "JavaScript", 0, 0, -6, -8, -2, -16
+"/Users/tobiadewunmi/Desktop/unbolt/src/components/Widgets.css", "CSS", 0, 0, 0, -8, 0, -8
+"/Users/tobiadewunmi/Desktop/unbolt/src/pages/CreateAsset.css", "CSS", -2, 0, 0, -8, 0, -10
+"/Users/tobiadewunmi/Desktop/unbolt/src/pages/CreateTask.css", "CSS", -2, 0, 0, -13, -2, -17
+"/Users/tobiadewunmi/Desktop/unbolt/src/pages/Intermediaries.css", "CSS", -2, 0, 0, -9, 1, -10
+"/Users/tobiadewunmi/Desktop/unbolt/src/pages/NoAccess.js", "JavaScript", 0, 0, 0, -8, 0, -8
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/contracts/Assets_old.sol", "Solidity", 0, 0, 0, -51, -9, -60
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/contracts/Tasks_old.sol", "Solidity", 0, 0, 0, -77, -10, -87
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/contracts/UnBolt.sol", "Solidity", 0, 0, 0, -175, -43, -218
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/contracts/UnBoltV2.sol", "Solidity", 0, 1, 0, -1, 0, 0
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/contracts/UnBolt_old.sol", "Solidity", 0, 0, 0, -63, -12, -75
+"/Users/tobiadewunmi/Desktop/unbolt/src/truffle/test/test.js", "JavaScript", 0, 0, -12, 2, 2, -8
+"Total", "-", -53, 1, -18, -425, -87, -582
